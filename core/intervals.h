@@ -44,3 +44,5 @@ int measure(note, note);
 interval determine_interval(note, note);
 interval determine_interval_str(char *, char *);
 void interval_to_string(interval, char *);
+
+#define INTERVAL(str1, str2) (determine_interval_str(str1, str2))

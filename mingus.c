@@ -176,7 +176,7 @@ void
 test_determine_interval() 
 {
 
-	interval c = determine_interval(NOTE("C"), NOTE("E"));
+	interval c = INTERVAL("C", "E");
 	
 	start_test("determine_interval");
 	assert(c.prefix == MAJOR);
@@ -187,12 +187,27 @@ test_determine_interval()
 void
 test_interval_to_string()
 {
-	interval c = determine_interval(NOTE("C"), NOTE("E"));
+	interval ivals[] = { 
+		INTERVAL("C", "E"),
+		INTERVAL("C", "D#"),
+		INTERVAL("E", "D#"),
+		INTERVAL("B", "C"),
+		};
+	char *answers[] = {
+		"major third",
+		"augmented second",
+		"major seventh",
+		"minor second",
+		};
+
+	int i;	
 	char result[100];
 
 	start_test("interval_to_string");
-	interval_to_string(c, result);
-	assert(strcmp(result, "major third") == 0);
+	for (i = 0; i < 4; i++) {
+		interval_to_string(ivals[i], result);
+		assert(strcmp(result, answers[i]) == 0);
+	}
 	end_test();
 
 }
