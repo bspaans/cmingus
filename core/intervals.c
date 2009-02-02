@@ -80,6 +80,8 @@ determine_interval(note note1, note note2)
 
 	int f1, f2, fifth_steps, semitones, expected_steps;
 	interval result;
+	result.prefix = 0;
+	result.accidentals = 0;
 
 	// unison sidecase
 	if (note1.basename == note2.basename) 

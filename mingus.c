@@ -187,7 +187,7 @@ test_determine_interval()
 void
 test_interval_to_string()
 {
-	interval c = determine_interval_str("C", "E");
+	interval c = determine_interval(NOTE("C"), NOTE("E"));
 	char result[100];
 
 	start_test("interval_to_string");
