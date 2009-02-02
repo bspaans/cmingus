@@ -1,7 +1,7 @@
 #include "notes.h"
 #include <string.h>
 #include <stdlib.h>
-
+#include <stdio.h>
 
 int note_name_index(char note) 
 {
@@ -34,19 +34,25 @@ int is_enharmonic(char * note1, char * note2)
 int note_to_int(char * note)
 {
 	int i = note_name_index(note[0]);
-	int val1, val2;
+	int val1, val2, res;
 
 	//warning: should handle error(?)
 	if (i == -1)
-		return -1;
+		return -3;
 
 	val1 = note_values[i];
 	val2 = get_accidentals_value(note);
 	if (val2 == -10000)
-		return -1;
+		return -2;
 
-	return (val1 + val2) % 12;
-
+	res = (val1 + val2) % 12;
+	if (res >= 0)
+		return res;
+	
+	res = 12 - (abs(val1 + val2) % 12);
+	if (res != 12)
+		return res;
+	return 0;
 }
 
 int get_accidentals_value(char * note) {

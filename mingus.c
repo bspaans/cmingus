@@ -8,6 +8,7 @@ void test_note_to_int(void);
 void start_test(char *);
 void end_test(void);
 
+int testnr = 0;
 
 int 
 main() 
@@ -22,7 +23,7 @@ main()
 void 
 start_test(char *test) 
 {
-	printf("Testing %s...", test);
+	printf("%d. Testing %s...", testnr++, test);
 }
 
 
@@ -37,12 +38,22 @@ test_note_to_int()
 {
 	start_test("note_to_int");
 	assert(note_to_int("C") == 0);
+	assert(note_to_int("C##") == 2);
 	assert(note_to_int("D") == 2);
 	assert(note_to_int("E") == 4);
 	assert(note_to_int("F") == 5);
 	assert(note_to_int("G") == 7);
 	assert(note_to_int("A") == 9);
+	assert(note_to_int("A#") == 10);
+	assert(note_to_int("Bb") == 10);
 	assert(note_to_int("B") == 11);
+	assert(note_to_int("Cb") == 11);
+	assert(note_to_int("Cbbbb") == 8);
+	assert(note_to_int("Cbbbbbbbb") == 4);
+	assert(note_to_int("Cbbbbbbbbbbb") == 1);
+	assert(note_to_int("Cbbbbbbbbbbbb") == 0);
+	assert(note_to_int("Cbbbbbbbbbbbbbbbb") == 8);
+	assert(note_to_int("Bbbbbbbbb") == 3);
 	end_test();
 }
 
