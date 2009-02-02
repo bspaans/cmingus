@@ -21,28 +21,3 @@
 ================================================================================
 
 */
-
-typedef struct note {
-	char basename;
-	short accidentals;
-} note;
-
-
-int note_to_int(note);
-note int_to_note(int);
-note str_to_note(char *);
-void note_to_str(note, char *);
-
-int is_enharmonic(note, note);
-int is_valid_note_str(char *);
-int note_name_index(char);
-int fifths_index(char);
-int get_accidentals_value(char *);
-
-note augment(note);
-note diminish(note);
-
-extern char note_names[];
-extern int note_values[];
-extern char fifths[];
-extern char *naive_note_list[];

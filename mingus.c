@@ -1,3 +1,27 @@
+/*
+
+================================================================================
+    
+    cmingus, a reimplementation of mingus in C.
+    Copyright (C) 2008, Bart Spaans
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+================================================================================
+
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
@@ -84,8 +108,8 @@ test_augment()
 	start_test("test_augment");
 	for (i = 0; i < 5; i++) 
 	{
-		augment(cases[i], result);
-		assert(strcmp(result, answers[i]) == 0);
+		note_to_str(augment(str_to_note(cases[i])), result);
+		assert(strcmp(answers[i], result) == 0);
 	}
 	end_test();
 }
@@ -101,7 +125,7 @@ test_diminish()
 	start_test("test_diminish");
 	for (i = 0; i < 5; i++) 
 	{
-		diminish(cases[i], result);
+		note_to_str(diminish(str_to_note(cases[i])), result);
 		assert(strcmp(result, answers[i]) == 0);
 	}
 	end_test();
@@ -113,23 +137,23 @@ void
 test_note_to_int() 
 {
 	start_test("note_to_int");
-	assert(note_to_int("C") == 0);
-	assert(note_to_int("C##") == 2);
-	assert(note_to_int("D") == 2);
-	assert(note_to_int("E") == 4);
-	assert(note_to_int("F") == 5);
-	assert(note_to_int("G") == 7);
-	assert(note_to_int("A") == 9);
-	assert(note_to_int("A#") == 10);
-	assert(note_to_int("Bb") == 10);
-	assert(note_to_int("B") == 11);
-	assert(note_to_int("Cb") == 11);
-	assert(note_to_int("Cbbbb") == 8);
-	assert(note_to_int("Cbbbbbbbb") == 4);
-	assert(note_to_int("Cbbbbbbbbbbb") == 1);
-	assert(note_to_int("Cbbbbbbbbbbbb") == 0);
-	assert(note_to_int("Cbbbbbbbbbbbbbbbb") == 8);
-	assert(note_to_int("Bbbbbbbbb") == 3);
+	assert(note_to_int(str_to_note("C")) == 0);
+	assert(note_to_int(str_to_note("C##")) == 2);
+	assert(note_to_int(str_to_note("D")) == 2);
+	assert(note_to_int(str_to_note("E")) == 4);
+	assert(note_to_int(str_to_note("F")) == 5);
+	assert(note_to_int(str_to_note("G")) == 7);
+	assert(note_to_int(str_to_note("A")) == 9);
+	assert(note_to_int(str_to_note("A#")) == 10);
+	assert(note_to_int(str_to_note("Bb")) == 10);
+	assert(note_to_int(str_to_note("B")) == 11);
+	assert(note_to_int(str_to_note("Cb")) == 11);
+	assert(note_to_int(str_to_note("Cbbbb")) == 8);
+	assert(note_to_int(str_to_note("Cbbbbbbbb")) == 4);
+	assert(note_to_int(str_to_note("Cbbbbbbbbbbb")) == 1);
+	assert(note_to_int(str_to_note("Cbbbbbbbbbbbb")) == 0);
+	assert(note_to_int(str_to_note("Cbbbbbbbbbbbbbbbb")) == 8);
+	assert(note_to_int(str_to_note("Bbbbbbbbb")) == 3);
 	end_test();
 }
 
@@ -143,7 +167,7 @@ test_int_to_note()
 	start_test("int_to_note");
 	for (x = 0; x < 6; x++) 
 	{
-		int_to_note(x, result);
+		note_to_str(int_to_note(x), result);
 		assert(strcmp(notes[x], result) == 0);
 	}
 	end_test();

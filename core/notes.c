@@ -1,3 +1,28 @@
+/*
+
+================================================================================
+    
+    cmingus, a reimplementation of mingus in C.
+    Copyright (C) 2008, Bart Spaans
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+================================================================================
+
+*/
+
+
 #include <string.h>
 #include <stdlib.h>
 #include "notes.h"
@@ -20,43 +45,73 @@ note_name_index(char note)
 
 
 int 
-is_valid_note(char * note) 
+is_valid_note_str(char *n) 
 {
-	int i, len = strlen(note);
+	int i, len = strlen(n);
 
 	// check notename
-	if (note_name_index(note[0]) == -1)
+	if (note_name_index(n[0]) == -1)
 		return 0;	
 	
 	// check accidentals
 	for (i = 1; i < len; i++) 
-		if (note[i] != '#' && note[i] != 'b')
+		if (n[i] != '#' && n[i] != 'b')
 			return 0;
 
 	return 1;
 }
 
 
+note
+str_to_note(char *n)
+{
+	note res;
+	res.basename = 'N';
+	res.accidentals = 0;
+	if (is_valid_note_str(n))
+	{
+		res.basename = n[0];
+		res.accidentals = get_accidentals_value(n);
+		return res;
+	}
+	return res;
+}
+
+
+void
+note_to_str(note n, char *res) {
+	int i;
+	res[0] = n.basename;
+	for (i = 0; i < abs(n.accidentals); i++) 
+	{
+		if (n.accidentals < 0)
+			res[i + 1] = 'b';
+		else
+			res[i + 1] = '#';
+	}
+	res[i + 2] = '\0';
+
+}
+
+
 int 
-is_enharmonic(char * note1, char * note2)
+is_enharmonic(note note1, note note2)
 {
 	return (note_to_int(note1) == note_to_int(note2));
 }
 
 
-int note_to_int(char * note)
+int note_to_int(note n)
 {
-	int i = note_name_index(note[0]);
+	int i = note_name_index(n.basename);
 	int val1, val2, res;
 
 	//warning: should handle error(?)
 	if (i == -1)
-		return -3;
+		return -1;
 
 	val1 = note_values[i];
-	val2 = get_accidentals_value(note);
-	if (val2 == -10000)
-		return -2;
+	val2 = n.accidentals;
 
 	res = (val1 + val2) % 12;
 	if (res >= 0)
@@ -89,10 +144,15 @@ get_accidentals_value(char *note) {
 }
 
 
-void 
-int_to_note(int n, char *result)
+note 
+int_to_note(int n)
 {
-	strcpy(result, naive_note_list[n % 12]);
+	char *tmp;
+	note res;
+	tmp = naive_note_list[n % 12];
+	res.basename = tmp[0];
+	res.accidentals = get_accidentals_value(tmp);
+	return res;
 }
 
 
@@ -107,37 +167,19 @@ fifths_index(char notename)
 }
 
 
-void 
-augment(char *note, char *result)
+note
+augment(note n)
 {
-	int len = strlen(note);
-
-	if (note[len - 1] != 'b') {
-		strcpy(result, note);
-		result[len] = '#';
-		result[len + 1] = '\0';
-	}
-	else {
-		strcpy(result, note);
-		result[len-1] = '\0';
-	}
+	n.accidentals += 1;
+	return n;
 }
 
 
-void 
-diminish(char *note, char *result)
+note
+diminish(note n)
 {
-	int len = strlen(note);
-
-	if (note[len - 1] != '#') {
-		strcpy(result, note);
-		result[len] = 'b';
-		result[len + 1] = '\0';
-	}
-	else {
-		strcpy(result, note);
-		result[len-1] = '\0';
-	}
+	n.accidentals -= 1;
+	return n;
 }
 
 
