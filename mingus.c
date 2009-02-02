@@ -176,7 +176,7 @@ void
 test_determine_interval() 
 {
 
-	interval c = determine_interval_str("C", "E");
+	interval c = determine_interval(NOTE("C"), NOTE("E"));
 	
 	start_test("determine_interval");
 	assert(c.prefix == MAJOR);

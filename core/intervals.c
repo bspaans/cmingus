@@ -64,6 +64,7 @@ measure(note note1, note note2)
 	return result;
 }
 
+
 interval
 determine_interval_str(char *note1, char *note2)
 {
@@ -71,6 +72,7 @@ determine_interval_str(char *note1, char *note2)
 			str_to_note(note1),
 			str_to_note(note2));
 }
+
 
 interval 
 determine_interval(note note1, note note2) 

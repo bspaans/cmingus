@@ -46,3 +46,5 @@ extern char note_names[];
 extern int note_values[];
 extern char fifths[];
 extern char *naive_note_list[];
+
+#define NOTE(str) (str_to_note(str))
