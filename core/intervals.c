@@ -6,7 +6,37 @@ extern int note_to_int(char *);
 extern int fifths_index(char);
 extern int get_accidentals_value(char *);
 
-int measure(char * note1, char * note2) 
+char * 
+interval_names[] = { 
+		"unison",
+		"fifth",
+		"second",
+		"sixth",
+		"third",
+		"seventh",
+		"fourth" };
+
+
+char 
+interval_names_shorthand[] = { '1', '5', '2', '6',
+				'3', '7', '4' };
+
+
+char * 
+prefix_names[] = { 
+	"diminished",
+	"minor",
+	"major",
+	"perfect",
+	"augmented",
+	};
+
+int 
+expected_semitones[] = {0, 7, 2, 9, 4, 11, 5};
+
+
+int 
+measure(char * note1, char * note2) 
 {
 	int result;
 	result = note_to_int(note2) - note_to_int(note1);
@@ -15,7 +45,9 @@ int measure(char * note1, char * note2)
 	return result;
 }
 
-struct interval determine_interval(char * note1, char * note2) 
+
+interval 
+determine_interval(char * note1, char * note2) 
 {
 
 	int f1, f2, fifth_steps, semitones, expected_steps;
