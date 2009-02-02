@@ -4,12 +4,18 @@
 #define INTERVALS
 #include "core/intervals.h"
 
+/* 	core/notes.c	 	*/
 void test_get_accidentals_value(void);
 void test_note_to_int(void);
 void test_int_to_note(void);
 void test_augment(void);
 void test_diminish(void);
+
+/* 	core/intervals.c	*/
 void test_determine_interval(void);
+void test_interval_to_string(void);
+
+
 void start_test(char *);
 void end_test(void);
 
@@ -37,6 +43,7 @@ main()
 	printf("                         INTERVAL                         \n");
 	printf("==========================================================\n");
 	test_determine_interval();
+	test_interval_to_string();
 	printf("==========================================================\n");
 }
 
@@ -150,7 +157,19 @@ test_determine_interval()
 	
 	start_test("determine_interval");
 	assert(c.prefix == MAJOR);
-	assert(c.shorthand == 4);
+	assert(interval_names_shorthand[c.shorthand] - '0' == 3);
 	end_test();
 }
 
+void
+test_interval_to_string()
+{
+	interval c = determine_interval("C", "E");
+	char result[100];
+
+	start_test("interval_to_string");
+	interval_to_string(c, result);
+	assert(strcmp(result, "major third") == 0);
+	end_test();
+
+}

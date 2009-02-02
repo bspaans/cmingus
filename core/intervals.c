@@ -27,7 +27,6 @@ prefix_names[] = {
 	"diminished",
 	"minor",
 	"major",
-	"perfect",
 	"augmented",
 	};
 
@@ -56,7 +55,7 @@ determine_interval(char * note1, char * note2)
 	// unison sidecase
 	if (note1 == note2) 
 	{
-		result.shorthand = 0;
+		result.shorthand = 1;
 		f1 = get_accidentals_value(note1);
 		f2 = get_accidentals_value(note2);
 		result.accidentals = f2 - f1;
@@ -96,5 +95,15 @@ determine_interval(char * note1, char * note2)
 	else if (expected_steps - 2 >= semitones) 
 		result.prefix = MAJOR;
 	return result;
+
+}
+
+
+void 
+interval_to_string(interval i, char *result)
+{
+	strcpy(result, prefix_names[i.prefix]);
+	strcat(result, " ");
+	strcat(result, interval_names[i.shorthand]);
 
 }

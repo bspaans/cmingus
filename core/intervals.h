@@ -6,8 +6,7 @@ extern int expected_semitones[];
 #define DIMINISHED 0
 #define MINOR 1
 #define MAJOR 2
-#define PERFECT 3
-#define AUGMENTED 4
+#define AUGMENTED 3
 
 typedef struct interval {
 	char shorthand;
@@ -17,3 +16,4 @@ typedef struct interval {
 
 int measure(char *, char *);
 interval determine_interval(char *, char *);
+void interval_to_string(interval, char *);
