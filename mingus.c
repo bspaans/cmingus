@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
-#define INTERVALS
 #include "core/intervals.h"
+#include "core/notes.h"
 
 /* 	core/notes.c	 	*/
 void test_get_accidentals_value(void);
@@ -45,6 +45,7 @@ main()
 	test_determine_interval();
 	test_interval_to_string();
 	printf("==========================================================\n");
+	return 0;
 }
 
 
@@ -137,14 +138,13 @@ test_int_to_note()
 {
 	char result[2];
 	char *notes[] = {"C", "C#", "D", "D#", "E", "F"};
-	int i;
+	unsigned int x;
 
 	start_test("int_to_note");
-	for (i = 0; i < 6; i++) 
+	for (x = 0; x < 6; x++) 
 	{
-		int_to_note(i, result);
-		assert(strcmp(result, notes[i]) == 0);
-
+		int_to_note(x, result);
+		assert(strcmp(notes[x], result) == 0);
 	}
 	end_test();
 }
@@ -157,7 +157,7 @@ test_determine_interval()
 	
 	start_test("determine_interval");
 	assert(c.prefix == MAJOR);
-	assert(interval_names_shorthand[c.shorthand] - '0' == 3);
+	assert(interval_names_shorthand[(int) c.shorthand] - '0' == 3);
 	end_test();
 }
 

@@ -102,8 +102,8 @@ determine_interval(char * note1, char * note2)
 void 
 interval_to_string(interval i, char *result)
 {
-	strcpy(result, prefix_names[i.prefix]);
+	strcpy(result, prefix_names[(int) i.prefix]);
 	strcat(result, " ");
-	strcat(result, interval_names[i.shorthand]);
+	strcat(result, interval_names[(int) i.shorthand]);
 
 }

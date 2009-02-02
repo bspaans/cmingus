@@ -1,16 +1,26 @@
-#include "notes.h"
 #include <string.h>
 #include <stdlib.h>
-#include <stdio.h>
+#include "notes.h"
 
-int note_name_index(char note) 
+char note_names[] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G'};
+int note_values[] = {  9,   11,  0,   2,   4,   5 ,  7 };
+
+char fifths[] = { 'F', 'C', 'G', 'D', 'A', 'E', 'B'};
+char *naive_note_list[] = { "C", "C#", "D", "D#", "E", "F", 
+	                     "F#", "G", "G#", "A", "A#", "B"}; 
+
+
+int 
+note_name_index(char note) 
 {
 	if (note >= 'A' && note <= 'G')
 		return note - 'A';
 	return -1;
 }
 
-int is_valid_note(char * note) 
+
+int 
+is_valid_note(char * note) 
 {
 	int i, len = strlen(note);
 
@@ -26,10 +36,13 @@ int is_valid_note(char * note)
 	return 1;
 }
 
-int is_enharmonic(char * note1, char * note2)
+
+int 
+is_enharmonic(char * note1, char * note2)
 {
 	return (note_to_int(note1) == note_to_int(note2));
 }
+
 
 int note_to_int(char * note)
 {
@@ -55,7 +68,9 @@ int note_to_int(char * note)
 	return 0;
 }
 
-int get_accidentals_value(char * note) {
+
+int 
+get_accidentals_value(char *note) {
 	
 	int i, val = 0;
 	for (i = 1; i < strlen(note); i++) {
@@ -71,15 +86,18 @@ int get_accidentals_value(char * note) {
 		}
 	}
 	return val;
-
 }
 
-void int_to_note(int n, char *result)
+
+void 
+int_to_note(int n, char *result)
 {
 	strcpy(result, naive_note_list[n % 12]);
 }
 
-int fifths_index(char notename) 
+
+int 
+fifths_index(char notename) 
 {
 	int i;
 	for (i = 0; i < 7; i++)
@@ -88,7 +106,9 @@ int fifths_index(char notename)
 	return -1;
 }
 
-void augment(char *note, char *result)
+
+void 
+augment(char *note, char *result)
 {
 	int len = strlen(note);
 
@@ -103,7 +123,9 @@ void augment(char *note, char *result)
 	}
 }
 
-void diminish(char *note, char *result)
+
+void 
+diminish(char *note, char *result)
 {
 	int len = strlen(note);
 
