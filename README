@@ -1,0 +1,71 @@
+================================================================================
+                                    CMINGUS
+================================================================================
+
+  cmingus is a low priority implementation of the Python library mingus in C.
+  mingus homepage: http://mingus.googlecode.com/
+
+  * Why?
+
+  For speed, cross compilation, compatibility and the usual shiggles.
+  (And to go back to C - maybe I'll progress to C99!).
+
+  My C style is apperantly ancient, but I'll try to improve it as I go along. 
+  Comments are welcome (via github or mail: bartspaans@gmail.com).
+
+================================================================================
+                                  RESOURCES
+================================================================================
+
+  [1] The mingus homepage
+      http://mingus.googlecode.com
+  [2] The cmingus git repository
+      http://github.com/bspaans/cmingus/
+
+================================================================================
+                                    GOALS
+================================================================================
+
+ * Cross platform (testing with gcc and mingw) *DONE*
+ * Implement note, diatonic, intervals and chords
+ * Implement remaining base features of mingus.core (OPTIONAL)
+ * Implement containers (probably in c++).
+ * Link fluidsynth and play a note.
+
+================================================================================
+                                 INSTALLATION
+================================================================================
+
+  Installing is done using make. You can set the CC environment variable to 
+  change compilers.
+
+    $ make
+
+  Or:
+
+    $ export CC=i586-mingw32msvc-gcc
+    $ make
+
+  Which will build a windows executable.
+
+================================================================================
+                                   LICENSE
+================================================================================
+    
+  cmingus, a reimplementation of mingus in C.
+  Copyright (C) 2008, Bart Spaans <bartspaans@gmail.com>
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+================================================================================
