@@ -26,7 +26,6 @@
 #include <string.h>
 #include <assert.h>
 #include "core/intervals.h"
-#include "core/notes.h"
 
 /* 	core/notes.c	 	*/
 void test_get_accidentals_value(void);
@@ -177,7 +176,7 @@ void
 test_determine_interval() 
 {
 
-	interval c = determine_interval("C", "E");
+	interval c = determine_interval_str("C", "E");
 	
 	start_test("determine_interval");
 	assert(c.prefix == MAJOR);
@@ -188,7 +187,7 @@ test_determine_interval()
 void
 test_interval_to_string()
 {
-	interval c = determine_interval("C", "E");
+	interval c = determine_interval_str("C", "E");
 	char result[100];
 
 	start_test("interval_to_string");

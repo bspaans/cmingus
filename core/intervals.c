@@ -26,10 +26,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-extern int note_to_int(char *);
-extern int fifths_index(char);
-extern int get_accidentals_value(char *);
-
 char * 
 interval_names[] = { 
 		"unison",
@@ -59,7 +55,7 @@ expected_semitones[] = {0, 7, 2, 9, 4, 11, 5};
 
 
 int 
-measure(char * note1, char * note2) 
+measure(note note1, note note2) 
 {
 	int result;
 	result = note_to_int(note2) - note_to_int(note1);
@@ -68,20 +64,27 @@ measure(char * note1, char * note2)
 	return result;
 }
 
+interval
+determine_interval_str(char *note1, char *note2)
+{
+	return determine_interval( 
+			str_to_note(note1),
+			str_to_note(note2));
+}
 
 interval 
-determine_interval(char * note1, char * note2) 
+determine_interval(note note1, note note2) 
 {
 
 	int f1, f2, fifth_steps, semitones, expected_steps;
 	interval result;
 
 	// unison sidecase
-	if (note1 == note2) 
+	if (note1.basename == note2.basename) 
 	{
 		result.shorthand = 1;
-		f1 = get_accidentals_value(note1);
-		f2 = get_accidentals_value(note2);
+		f1 = note1.accidentals;
+		f2 = note2.accidentals;
 		result.accidentals = f2 - f1;
 
 		if (f1 == f2) 
@@ -97,8 +100,8 @@ determine_interval(char * note1, char * note2)
 	}
 
 
-	f1 = fifths_index(note1[0]);
-	f2 = fifths_index(note2[0]);
+	f1 = fifths_index(note1.basename);
+	f2 = fifths_index(note2.basename);
 
 	if (f2 < f1)
 		fifth_steps = 7 - f1 + f2;

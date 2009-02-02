@@ -22,7 +22,7 @@
 
 */
 
-
+#include "notes.h"
 
 extern char * interval_names[];
 extern char interval_names_shorthand[];
@@ -40,6 +40,7 @@ typedef struct interval {
 	signed short accidentals;
 } interval;
 
-int measure(char *, char *);
-interval determine_interval(char *, char *);
+int measure(note, note);
+interval determine_interval(note, note);
+interval determine_interval_str(char *, char *);
 void interval_to_string(interval, char *);
