@@ -74,9 +74,9 @@ int get_accidentals_value(char * note) {
 
 }
 
-char * int_to_note(int n)
+void int_to_note(int n, char *result)
 {
-	return naive_note_list[n % 12];
+	strcpy(result, naive_note_list[n % 12]);
 }
 
 int fifths_index(char notename) 

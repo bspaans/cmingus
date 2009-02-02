@@ -1,5 +1,5 @@
 int note_to_int(char *);
-char * int_to_note(int);
+void int_to_note(int, char *);
 
 int is_enharmonic(char *, char *);
 int is_valid_note(char *);
