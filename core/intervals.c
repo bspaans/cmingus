@@ -15,153 +15,54 @@ int measure(char * note1, char * note2)
 	return result;
 }
 
-/* This function is 7650% faster than its python equivalent
- * when compiled with -O3 on my machine, doing roughly
- * 4.250.000 interval determinations per second! 
- */
-char * determine(char * note1, char * note2, int shorthand) 
+struct interval determine_interval(char * note1, char * note2) 
 {
 
 	int f1, f2, fifth_steps, semitones, expected_steps;
-	char * result;
+	interval result;
 
 	// unison sidecase
 	if (note1 == note2) 
 	{
+		result.shorthand = 0;
 		f1 = get_accidentals_value(note1);
 		f2 = get_accidentals_value(note2);
+		result.accidentals = f2 - f1;
 
 		if (f1 == f2) 
-		{
-			if (shorthand)
-				return "1";
-			else
-				return "major unison";
-		}
+			result.prefix = MAJOR;
 		else if (f1 < f2) 
-		{
-			if (shorthand)
-				return "#1";
-			else
-				return "augmented unison";
-		}
+			result.prefix = AUGMENTED;
 		else if (f1 - f2 == 1)
-		{
-			if (shorthand)
-				return "b1";
-			else
-				return "minor unison";
-		}
+			result.prefix = MINOR;
 		else 
-		{
-			if (shorthand)
-				return "bb1";
-			else
-				return "diminished unison";
-		}
+			result.prefix = DIMINISHED;
 
-
+		return result;
 	}
 
 
 	f1 = fifths_index(note1[0]);
 	f2 = fifths_index(note2[0]);
-	fifth_steps = f2 - f1;
 
 	if (f2 < f1)
 		fifth_steps = 7 - f1 + f2;
+	else
+		fifth_steps = f2 - f1;
 
 	expected_steps = expected_semitones[fifth_steps];
 	semitones = measure(note1, note2);
-
+	result.shorthand = fifth_steps;
+	result.accidentals = semitones - expected_steps;
 
 	if (expected_steps == semitones) 
-	{
-		if (shorthand)
-		{
-			result = (char *) malloc(2);
-			result[0] = interval_names_shorthand[fifth_steps];
-			result[1] = '\0';
-			return result;
-		}
-		else 
-		{
-			result = (char *) malloc(strlen(interval_names[fifth_steps]) + 7);
-			strcpy(result, "major ");
-			strcat(result, interval_names[fifth_steps]);
-			return result;
-		}
-	}
+		result.prefix = MAJOR;
 	else if (expected_steps + 1 <= semitones) 
-	{
-		if (shorthand)
-		{
-			int sharps = semitones - expected_steps;
-			result = (char *) malloc (sharps + 2);
-
-			while (sharps != -1)
-			{
-				result[sharps] = '#';
-				sharps -= 1;
-			}
-			sharps = semitones - expected_steps;
-			result[sharps] = interval_names_shorthand[fifth_steps];
-			result[sharps + 1] = '\0';
-			return result;
-		}
-		else 
-		{
-			result = (char *) malloc(strlen(interval_names[fifth_steps]) + 11);
-			strcpy(result, "augmented ");
-			strcat(result, interval_names[fifth_steps]);
-			return result;
-		}
-
-
-	}
+		result.prefix = AUGMENTED;
 	else if (expected_steps - 1 == semitones) 
-	{
-		if (shorthand)
-		{	
-			result = (char *) malloc(3);
-			result[0] = 'b';
-			result[1] = interval_names_shorthand[fifth_steps];
-			result[2] = '\0';
-			return result;
-		}
-		else
-		{
-			result = (char *) malloc(strlen(interval_names[fifth_steps]) + 7);
-			strcpy(result, "minor ");
-			strcat(result, interval_names[fifth_steps]);
-			return result;
-		}
-	}
+		result.prefix = MINOR;
 	else if (expected_steps - 2 >= semitones) 
-	{
-		if (shorthand)
-		{
-			int flats = expected_steps - semitones;
-			result = (char *) malloc (flats + 2);
-
-			while (flats != -1)
-			{
-				result[flats] = 'b';
-				flats -= 1;
-			}
-			flats = expected_steps - semitones;
-			result[flats] = interval_names_shorthand[fifth_steps];
-			result[flats + 1] = '\0';
-			return result;
-		}
-		else
-		{
-			result = (char *) malloc(strlen(interval_names[fifth_steps]) + 13);
-			strcpy(result, "diminished ");
-			strcat(result, interval_names[fifth_steps]);
-			return result;
-		}	
-
-	}
+		result.prefix = MAJOR;
+	return result;
 
 }

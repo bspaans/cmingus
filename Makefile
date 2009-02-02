@@ -4,7 +4,7 @@ LIBS=
 CC=gcc
 
 default: 
-	$(CC) $(INCS) $(LIBS) -o mingus
+	$(CC) $(SRCS) $(LIBS) -o mingus
 
 static: $(OBJ)
 	ar rcs libmingus.a $(OBJ)
