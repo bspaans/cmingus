@@ -26,3 +26,18 @@ seventh_chord(note on_note, note key, note *result)
 	result[3] = seventh(on_note, key);
 }
 
+void
+diminished_seventh_chord(note on_note, note *result)
+{
+	diminished_triad(on_note, result);
+	result[3] = diminish(minor_seventh(on_note));
+}
+
+
+void
+minor_major_seventh_chord(note on_note, note *result)
+{
+	minor_triad(on_note, result);
+	result[3] = major_seventh(on_note);
+
+}

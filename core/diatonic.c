@@ -36,7 +36,7 @@ get_notes(note key, note* result)
 	}
 
 	sort_notes(result, 7);
-	partition_on_tonic(result, 7, key);
+	put_tonic_first(result, 7, key);
 }
 
 
@@ -48,7 +48,7 @@ get_notes_from_str(char *key, note *result)
 
 
 void 
-partition_on_tonic(note *notes, int size, note n)
+put_tonic_first(note *notes, int size, note n)
 {
 	int i, r = -1, a= 0;
 	note tmp[7];

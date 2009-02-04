@@ -62,6 +62,12 @@ void test_major_triad(void);
 void test_minor_triad(void);
 void test_diminished_triad(void);
 void test_augmented_triad(void);
+void test_major_seventh_chord(void);
+void test_minor_seventh_chord(void);
+void test_dominanth_seventh_chord(void);
+void test_half_diminished_seventh_chord(void);
+void test_diminished_seventh_chord(void);
+void test_minor_major_seventh_chord(void);
 
 void start_test(char *);
 void end_test(void);
@@ -114,6 +120,12 @@ main()
 	test_minor_triad();
 	test_diminished_triad();
 	test_augmented_triad();
+	test_major_seventh_chord();
+	test_minor_seventh_chord();
+	test_dominanth_seventh_chord();
+	test_half_diminished_seventh_chord();
+	test_diminished_seventh_chord();
+	test_minor_major_seventh_chord();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
 	printf("==========================================================\n");
@@ -647,6 +659,7 @@ test_augmented_triad()
 	end_test();
 }
 
+
 void 
 test_seventh_chord()
 {
@@ -679,3 +692,208 @@ test_seventh_chord()
 	}
 	end_test();
 }
+
+
+void 
+test_major_seventh_chord()
+{
+	char *result[7][4] = { 
+		{ "C", "E", "G", "B" },
+		{ "D", "F#", "A", "C#" },
+		{ "E", "G#", "B", "D#" },
+		{ "F", "A", "C", "E" },
+		{ "G", "B", "D", "F#" },
+		{ "A", "C#", "E", "G#" },
+		{ "B", "D#", "F#", "A#" }
+		};
+	note sev[4];
+	note res[4];
+
+	int i;
+	start_test("major_seventh_chord");
+	for (i = 0; i < 7; i ++)
+	{
+		sev[0] = NOTE(result[i][0]);
+		sev[1] = NOTE(result[i][1]);
+		sev[2] = NOTE(result[i][2]);
+		sev[3] = NOTE(result[i][3]);
+		major_seventh_chord(NOTE(result[i][0]), res);
+		assert(equals(res[0], sev[0]));
+		assert(equals(res[1], sev[1]));
+		assert(equals(res[2], sev[2]));
+		assert(equals(res[3], sev[3]));
+		
+	}
+	end_test();
+}
+
+
+void 
+test_minor_seventh_chord()
+{
+	char *result[7][4] = { 
+		{ "C", "Eb", "G", "Bb" },
+		{ "D", "F", "A", "C" },
+		{ "E", "G", "B", "D" },
+		{ "F", "Ab", "C", "Eb" },
+		{ "G", "Bb", "D", "F" },
+		{ "A", "C", "E", "G" },
+		{ "B", "D", "F#", "A" }
+		};
+	note sev[4];
+	note res[4];
+
+	int i;
+	start_test("minor_seventh_chord");
+	for (i = 0; i < 7; i ++)
+	{
+		sev[0] = NOTE(result[i][0]);
+		sev[1] = NOTE(result[i][1]);
+		sev[2] = NOTE(result[i][2]);
+		sev[3] = NOTE(result[i][3]);
+		minor_seventh_chord(NOTE(result[i][0]), res);
+		assert(equals(res[0], sev[0]));
+		assert(equals(res[1], sev[1]));
+		assert(equals(res[2], sev[2]));
+		assert(equals(res[3], sev[3]));
+		
+	}
+	end_test();
+}
+
+
+void 
+test_dominanth_seventh_chord()
+{
+	char *result[7][4] = { 
+		{ "C", "E", "G", "Bb" },
+		{ "D", "F#", "A", "C" },
+		{ "E", "G#", "B", "D" },
+		{ "F", "A", "C", "Eb" },
+		{ "G", "B", "D", "F" },
+		{ "A", "C#", "E", "G" },
+		{ "B", "D#", "F#", "A" }
+		};
+	note sev[4];
+	note res[4];
+
+	int i;
+	start_test("dominanth_seventh_chord");
+	for (i = 0; i < 7; i ++)
+	{
+		sev[0] = NOTE(result[i][0]);
+		sev[1] = NOTE(result[i][1]);
+		sev[2] = NOTE(result[i][2]);
+		sev[3] = NOTE(result[i][3]);
+		dominanth_seventh_chord(NOTE(result[i][0]), res);
+		assert(equals(res[0], sev[0]));
+		assert(equals(res[1], sev[1]));
+		assert(equals(res[2], sev[2]));
+		assert(equals(res[3], sev[3]));
+		
+	}
+	end_test();
+}
+
+
+void 
+test_half_diminished_seventh_chord()
+{
+	char *result[7][4] = { 
+		{ "C", "Eb", "Gb", "Bb" },
+		{ "D", "F", "Ab", "C" },
+		{ "E", "G", "Bb", "D" },
+		{ "F", "Ab", "Cb", "Eb" },
+		{ "G", "Bb", "Db", "F" },
+		{ "A", "C", "Eb", "G" },
+		{ "B", "D", "F", "A" }
+		};
+	note sev[4];
+	note res[4];
+
+	int i;
+	start_test("half_diminished_seventh_chord");
+	for (i = 0; i < 7; i ++)
+	{
+		sev[0] = NOTE(result[i][0]);
+		sev[1] = NOTE(result[i][1]);
+		sev[2] = NOTE(result[i][2]);
+		sev[3] = NOTE(result[i][3]);
+		half_diminished_seventh_chord(NOTE(result[i][0]), res);
+		assert(equals(res[0], sev[0]));
+		assert(equals(res[1], sev[1]));
+		assert(equals(res[2], sev[2]));
+		assert(equals(res[3], sev[3]));
+		
+	}
+	end_test();
+}
+
+
+void 
+test_diminished_seventh_chord()
+{
+	char *result[7][4] = { 
+		{ "C", "Eb", "Gb", "Bbb" },
+		{ "D", "F", "Ab", "Cb" },
+		{ "E", "G", "Bb", "Db" },
+		{ "F", "Ab", "Cb", "Ebb" },
+		{ "G", "Bb", "Db", "Fb" },
+		{ "A", "C", "Eb", "Gb" },
+		{ "B", "D", "F", "Ab" }
+		};
+	note sev[4];
+	note res[4];
+
+	int i;
+	start_test("diminished_seventh_chord");
+	for (i = 0; i < 7; i ++)
+	{
+		sev[0] = NOTE(result[i][0]);
+		sev[1] = NOTE(result[i][1]);
+		sev[2] = NOTE(result[i][2]);
+		sev[3] = NOTE(result[i][3]);
+		diminished_seventh_chord(NOTE(result[i][0]), res);
+		assert(equals(res[0], sev[0]));
+		assert(equals(res[1], sev[1]));
+		assert(equals(res[2], sev[2]));
+		assert(equals(res[3], sev[3]));
+		
+	}
+	end_test();
+}
+
+
+void 
+test_minor_major_seventh_chord()
+{
+	char *result[7][4] = { 
+		{ "C", "Eb", "G", "B" },
+		{ "D", "F", "A", "C#" },
+		{ "E", "G", "B", "D#" },
+		{ "F", "Ab", "C", "E" },
+		{ "G", "Bb", "D", "F#" },
+		{ "A", "C", "E", "G#" },
+		{ "B", "D", "F#", "A#" }
+		};
+	note sev[4];
+	note res[4];
+
+	int i;
+	start_test("minor_major_seventh_chord");
+	for (i = 0; i < 7; i ++)
+	{
+		sev[0] = NOTE(result[i][0]);
+		sev[1] = NOTE(result[i][1]);
+		sev[2] = NOTE(result[i][2]);
+		sev[3] = NOTE(result[i][3]);
+		minor_major_seventh_chord(NOTE(result[i][0]), res);
+		assert(equals(res[0], sev[0]));
+		assert(equals(res[1], sev[1]));
+		assert(equals(res[2], sev[2]));
+		assert(equals(res[3], sev[3]));
+		
+	}
+	end_test();
+}
+
