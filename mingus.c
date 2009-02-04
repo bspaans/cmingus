@@ -51,6 +51,8 @@ void test_third(void);
 void test_fifth(void);
 void test_major_second(void);
 void test_perfect_fourth(void);
+void test_minor_sixth(void);
+void test_minor_seventh(void);
 
 
 /* 	core/chords.c		*/
@@ -97,6 +99,8 @@ main()
 	test_fifth();
 	test_major_second();
 	test_perfect_fourth();
+	test_minor_sixth();
+	test_minor_seventh();
 	printf("==========================================================\n");
 	printf("                          CHORDS                          \n");
 	printf("==========================================================\n");
@@ -434,6 +438,44 @@ test_perfect_fourth()
 	end_test();
 
 
+}
+
+
+void
+test_minor_sixth()
+{
+
+	char result[12];
+	char *notes[] = {"C", "E", "F", "G", "A#" };
+	char *answers[] = {"Ab", "C", "Db", "Eb", "F#" };
+	int i;
+
+	start_test("minor_sixth");
+	for (i = 0; i < 5; i ++)
+	{
+		note_to_str(minor_sixth(NOTE(notes[i])), result);
+		assert(strcmp(result, answers[i]) == 0);
+	}
+	end_test();
+}
+
+
+void
+test_minor_seventh()
+{
+
+	char result[12];
+	char *notes[] = {"C", "E", "F", "G", "A#" };
+	char *answers[] = {"Bb", "D", "Eb", "F", "G#" };
+	int i;
+
+	start_test("minor_seventh");
+	for (i = 0; i < 5; i ++)
+	{
+		note_to_str(minor_seventh(NOTE(notes[i])), result);
+		assert(strcmp(result, answers[i]) == 0);
+	}
+	end_test();
 }
 
 
