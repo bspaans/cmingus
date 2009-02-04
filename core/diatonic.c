@@ -11,18 +11,12 @@ get_notes(note key, note* result)
 
 	if (fi != 0)
 	{
-		nametmp[0] = fifths[fi - 1];
-		nametmp[1] = '\0';
-		tmp = NOTE(nametmp);
-		tmp.accidentals = key.accidentals;
-		result[fi - 1] = tmp;
-
 		for (i = 0; i < 7; i++) 
 		{
 			nametmp[0] = fifths[i];
 			nametmp[1] = '\0';
 			tmp = NOTE(nametmp);
-			if (i >= fi) 
+			if (i >= fi - 1) 
 			{
 				tmp.accidentals = key.accidentals;
 				result[i] = tmp;
@@ -32,9 +26,7 @@ get_notes(note key, note* result)
 				tmp.accidentals = key.accidentals + 1;
 				result[i] = tmp;
 			}
-
 		}
-
 	}
 	else 
 	{
