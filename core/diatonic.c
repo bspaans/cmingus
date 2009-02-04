@@ -4,8 +4,7 @@
 void
 get_notes(note key, note* result)
 {
-	int fi = fifths_index(key.basename);
-	int i;
+	int i, fi = fifths_index(key.basename);
 	char nametmp[2];
 	note tmp;
 
@@ -16,16 +15,10 @@ get_notes(note key, note* result)
 			nametmp[0] = fifths[i];
 			nametmp[1] = '\0';
 			tmp = NOTE(nametmp);
-			if (i >= fi - 1) 
-			{
-				tmp.accidentals = key.accidentals;
-				result[i] = tmp;
-			}
-			if (i < fi - 1)
-			{
-				tmp.accidentals = key.accidentals + 1;
-				result[i] = tmp;
-			}
+			tmp.accidentals = key.accidentals;
+			if (i < fi - 1) 
+				tmp.accidentals += 1;
+			result[i] = tmp;
 		}
 	}
 	else 
