@@ -58,6 +58,9 @@ void test_minor_seventh(void);
 /* 	core/chords.c		*/
 void test_triad(void);
 void test_seventh_chord(void);
+void test_major_triad(void);
+void test_minor_triad(void);
+void test_diminished_triad(void);
 
 void start_test(char *);
 void end_test(void);
@@ -106,6 +109,9 @@ main()
 	printf("==========================================================\n");
 	test_triad();
 	test_seventh_chord();
+	test_major_triad();
+	test_minor_triad();
+	test_diminished_triad();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
 	printf("==========================================================\n");
@@ -502,6 +508,103 @@ test_triad()
 		tri[1] = NOTE(result[i][1]);
 		tri[2] = NOTE(result[i][2]);
 		triad(NOTE(result[i][0]), NOTE("C"), res);
+		assert(equals(res[0], tri[0]));
+		assert(equals(res[1], tri[1]));
+		assert(equals(res[2], tri[2]));
+		
+	}
+	end_test();
+}
+
+
+void
+test_major_triad()
+{
+	char *result[7][3] = { 
+		{ "C", "E", "G" },
+		{ "D", "F#", "A" },
+		{ "E", "G#", "B" },
+		{ "F", "A", "C" },
+		{ "G", "B", "D" },
+		{ "A", "C#", "E" },
+		{ "B", "D#", "F#" }
+		};
+	note tri[3];
+	note res[3];
+
+	int i;
+	start_test("major_triad");
+	for (i = 0; i < 7; i ++)
+	{
+		tri[0] = NOTE(result[i][0]);
+		tri[1] = NOTE(result[i][1]);
+		tri[2] = NOTE(result[i][2]);
+		major_triad(NOTE(result[i][0]), res);
+		assert(equals(res[0], tri[0]));
+		assert(equals(res[1], tri[1]));
+		assert(equals(res[2], tri[2]));
+		
+	}
+	end_test();
+}
+
+
+void
+test_minor_triad()
+{
+	char *result[7][3] = { 
+		{ "C", "Eb", "G" },
+		{ "D", "F", "A" },
+		{ "E", "G", "B" },
+		{ "F", "Ab", "C" },
+		{ "G", "Bb", "D" },
+		{ "A", "C", "E" },
+		{ "B", "D", "F#" }
+		};
+	note tri[3];
+	note res[3];
+
+	int i;
+	start_test("minor_triad");
+	for (i = 0; i < 7; i ++)
+	{
+		tri[0] = NOTE(result[i][0]);
+		tri[1] = NOTE(result[i][1]);
+		tri[2] = NOTE(result[i][2]);
+		minor_triad(NOTE(result[i][0]), res);
+		assert(equals(res[0], tri[0]));
+		assert(equals(res[1], tri[1]));
+		assert(equals(res[2], tri[2]));
+		
+	}
+	end_test();
+}
+
+
+
+void
+test_diminished_triad()
+{
+	char *result[7][3] = { 
+		{ "C", "Eb", "Gb" },
+		{ "D", "F", "Ab" },
+		{ "E", "G", "Bb" },
+		{ "F", "Ab", "Cb" },
+		{ "G", "Bb", "Db" },
+		{ "A", "C", "Eb" },
+		{ "B", "D", "F" }
+		};
+	note tri[3];
+	note res[3];
+
+	int i;
+	start_test("diminished_triad");
+	for (i = 0; i < 7; i ++)
+	{
+		tri[0] = NOTE(result[i][0]);
+		tri[1] = NOTE(result[i][1]);
+		tri[2] = NOTE(result[i][2]);
+		diminished_triad(NOTE(result[i][0]), res);
 		assert(equals(res[0], tri[0]));
 		assert(equals(res[1], tri[1]));
 		assert(equals(res[2], tri[2]));
