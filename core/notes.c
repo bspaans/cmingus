@@ -27,6 +27,9 @@
 #include <string.h>
 #include <stdlib.h>
 
+void quick_sort(note *, int, int);
+int partition(note *, int, int);
+
 char note_names[] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G'};
 int note_values[] = {  9,   11,  0,   2,   4,   5 ,  7 };
 
@@ -182,4 +185,41 @@ diminish(note n)
 	return n;
 }
 
+void
+sort_notes(note *a, int size)
+{
+	quick_sort(a, 0, size - 1);
+}
 
+void
+quick_sort(note *a, int l, int r)
+{
+	int j;
+
+	if (l < r)
+	{
+		j = partition(a, l, r);
+		quick_sort(a, l, j - 1);
+		quick_sort(a, j + 1, r);
+	}
+}
+
+int
+partition(note *a, int l, int r)
+{
+	int pivot, i, j;
+	note tmp;
+	pivot = note_to_int(a[l]);
+	i = l; j = r + 1;
+
+	while ( 1) 
+	{
+		do ++i; while (note_to_int(a[i]) <= pivot && i <= r);
+		do --j; while (note_to_int(a[j]) > pivot);
+		if (i >= j) break;
+		tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+	}
+	tmp = a[l]; a[l] = a[j]; a[j] = tmp;
+	return j;
+
+}

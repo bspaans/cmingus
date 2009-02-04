@@ -26,9 +26,11 @@
 #include <string.h>
 #include <assert.h>
 #include "core/intervals.h"
+#include "core/diatonic.h"
 
 /* 	core/notes.c	 	*/
 void test_get_accidentals_value(void);
+void test_str_to_note(void);
 void test_note_to_int(void);
 void test_int_to_note(void);
 void test_augment(void);
@@ -38,6 +40,8 @@ void test_diminish(void);
 void test_determine_interval(void);
 void test_interval_to_string(void);
 
+/*	core/diatonic.c		*/
+void test_get_notes(void);
 
 void start_test(char *);
 void end_test(void);
@@ -58,6 +62,7 @@ main()
 	printf("                          NOTES                           \n");
 	printf("==========================================================\n");
 	test_get_accidentals_value();
+	test_str_to_note();
 	test_note_to_int();
 	test_int_to_note();
 	test_augment();
@@ -67,6 +72,12 @@ main()
 	printf("==========================================================\n");
 	test_determine_interval();
 	test_interval_to_string();
+	printf("==========================================================\n");
+	printf("                         DIATONIC                         \n");
+	printf("==========================================================\n");
+	test_get_notes();
+	printf("==========================================================\n");
+	printf("  Succesfully completed %d tests.\n", testnr);
 	printf("==========================================================\n");
 	return 0;
 }
@@ -93,6 +104,20 @@ test_get_accidentals_value()
 	assert(get_accidentals_value("C###bb") == 1);
 	assert(get_accidentals_value("Cb#b#######") == 6);
 	assert(get_accidentals_value("C######b####b##b###") == 12);
+	end_test();
+}
+
+void
+test_str_to_note()
+{
+	note n, r;
+	n.accidentals = 0;
+	n.basename = 'C';
+	r = str_to_note("C");
+
+	start_test("str_to_note");
+	assert(r.accidentals == n.accidentals);
+	assert(r.basename ==  n.basename);
 	end_test();
 }
 
@@ -214,4 +239,38 @@ test_interval_to_string()
 		assert(strcmp(result, answers[i]) == 0);
 	}
 	end_test();
+}
+
+void
+test_get_notes()
+{
+	note result[7];
+	char res[12];
+	int i, j;
+	char *cases[] = { "F", "C", "G", "Eb"};
+	char *answers[4][7] = { 
+		{"F", "G", "A", "Bb", "C", "D", "E"},
+		{"C", "D", "E", "F", "G", "A", "B"},
+		{"G", "A", "B", "C", "D", "E", "F#"},
+		{"Eb", "F", "G", "Ab", "Bb", "C", "D"}
+	};
+
+	start_test("get_notes");
+	for (i = 0; i < 4; i ++)
+	{
+		get_notes(NOTE(cases[i]), result);
+		for (j =0; j < 7; j++)
+		{
+			note_to_str(result[j], res);
+			assert(strcmp(res, answers[i][j]) == 0);
+		}
+
+	}
+	end_test();
+}
+
+int
+equals(note n1, note n2)
+{
+	return (n1.basename == n2.basename && n1.accidentals == n2.accidentals);
 }
