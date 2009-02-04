@@ -13,6 +13,13 @@ triad(note on_note, note key, note *result)
 }
 
 void 
+augmented_triad(note on_note, note *result)
+{
+	major_triad(on_note, result);
+	result[2] = augment(result[2]);
+}
+
+void 
 seventh_chord(note on_note, note key, note *result)
 {
 	triad(on_note, key, result);

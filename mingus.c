@@ -61,6 +61,7 @@ void test_seventh_chord(void);
 void test_major_triad(void);
 void test_minor_triad(void);
 void test_diminished_triad(void);
+void test_augmented_triad(void);
 
 void start_test(char *);
 void end_test(void);
@@ -112,6 +113,7 @@ main()
 	test_major_triad();
 	test_minor_triad();
 	test_diminished_triad();
+	test_augmented_triad();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
 	printf("==========================================================\n");
@@ -605,6 +607,38 @@ test_diminished_triad()
 		tri[1] = NOTE(result[i][1]);
 		tri[2] = NOTE(result[i][2]);
 		diminished_triad(NOTE(result[i][0]), res);
+		assert(equals(res[0], tri[0]));
+		assert(equals(res[1], tri[1]));
+		assert(equals(res[2], tri[2]));
+		
+	}
+	end_test();
+}
+
+
+void
+test_augmented_triad()
+{
+	char *result[7][3] = { 
+		{ "C", "E", "G#" },
+		{ "D", "F#", "A#" },
+		{ "E", "G#", "B#" },
+		{ "F", "A", "C#" },
+		{ "G", "B", "D#" },
+		{ "A", "C#", "E#" },
+		{ "B", "D#", "F##" }
+		};
+	note tri[3];
+	note res[3];
+
+	int i;
+	start_test("augmented_triad");
+	for (i = 0; i < 7; i ++)
+	{
+		tri[0] = NOTE(result[i][0]);
+		tri[1] = NOTE(result[i][1]);
+		tri[2] = NOTE(result[i][2]);
+		augmented_triad(NOTE(result[i][0]), res);
 		assert(equals(res[0], tri[0]));
 		assert(equals(res[1], tri[1]));
 		assert(equals(res[2], tri[2]));
