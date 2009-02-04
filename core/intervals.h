@@ -24,6 +24,13 @@
 
 #include "notes.h"
 
+note second(note, note);
+note third(note, note);
+note fourth(note, note);
+note fifth(note, note);
+note sixth(note, note);
+note seventh(note, note);
+
 extern char * interval_names[];
 extern char interval_names_shorthand[];
 extern char * prefix_names[];

@@ -44,6 +44,9 @@ void test_diatonic_interval(void);
 /* 	core/intervals.c	*/
 void test_determine_interval(void);
 void test_interval_to_string(void);
+void test_second(void);
+void test_third(void);
+void test_fifth(void);
 
 
 void start_test(char *);
@@ -81,6 +84,9 @@ main()
 	printf("==========================================================\n");
 	test_determine_interval();
 	test_interval_to_string();
+	test_second();
+	test_third();
+	test_fifth();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
 	printf("==========================================================\n");
@@ -109,6 +115,7 @@ test_get_accidentals_value()
 	assert(get_accidentals_value("C###bb") == 1);
 	assert(get_accidentals_value("Cb#b#######") == 6);
 	assert(get_accidentals_value("C######b####b##b###") == 12);
+	assert(get_accidentals_value("Cbb") == -2);
 	end_test();
 }
 
@@ -307,4 +314,67 @@ test_diatonic_interval()
 		assert(strcmp(result, notes[i]) == 0);
 	}
 	end_test();
+}
+
+
+void
+test_second()
+{
+
+	char result[12];
+	char *notes[] = {"C", "E", "F", "G", "A#" };
+	char *answers[] = {"D", "F", "G", "A", "B" };
+	int i;
+
+	start_test("second");
+	for (i = 0; i < 5; i ++)
+	{
+		note_to_str(second(NOTE(notes[i]), NOTE("C")), result);
+		assert(strcmp(result, answers[i]) == 0);
+	}
+	end_test();
+
+
+}
+
+
+void
+test_third()
+{
+
+	char result[12];
+	char *notes[] = {"C", "E", "F", "G", "A#" };
+	char *answers[] = {"E", "G", "A", "B", "C" };
+	int i;
+
+	start_test("third");
+	for (i = 0; i < 5; i ++)
+	{
+		note_to_str(third(NOTE(notes[i]), NOTE("C")), result);
+		assert(strcmp(result, answers[i]) == 0);
+	}
+	end_test();
+
+
+}
+
+
+void
+test_fifth()
+{
+
+	char result[12];
+	char *notes[] = {"C", "E", "F", "G", "A#" };
+	char *answers[] = {"G", "B", "C", "D", "E" };
+	int i;
+
+	start_test("fifth");
+	for (i = 0; i < 5; i ++)
+	{
+		note_to_str(fifth(NOTE(notes[i]), NOTE("C")), result);
+		assert(strcmp(result, answers[i]) == 0);
+	}
+	end_test();
+
+
 }

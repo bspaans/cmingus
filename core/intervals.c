@@ -23,6 +23,7 @@
 */
 
 #include "intervals.h"
+#include "diatonic.h"
 #include <string.h>
 #include <stdlib.h>
 
@@ -52,6 +53,44 @@ prefix_names[] = {
 
 int 
 expected_semitones[] = {0, 7, 2, 9, 4, 11, 5};
+
+
+note
+second(note n, note key)
+{
+	return diatonic_interval(key, n, 1);
+}
+
+note
+third(note n, note key)
+{
+	return diatonic_interval(key, n, 2);
+}
+
+note
+fourth(note n, note key)
+{
+	return diatonic_interval(key, n, 3);
+}
+
+
+note
+fifth(note n, note key)
+{
+	return diatonic_interval(key, n, 4);
+}
+
+note
+sixth(note n, note key)
+{
+	return diatonic_interval(key, n, 5);
+}
+
+note
+seventh(note n, note key)
+{
+	return diatonic_interval(key, n, 6);
+}
 
 
 int 
