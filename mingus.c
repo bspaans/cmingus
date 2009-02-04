@@ -49,6 +49,8 @@ void test_interval_to_string(void);
 void test_second(void);
 void test_third(void);
 void test_fifth(void);
+void test_major_second(void);
+void test_perfect_fourth(void);
 
 
 /* 	core/chords.c		*/
@@ -93,6 +95,8 @@ main()
 	test_second();
 	test_third();
 	test_fifth();
+	test_major_second();
+	test_perfect_fourth();
 	printf("==========================================================\n");
 	printf("                          CHORDS                          \n");
 	printf("==========================================================\n");
@@ -389,6 +393,49 @@ test_fifth()
 
 
 }
+
+
+void
+test_major_second()
+{
+
+	char result[12];
+	char *notes[] = {"C", "E", "F", "G", "A#" };
+	char *answers[] = {"D", "F#", "G", "A", "B#" };
+	int i;
+
+	start_test("major_second");
+	for (i = 0; i < 5; i ++)
+	{
+		note_to_str(major_second(NOTE(notes[i])), result);
+		assert(strcmp(result, answers[i]) == 0);
+	}
+	end_test();
+
+
+}
+
+
+void
+test_perfect_fourth()
+{
+
+	char result[12];
+	char *notes[] = {"C", "E", "F", "G", "A#" };
+	char *answers[] = {"F", "A", "Bb", "C", "D#" };
+	int i;
+
+	start_test("perfect_fourth");
+	for (i = 0; i < 5; i ++)
+	{
+		note_to_str(perfect_fourth(NOTE(notes[i])), result);
+		assert(strcmp(result, answers[i]) == 0);
+	}
+	end_test();
+
+
+}
+
 
 void
 test_triad()

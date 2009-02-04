@@ -30,6 +30,15 @@
 #define sixth(n, key) (diatonic_interval(key, n, 5))
 #define seventh(n, key) (diatonic_interval(key, n, 6))
 
+#define major_second(n) (second(n, n))
+#define major_third(n) (third(n, n))
+#define major_fourth(n) (fourth(n, n))
+#define perfect_fourth(n) (fourth(n, n))
+#define major_fifth(n) (fifth(n, n))
+#define perfect_fifth(n) (fifth(n, n))
+#define major_sixth(n) (sixth(n, n))
+#define major_seventh(n) (seventh(n, n))
+
 extern char * interval_names[];
 extern char interval_names_shorthand[];
 extern char * prefix_names[];
