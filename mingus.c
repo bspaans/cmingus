@@ -68,6 +68,13 @@ void test_dominanth_seventh_chord(void);
 void test_half_diminished_seventh_chord(void);
 void test_diminished_seventh_chord(void);
 void test_minor_major_seventh_chord(void);
+void test_I(void);
+void test_II(void);
+void test_III(void);
+void test_IV(void);
+void test_V(void);
+void test_VI(void);
+void test_VII(void);
 
 void start_test(char *);
 void end_test(void);
@@ -126,6 +133,13 @@ main()
 	test_half_diminished_seventh_chord();
 	test_diminished_seventh_chord();
 	test_minor_major_seventh_chord();
+	test_I();
+	test_II();
+	test_III();
+	test_IV();
+	test_V();
+	test_VI();
+	test_VII();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
 	printf("==========================================================\n");
@@ -298,16 +312,17 @@ test_get_notes()
 	note result[7];
 	char res[12];
 	int i, j;
-	char *cases[] = { "F", "C", "G", "Eb"};
-	char *answers[4][7] = { 
+	char *cases[] = { "F", "F#", "C", "G", "Eb"};
+	char *answers[5][7] = { 
 		{"F", "G", "A", "Bb", "C", "D", "E"},
+		{"F#", "G#", "A#", "B", "C#", "D#", "E#"},
 		{"C", "D", "E", "F", "G", "A", "B"},
 		{"G", "A", "B", "C", "D", "E", "F#"},
 		{"Eb", "F", "G", "Ab", "Bb", "C", "D"}
 	};
 
 	start_test("get_notes");
-	for (i = 0; i < 4; i ++)
+	for (i = 0; i < 5; i ++)
 	{
 		get_notes(NOTE(cases[i]), result);
 		for (j =0; j < 7; j++)
@@ -403,12 +418,12 @@ test_fifth()
 {
 
 	char result[12];
-	char *notes[] = {"C", "E", "F", "G", "A#" };
-	char *answers[] = {"G", "B", "C", "D", "E" };
+	char *notes[] = {"C", "E", "F", "G", "A#", "B" };
+	char *answers[] = {"G", "B", "C", "D", "E", "F" };
 	int i;
 
 	start_test("fifth");
-	for (i = 0; i < 5; i ++)
+	for (i = 0; i < 6; i ++)
 	{
 		note_to_str(fifth(NOTE(notes[i]), NOTE("C")), result);
 		assert(strcmp(result, answers[i]) == 0);
@@ -445,12 +460,12 @@ test_perfect_fourth()
 {
 
 	char result[12];
-	char *notes[] = {"C", "E", "F", "G", "A#" };
-	char *answers[] = {"F", "A", "Bb", "C", "D#" };
+	char *notes[] = {"C", "E", "F", "G", "A#", "B", "F#", };
+	char *answers[] = {"F", "A", "Bb", "C", "D#", "E", "B" };
 	int i;
 
 	start_test("perfect_fourth");
-	for (i = 0; i < 5; i ++)
+	for (i = 0; i < 7; i ++)
 	{
 		note_to_str(perfect_fourth(NOTE(notes[i])), result);
 		assert(strcmp(result, answers[i]) == 0);
@@ -628,6 +643,225 @@ test_diminished_triad()
 }
 
 
+void
+test_I()
+{
+	char *result[7][3] = { 
+		{ "C", "E", "G" },
+		{ "D", "F#", "A" },
+		{ "E", "G#", "B" },
+		{ "F", "A", "C" },
+		{ "G", "B", "D" },
+		{ "A", "C#", "E" },
+		{ "B", "D#", "F#" }
+		};
+	note tri[3];
+	note res[3];
+
+	int i;
+	start_test("I");
+	for (i = 0; i < 7; i ++)
+	{
+		tri[0] = NOTE(result[i][0]);
+		tri[1] = NOTE(result[i][1]);
+		tri[2] = NOTE(result[i][2]);
+		I(NOTE(result[i][0]), res);
+		assert(equals(res[0], tri[0]));
+		assert(equals(res[1], tri[1]));
+		assert(equals(res[2], tri[2]));
+		
+	}
+	end_test();
+}
+
+
+void
+test_II()
+{
+	char *result[7][3] = { 
+		{ "C", "Eb", "G" },
+		{ "D", "F", "A" },
+		{ "E", "G", "B" },
+		{ "F", "Ab", "C" },
+		{ "G", "Bb", "D" },
+		{ "A", "C", "E" },
+		{ "B", "D", "F#" }
+		};
+	note tri[3];
+	note res[3];
+
+	int i;
+	start_test("II");
+	for (i = 0; i < 7; i ++)
+	{
+		tri[0] = NOTE(result[i][0]);
+		tri[1] = NOTE(result[i][1]);
+		tri[2] = NOTE(result[i][2]);
+		II(minor_seventh(NOTE(result[i][0])), res);
+		assert(equals(res[0], tri[0]));
+		assert(equals(res[1], tri[1]));
+		assert(equals(res[2], tri[2]));
+		
+	}
+	end_test();
+}
+
+
+void
+test_III()
+{
+	char *result[7][3] = { 
+		{ "C", "Eb", "G" },
+		{ "D", "F", "A" },
+		{ "E", "G", "B" },
+		{ "F", "Ab", "C" },
+		{ "G", "Bb", "D" },
+		{ "A", "C", "E" },
+		{ "B", "D", "F#" }
+		};
+	note tri[3];
+	note res[3];
+
+	int i;
+	start_test("III");
+	for (i = 0; i < 7; i ++)
+	{
+		tri[0] = NOTE(result[i][0]);
+		tri[1] = NOTE(result[i][1]);
+		tri[2] = NOTE(result[i][2]);
+		III(minor_sixth(NOTE(result[i][0])), res);
+		assert(equals(res[0], tri[0]));
+		assert(equals(res[1], tri[1]));
+		assert(equals(res[2], tri[2]));
+		
+	}
+	end_test();
+}
+
+
+void
+test_IV()
+{
+	char *result[7][3] = { 
+		{ "C", "E", "G" },
+		{ "D", "F#", "A" },
+		{ "E", "G#", "B" },
+		{ "F", "A", "C" },
+		{ "G", "B", "D" },
+		{ "A", "C#", "E" },
+		{ "B", "D#", "F#" }
+		};
+	note tri[3];
+	note res[3];
+
+	int i;
+	start_test("IV");
+	for (i = 0; i < 7; i ++)
+	{
+		tri[0] = NOTE(result[i][0]);
+		tri[1] = NOTE(result[i][1]);
+		tri[2] = NOTE(result[i][2]);
+		IV(perfect_fifth(NOTE(result[i][0])), res);
+		assert(equals(res[0], tri[0]));
+		assert(equals(res[1], tri[1]));
+		assert(equals(res[2], tri[2]));
+		
+	}
+	end_test();
+}
+
+void
+test_V()
+{
+	char *result[7][3] = { 
+		{ "C", "E", "G" },
+		{ "D", "F#", "A" },
+		{ "E", "G#", "B" },
+		{ "F", "A", "C" },
+		{ "G", "B", "D" },
+		{ "A", "C#", "E" },
+		{ "B", "D#", "F#" }
+		};
+	note tri[3];
+	note res[3];
+
+	int i;
+	start_test("V");
+	for (i = 0; i < 7; i ++)
+	{
+		tri[0] = NOTE(result[i][0]);
+		tri[1] = NOTE(result[i][1]);
+		tri[2] = NOTE(result[i][2]);
+		V(perfect_fourth(NOTE(result[i][0])), res);
+		assert(equals(res[0], tri[0]));
+		assert(equals(res[1], tri[1]));
+		assert(equals(res[2], tri[2]));
+		
+	}
+	end_test();
+}
+
+void
+test_VI()
+{
+	char *result[7][3] = { 
+		{ "C", "Eb", "G" },
+		{ "D", "F", "A" },
+		{ "E", "G", "B" },
+		{ "F", "Ab", "C" },
+		{ "G", "Bb", "D" },
+		{ "A", "C", "E" },
+		{ "B", "D", "F#" }
+		};
+	note tri[3];
+	note res[3];
+
+	int i;
+	start_test("VI");
+	for (i = 0; i < 7; i ++)
+	{
+		tri[0] = NOTE(result[i][0]);
+		tri[1] = NOTE(result[i][1]);
+		tri[2] = NOTE(result[i][2]);
+		VI(minor_third(NOTE(result[i][0])), res);
+		assert(equals(res[0], tri[0]));
+		assert(equals(res[1], tri[1]));
+		assert(equals(res[2], tri[2]));
+		
+	}
+	end_test();
+}
+
+void
+test_VII()
+{
+	char *result[7][3] = { 
+		{ "C", "Eb", "Gb" },
+		{ "D", "F", "Ab" },
+		{ "E", "G", "Bb" },
+		{ "F", "Ab", "Cb" },
+		{ "G", "Bb", "Db" },
+		{ "A", "C", "Eb" },
+		{ "B", "D", "F" }
+		};
+	note tri[3];
+	note res[3];
+
+	int i;
+	start_test("VII");
+	for (i = 0; i < 7; i ++)
+	{
+		tri[0] = NOTE(result[i][0]);
+		tri[1] = NOTE(result[i][1]);
+		tri[2] = NOTE(result[i][2]);
+		VII(minor_second(NOTE(result[i][0])), res);
+		assert(equals(res[0], tri[0]));
+		assert(equals(res[1], tri[1]));
+		assert(equals(res[2], tri[2]));
+		
+	}
+	end_test();
+}
 void
 test_augmented_triad()
 {

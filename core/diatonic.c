@@ -25,6 +25,7 @@ get_notes(note key, note* result)
 	else 
 	{
 		result[6] = NOTE("Bb");
+		result[6].accidentals += key.accidentals;
 		for (i = 0; i < 6; i++) 
 		{
 			nametmp[0] = fifths[i];
