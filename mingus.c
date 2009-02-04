@@ -58,10 +58,10 @@ main()
 	printf("                          NOTES                           \n");
 	printf("==========================================================\n");
 	test_get_accidentals_value();
-	test_augment();
-	test_diminish();
 	test_note_to_int();
 	test_int_to_note();
+	test_augment();
+	test_diminish();
 	printf("==========================================================\n");
 	printf("                         INTERVAL                         \n");
 	printf("==========================================================\n");
@@ -100,13 +100,15 @@ void
 test_augment()
 {
 	int i;
-	char result[12];
+	char result[12] = "";
 	char *cases[] = {"C", "Db", "C##", "C#b", "C###"};
 	char *answers[] = {"C#", "D", "C###", "C#", "C####"};
-	
-	start_test("test_augment");
+	note n;
+	start_test("augment");
 	for (i = 0; i < 5; i++) 
 	{
+		result[0] = '\0';
+		n = str_to_note(cases[i]);
 		note_to_str(augment(str_to_note(cases[i])), result);
 		assert(strcmp(answers[i], result) == 0);
 	}
@@ -117,15 +119,16 @@ void
 test_diminish()
 {
 	int i;
-	char result[12];
+	char result[12] = "";
 	char *cases[] = {"C", "Db", "C##", "Cb#", "C###"};
 	char *answers[] = {"Cb", "Dbb", "C#", "Cb", "C##"};
 	
-	start_test("test_diminish");
+	start_test("diminish");
 	for (i = 0; i < 5; i++) 
 	{
+		result[0] = '\0';
 		note_to_str(diminish(str_to_note(cases[i])), result);
-		assert(strcmp(result, answers[i]) == 0);
+		assert( strcmp(result, answers[i]) == 0);
 	}
 	end_test();
 }
@@ -159,14 +162,16 @@ test_note_to_int()
 void
 test_int_to_note()
 {
-	char result[2];
+	char result[2] = "" ;
 	char *notes[] = {"C", "C#", "D", "D#", "E", "F"};
 	unsigned int x;
 
 	start_test("int_to_note");
 	for (x = 0; x < 6; x++) 
 	{
+		result[0] = '\0';
 		note_to_str(int_to_note(x), result);
+		assert(note_to_int(int_to_note(x)) == x);
 		assert(strcmp(notes[x], result) == 0);
 	}
 	end_test();
@@ -209,5 +214,4 @@ test_interval_to_string()
 		assert(strcmp(result, answers[i]) == 0);
 	}
 	end_test();
-
 }

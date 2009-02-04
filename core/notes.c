@@ -23,9 +23,9 @@
 */
 
 
+#include "notes.h"
 #include <string.h>
 #include <stdlib.h>
-#include "notes.h"
 
 char note_names[] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G'};
 int note_values[] = {  9,   11,  0,   2,   4,   5 ,  7 };
@@ -82,15 +82,15 @@ void
 note_to_str(note n, char *res) {
 	int i;
 	res[0] = n.basename;
+	res[1] = '\0';
 	for (i = 0; i < abs(n.accidentals); i++) 
 	{
 		if (n.accidentals < 0)
 			res[i + 1] = 'b';
 		else
 			res[i + 1] = '#';
+		res[i + 2] = '\0';
 	}
-	res[i + 2] = '\0';
-
 }
 
 
