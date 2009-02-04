@@ -22,12 +22,13 @@
 
 */
 
-note second(note, note);
-note third(note, note);
-note fourth(note, note);
-note fifth(note, note);
-note sixth(note, note);
-note seventh(note, note);
+#define unison(n, key) (n)
+#define second(n, key) (diatonic_interval(key, n, 1))
+#define third(n, key) (diatonic_interval(key, n, 2))
+#define fourth(n, key) (diatonic_interval(key, n, 3))
+#define fifth(n, key) (diatonic_interval(key, n, 4))
+#define sixth(n, key) (diatonic_interval(key, n, 5))
+#define seventh(n, key) (diatonic_interval(key, n, 6))
 
 extern char * interval_names[];
 extern char interval_names_shorthand[];
