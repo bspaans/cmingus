@@ -42,6 +42,7 @@ void test_interval_to_string(void);
 
 /*	core/diatonic.c		*/
 void test_get_notes(void);
+void test_int_to_diatonic_note(void);
 
 void start_test(char *);
 void end_test(void);
@@ -76,6 +77,7 @@ main()
 	printf("                         DIATONIC                         \n");
 	printf("==========================================================\n");
 	test_get_notes();
+	test_int_to_diatonic_note();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
 	printf("==========================================================\n");
@@ -269,8 +271,21 @@ test_get_notes()
 	end_test();
 }
 
-int
-equals(note n1, note n2)
+
+void
+test_int_to_diatonic_note()
 {
-	return (n1.basename == n2.basename && n1.accidentals == n2.accidentals);
+	note key1 = NOTE("C");
+	note key2 = NOTE("F");
+	note res1 = NOTE("B");
+	note res2 = NOTE("A#");
+	note res3 = NOTE("Bb");
+
+	start_test("int_to_diatonic_note");
+	assert(equals(int_to_diatonic_note(11, key1), res1));
+	assert(equals(int_to_diatonic_note(10, key1), res2));
+	assert(equals(int_to_diatonic_note(10, key2), res3));
+	end_test();
+
 }
+

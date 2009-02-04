@@ -185,11 +185,13 @@ diminish(note n)
 	return n;
 }
 
+
 void
 sort_notes(note *a, int size)
 {
 	quick_sort(a, 0, size - 1);
 }
+
 
 void
 quick_sort(note *a, int l, int r)
@@ -203,6 +205,7 @@ quick_sort(note *a, int l, int r)
 		quick_sort(a, j + 1, r);
 	}
 }
+
 
 int
 partition(note *a, int l, int r)
@@ -222,4 +225,22 @@ partition(note *a, int l, int r)
 	tmp = a[l]; a[l] = a[j]; a[j] = tmp;
 	return j;
 
+}
+
+
+int
+equals(note n1, note n2)
+{
+	return (n1.basename == n2.basename && n1.accidentals == n2.accidentals);
+}
+
+
+int
+note_index (note n, note *notes, int size)
+{
+	int i;
+	for (i = 0; i < size; i++)
+		if (equals(n, notes[i]))
+			return i;
+	return -1;
 }

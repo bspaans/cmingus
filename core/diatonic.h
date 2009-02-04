@@ -1,4 +1,5 @@
 void get_notes(note, note*);
 void get_notes_from_str(char *, note *);
-void int_to_diatonic_note(int note, char *key, char *result);
+note int_to_diatonic_note(int, note);
+int int_index(int, int *, int);
 void partition_on_tonic(note *, int, note);

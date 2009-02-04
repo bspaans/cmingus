@@ -34,6 +34,7 @@ note str_to_note(char *);
 void note_to_str(note, char *);
 void sort_notes(note *, int);
 int equals(note, note);
+int note_index(note, note*, int);
 
 int is_enharmonic(note, note);
 int is_valid_note_str(char *);

@@ -1,6 +1,7 @@
 #include "notes.h"
 #include "diatonic.h"
 
+
 void
 get_notes(note key, note* result)
 {
@@ -38,11 +39,13 @@ get_notes(note key, note* result)
 	partition_on_tonic(result, 7, key);
 }
 
+
 void
 get_notes_from_str(char *key, note *result) 
 {
 	return get_notes(NOTE(key), result);
 }
+
 
 void 
 partition_on_tonic(note *notes, int size, note n)
@@ -69,4 +72,56 @@ partition_on_tonic(note *notes, int size, note n)
 	for (i = 0; i < size; i++) 
 		notes[i] = tmp[i];
 
+}
+
+
+
+note
+int_to_diatonic_note(int n, note key)
+{
+	int i, current = note_to_int(key);
+	int intervals[] = { 0, 2, 4, 5, 7, 9, 11 };
+	int known_intervals[7];
+	note known_notes[7];
+	note res;
+	res.basename = 'N';
+	res.accidentals = 0;
+
+
+	if (n < 0 || n > 11)
+		return res;
+
+	for (i = 0; i < 7; i++)
+		known_intervals[i] = (intervals[i] + current) % 12;
+
+	get_notes(key, known_notes);
+
+	i = int_index( n, known_intervals, 7);
+	if ( i != -1 )
+		return known_notes[i];
+
+	i = int_index( n - 1, known_intervals, 7);
+	if ( i != -1 )
+	{
+		res = known_notes[i];
+		res.accidentals += 1;
+		return res;
+	}	
+	i = int_index( n + 1, known_intervals, 7);
+	if ( i != -1 )
+	{
+		res = known_notes[i];
+		res.accidentals -= 1;
+	}
+	return res;
+}
+
+int
+int_index(int n, int *a, int size)
+{
+	int i;
+	for (i = 0; i < size; i++)
+		if (n == a[i])
+			return i;
+	return -1;
 }
