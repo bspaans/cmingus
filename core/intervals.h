@@ -22,8 +22,6 @@
 
 */
 
-#include "notes.h"
-
 note second(note, note);
 note third(note, note);
 note fourth(note, note);

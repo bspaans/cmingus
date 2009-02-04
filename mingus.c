@@ -25,8 +25,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
-#include "core/intervals.h"
+#include "core/notes.h"
 #include "core/diatonic.h"
+#include "core/intervals.h"
+#include "core/chords.h"
 
 /* 	core/notes.c	 	*/
 void test_get_accidentals_value(void);
@@ -48,6 +50,10 @@ void test_second(void);
 void test_third(void);
 void test_fifth(void);
 
+
+/* 	core/chords.c		*/
+void test_triad(void);
+void test_seventh_chord(void);
 
 void start_test(char *);
 void end_test(void);
@@ -87,6 +93,11 @@ main()
 	test_second();
 	test_third();
 	test_fifth();
+	printf("==========================================================\n");
+	printf("                          CHORDS                          \n");
+	printf("==========================================================\n");
+	test_triad();
+	test_seventh_chord();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
 	printf("==========================================================\n");
@@ -377,4 +388,68 @@ test_fifth()
 	end_test();
 
 
+}
+
+void
+test_triad()
+{
+	char *result[7][3] = { 
+		{ "C", "E", "G" },
+		{ "D", "F", "A" },
+		{ "E", "G", "B" },
+		{ "F", "A", "C" },
+		{ "G", "B", "D" },
+		{ "A", "C", "E" },
+		{ "B", "D", "F" }
+		};
+	note tri[3];
+	note res[3];
+
+	int i;
+	start_test("triad");
+	for (i = 0; i < 7; i ++)
+	{
+		tri[0] = NOTE(result[i][0]);
+		tri[1] = NOTE(result[i][1]);
+		tri[2] = NOTE(result[i][2]);
+		triad(NOTE(result[i][0]), NOTE("C"), res);
+		assert(equals(res[0], tri[0]));
+		assert(equals(res[1], tri[1]));
+		assert(equals(res[2], tri[2]));
+		
+	}
+	end_test();
+}
+
+void 
+test_seventh_chord()
+{
+	char *result[7][4] = { 
+		{ "C", "E", "G", "B" },
+		{ "D", "F", "A", "C" },
+		{ "E", "G", "B", "D" },
+		{ "F", "A", "C", "E" },
+		{ "G", "B", "D", "F" },
+		{ "A", "C", "E", "G" },
+		{ "B", "D", "F", "A" }
+		};
+	note sev[4];
+	note res[4];
+
+	int i;
+	start_test("seventh_chord");
+	for (i = 0; i < 7; i ++)
+	{
+		sev[0] = NOTE(result[i][0]);
+		sev[1] = NOTE(result[i][1]);
+		sev[2] = NOTE(result[i][2]);
+		sev[3] = NOTE(result[i][3]);
+		seventh_chord(NOTE(result[i][0]), NOTE("C"), res);
+		assert(equals(res[0], sev[0]));
+		assert(equals(res[1], sev[1]));
+		assert(equals(res[2], sev[2]));
+		assert(equals(res[3], sev[3]));
+		
+	}
+	end_test();
 }

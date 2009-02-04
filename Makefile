@@ -1,5 +1,5 @@
 SRCS=./core/*.c ./mingus.c
-OBJ=core/notes.o core/intervals.o core/diatonic.o
+OBJ=core/notes.o core/intervals.o core/diatonic.o core/chords.o
 OPTS=-Wall -O3
 LIBS=
 

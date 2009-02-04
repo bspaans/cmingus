@@ -22,6 +22,7 @@
 
 */
 
+#include "notes.h"
 #include "intervals.h"
 #include "diatonic.h"
 #include <string.h>
