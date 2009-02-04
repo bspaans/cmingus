@@ -3,7 +3,7 @@
 ================================================================================
     
     cmingus, a reimplementation of mingus in C.
-    Copyright (C) 2008, Bart Spaans
+    Copyright (C) 2008-2009, Bart Spaans <bartspaans@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@
 ================================================================================
 
 */
+
 
 #define unison(n, key) (n)
 #define second(n, key) (diatonic_interval(key, n, 1))
