@@ -36,13 +36,15 @@ void test_int_to_note(void);
 void test_augment(void);
 void test_diminish(void);
 
+/*	core/diatonic.c		*/
+void test_get_notes(void);
+void test_int_to_diatonic_note(void);
+void test_diatonic_interval(void);
+
 /* 	core/intervals.c	*/
 void test_determine_interval(void);
 void test_interval_to_string(void);
 
-/*	core/diatonic.c		*/
-void test_get_notes(void);
-void test_int_to_diatonic_note(void);
 
 void start_test(char *);
 void end_test(void);
@@ -69,15 +71,16 @@ main()
 	test_augment();
 	test_diminish();
 	printf("==========================================================\n");
-	printf("                         INTERVAL                         \n");
-	printf("==========================================================\n");
-	test_determine_interval();
-	test_interval_to_string();
-	printf("==========================================================\n");
 	printf("                         DIATONIC                         \n");
 	printf("==========================================================\n");
 	test_get_notes();
 	test_int_to_diatonic_note();
+	test_diatonic_interval();
+	printf("==========================================================\n");
+	printf("                         INTERVAL                         \n");
+	printf("==========================================================\n");
+	test_determine_interval();
+	test_interval_to_string();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
 	printf("==========================================================\n");
@@ -289,3 +292,19 @@ test_int_to_diatonic_note()
 
 }
 
+
+void 
+test_diatonic_interval()
+{
+	char *notes[] = { "C", "D", "E", "F", "G", "A", "B" };
+	char result[12];
+	int i;
+
+	start_test("diatonic_interval");
+	for ( i = 0; i < 7; i++)
+	{
+		note_to_str(diatonic_interval(NOTE("C"), NOTE("C"), i), result);
+		assert(strcmp(result, notes[i]) == 0);
+	}
+	end_test();
+}

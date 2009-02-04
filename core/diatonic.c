@@ -125,3 +125,20 @@ int_index(int n, int *a, int size)
 			return i;
 	return -1;
 }
+
+
+note
+diatonic_interval(note key, note on_note, int interval)
+{
+	note keynotes[7];
+	int i, index = -1;
+
+	get_notes(key, keynotes);
+
+	for (i = 0; i < 7; i++)
+	{
+		if (keynotes[i].basename == on_note.basename)
+			index = i;
+	}
+	return keynotes[ (index + interval) % 7 ];
+}
