@@ -27,7 +27,7 @@
 ================================================================================
 
  * Cross platform (testing with gcc and mingw) *DONE*
- * Implement notes (DONE), diatonic (DONE), intervals (75% DONE) and chords (10% DONE)
+ * Implement notes (DONE), diatonic (DONE), intervals (90% DONE) and chords (10% DONE)
  * Implement remaining base features of mingus.core (OPTIONAL)
  * Implement containers (probably in c++).
  * Link fluidsynth and play a note.
