@@ -38,9 +38,7 @@
 
   Installing is done using ./configure and make. See INSTALL for more information. 
 
-    $ ./configure CFLAGES="-O3" && make
-
-  Which will build a windows executable.
+    $ ./configure CFLAGS="-O3" && make
 
 ================================================================================
                                    LICENSE
