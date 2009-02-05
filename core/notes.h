@@ -30,6 +30,8 @@ typedef struct note {
 
 #define NOTE(str) (str_to_note(str))
 #define equals(n1, n2) (n1.basename == n2.basename && n1.accidentals == n2.accidentals)
+#define note_name_index(n) (((n) >= 'A' && (n) <= 'G') ?  n - 'A' : -1)
+#define is_enharmonic(n1, n2) (note_to_int(n1) == note_to_int(n2))
 
 int note_to_int(note);
 note int_to_note(int);
@@ -41,7 +43,6 @@ int note_index(note, note*, int);
 
 int is_enharmonic(note, note);
 int is_valid_note_str(char *);
-int note_name_index(char);
 int fifths_index(char);
 int get_accidentals_value(char *);
 

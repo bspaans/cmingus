@@ -39,15 +39,6 @@ char *naive_note_list[] = { "C", "C#", "D", "D#", "E", "F",
 
 
 int 
-note_name_index(char note) 
-{
-	if (note >= 'A' && note <= 'G')
-		return note - 'A';
-	return -1;
-}
-
-
-int 
 is_valid_note_str(char *n) 
 {
 	int i, len = strlen(n);
@@ -96,12 +87,6 @@ note_to_str(note n, char *res) {
 	}
 }
 
-
-int 
-is_enharmonic(note note1, note note2)
-{
-	return (note_to_int(note1) == note_to_int(note2));
-}
 
 
 int note_to_int(note n)
