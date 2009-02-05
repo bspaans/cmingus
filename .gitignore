@@ -1,0 +1,11 @@
+*.o
+cmingus-0.1/
+autom4te.cache/
+config.*
+Makefile
+*.tar.gz
+src/mingus
+src/mingus.*
+src/.deps/
+stamp-h1
+
