@@ -76,6 +76,9 @@ void test_IV(void);
 void test_V(void);
 void test_VI(void);
 void test_VII(void);
+void test_II7(void);
+void test_V7(void);
+void test_VII7(void);
 
 void start_test(char *);
 void end_test(void);
@@ -141,6 +144,9 @@ main()
 	test_V();
 	test_VI();
 	test_VII();
+	test_II7();
+	test_V7();
+	test_VII7();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
 	printf("==========================================================\n");
@@ -1123,6 +1129,108 @@ test_minor_major_seventh_chord()
 		sev[2] = NOTE(result[i][2]);
 		sev[3] = NOTE(result[i][3]);
 		minor_major_seventh_chord(NOTE(result[i][0]), res);
+		assert(equals(res[0], sev[0]));
+		assert(equals(res[1], sev[1]));
+		assert(equals(res[2], sev[2]));
+		assert(equals(res[3], sev[3]));
+		
+	}
+	end_test();
+}
+
+
+void 
+test_II7()
+{
+	char *result[7][4] = { 
+		{ "C", "Eb", "G", "Bb" },
+		{ "D", "F", "A", "C" },
+		{ "E", "G", "B", "D" },
+		{ "F", "Ab", "C", "Eb" },
+		{ "G", "Bb", "D", "F" },
+		{ "A", "C", "E", "G" },
+		{ "B", "D", "F#", "A" }
+		};
+	note sev[4];
+	note res[4];
+
+	int i;
+	start_test("II7");
+	for (i = 0; i < 7; i ++)
+	{
+		sev[0] = NOTE(result[i][0]);
+		sev[1] = NOTE(result[i][1]);
+		sev[2] = NOTE(result[i][2]);
+		sev[3] = NOTE(result[i][3]);
+		II7(minor_seventh(NOTE(result[i][0])), res);
+		assert(equals(res[0], sev[0]));
+		assert(equals(res[1], sev[1]));
+		assert(equals(res[2], sev[2]));
+		assert(equals(res[3], sev[3]));
+		
+	}
+	end_test();
+}
+
+
+void 
+test_V7()
+{
+	char *result[7][4] = { 
+		{ "C", "E", "G", "Bb" },
+		{ "D", "F#", "A", "C" },
+		{ "E", "G#", "B", "D" },
+		{ "F", "A", "C", "Eb" },
+		{ "G", "B", "D", "F" },
+		{ "A", "C#", "E", "G" },
+		{ "B", "D#", "F#", "A" }
+		};
+	note sev[4];
+	note res[4];
+
+	int i;
+	start_test("V7");
+	for (i = 0; i < 7; i ++)
+	{
+		sev[0] = NOTE(result[i][0]);
+		sev[1] = NOTE(result[i][1]);
+		sev[2] = NOTE(result[i][2]);
+		sev[3] = NOTE(result[i][3]);
+		V7(perfect_fourth(NOTE(result[i][0])), res);
+		assert(equals(res[0], sev[0]));
+		assert(equals(res[1], sev[1]));
+		assert(equals(res[2], sev[2]));
+		assert(equals(res[3], sev[3]));
+		
+	}
+	end_test();
+}
+
+
+void 
+test_VII7()
+{
+	char *result[7][4] = { 
+		{ "C", "Eb", "Gb", "Bb" },
+		{ "D", "F", "Ab", "C" },
+		{ "E", "G", "Bb", "D" },
+		{ "F", "Ab", "Cb", "Eb" },
+		{ "G", "Bb", "Db", "F" },
+		{ "A", "C", "Eb", "G" },
+		{ "B", "D", "F", "A" }
+		};
+	note sev[4];
+	note res[4];
+
+	int i;
+	start_test("VII7");
+	for (i = 0; i < 7; i ++)
+	{
+		sev[0] = NOTE(result[i][0]);
+		sev[1] = NOTE(result[i][1]);
+		sev[2] = NOTE(result[i][2]);
+		sev[3] = NOTE(result[i][3]);
+		VII7(minor_second(NOTE(result[i][0])), res);
 		assert(equals(res[0], sev[0]));
 		assert(equals(res[1], sev[1]));
 		assert(equals(res[2], sev[2]));

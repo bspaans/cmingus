@@ -62,13 +62,13 @@ void minor_major_seventh_chord(note, note*);
 #define VII(n, res) subtonic(n, res)
 #define vii(n, res) subtonic(n, res)
 
-#define tonic7(n, res) (major_seventh(n, res))
-#define supertonic7(n, res) (minor_seventh(major_second(n), res))
-#define mediant7(n, res) (minor_seventh(major_third(n), res))
-#define subdominant7(n, res) (major_seventh(major_fourth(n), res))
-#define dominanth7(n, res) (dominanth_seventh(perfect_fifth(n) ,res))
-#define submediant7(n, res) (minor_seventh(major_sixth(n), res))
-#define subtonic7(n, res) (half_diminished_seventh(major_seventh(n), res))
+#define tonic7(n, res) (major_seventh_chord(n, res))
+#define supertonic7(n, res) (minor_seventh_chord(major_second(n), res))
+#define mediant7(n, res) (minor_seventh_chord(major_third(n), res))
+#define subdominant7(n, res) (major_seventh_chord(major_fourth(n), res))
+#define dominanth7(n, res) (dominanth_seventh_chord(perfect_fifth(n) ,res))
+#define submediant7(n, res) (minor_seventh_chord(major_sixth(n), res))
+#define subtonic7(n, res) (half_diminished_seventh_chord(major_seventh(n), res))
 
 #define I7(n, res) tonic7(n, res)
 #define II7(n, res) supertonic7(n, res)
@@ -81,3 +81,14 @@ void minor_major_seventh_chord(note, note*);
 #define vi7(n, res) submediant7(n, res)
 #define VII7(n, res) subtonic7(n, res)
 #define vii7(n, res) subtonic7(n, res)
+
+typedef struct chord {
+	char basename;
+	char chord_suffix;
+	short accidentals;
+} chord;
+
+enum chord_suffix {
+	/* triads */
+	MINOR_TRIAD, MAJOR_TRIAD, DIMINISHED_TRIAD, AUGMENTED_TRIAD
+};
