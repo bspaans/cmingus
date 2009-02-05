@@ -1279,13 +1279,19 @@ test_chord_to_string()
 void
 test_determine_triad()
 {
-	char *cases[6][3] = {
+	char *cases[12][3] = {
 		{"C", "E", "G"},
 		{"A", "C", "E"},
 		{"D", "E", "A"},
 		{"B", "D", "F"},
 		{"F", "A", "C#"},
 		{"Eb", "G", "Bbb"},
+		{"C", "Eb", "B"},
+		{"C", "Eb", "Bb"},
+		{"C", "E", "Bb"},
+		{"C", "E", "B"},
+		{"C", "E", "A"},
+		{"C", "Eb", "A"},
 		};
 	char *answers[] = {
 		"C major triad",
@@ -1293,23 +1299,28 @@ test_determine_triad()
 		"D suspended second triad",
 		"B diminished triad",
 		"F augmented triad",
-		"Eb dominant flat five"
+		"Eb dominant flat five",
+		"C minor/major seventh",
+		"C minor seventh",
+		"C dominant seventh",
+		"C major seventh",
+		"C major sixth",
+		"C minor sixth",
 		};
 
-	chord result[10];
 	int i;
 	note notes[3];
 	char res[20];
 
 	start_test("determine_triad");
-	for (i = 0; i < 6; i++) 
+	for (i = 0; i < 12; i++) 
 	{
 		notes[0] = NOTE(cases[i][0]);
 		notes[1] = NOTE(cases[i][1]);
 		notes[2] = NOTE(cases[i][2]);
 
-		determine_triad(notes, result);
-		chord_to_string(result[0], res, 0);
+		chord_to_string(determine_triad(notes), res, 0);
+		printf("%s %s\n", res, answers[i]);
 		assert(strcmp(res, answers[i]) == 0);
 	}
 	end_test();

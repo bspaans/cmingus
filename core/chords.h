@@ -84,10 +84,16 @@ void minor_major_seventh_chord(note, note*);
 
 enum chord_suffix {
 
-	INVALID,
+	UNKNOWN,
 
 	/* triads */
 	MINOR_TRIAD, MAJOR_TRIAD, DIMINISHED_TRIAD, AUGMENTED_TRIAD,
+
+	/* sevenths */
+	MAJOR_SEVENTH, MINOR_SEVENTH, DOMINANT_SEVENTH, 
+	DIMINISHED_SEVENTH, MINOR_MAJOR_SEVENTH, 
+
+	MINOR_SIXTH, MAJOR_SIXTH,
 
 	SUS2, SUS4,
 	DOMINANT_FLAT_FIVE,
@@ -103,4 +109,4 @@ typedef struct chord {
 
 void chord_suffix_to_string(enum chord_suffix, char *result, int);
 void chord_to_string(chord, char *, int);
-void determine_triad(note*, chord*);
+chord determine_triad(note*);

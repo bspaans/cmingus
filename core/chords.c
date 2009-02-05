@@ -37,6 +37,15 @@ char *chord_suffix_meaning[] = {
 		"diminished triad",
 		"augmented triad",
 
+		"major seventh",
+		"minor seventh",
+		"dominant seventh",
+		"diminished seventh",
+		"minor/major seventh",
+
+		"minor sixth",
+		"major sixth",
+
 		"suspended second triad",
 		"suspended fourth triad",
 
@@ -52,6 +61,15 @@ char *chord_suffix_shorthand[] = {
 		"dim",
 		"aug",
 		
+		"M7",
+		"m7",
+		"dom7",
+		"dim7",
+		"m/M7",
+
+		"m6",
+		"M6",
+
 		"sus2",
 		"sus4",
 
@@ -117,17 +135,16 @@ chord_to_string(chord c, char *result, int shorthand)
 	chord_suffix_to_string(c.suffix, result + i, shorthand);
 }
 
-void
-determine_triad(note *n, chord *results)
+
+chord 
+determine_triad(note *n)
 {
 	interval iv1 = determine_interval(n[0], n[1]);
 	interval iv2 = determine_interval(n[0], n[2]);
-	int i = 0;
 	chord result;
 
-	result.base = NOTE("N");
-	result.suffix = INVALID;
-	results[i] = result;
+	result.base = n[0];
+	result.suffix = UNKNOWN;
 
 	int i1 = interval_names_shorthand[(int) iv1.shorthand] - '0';
 	int i2 = interval_names_shorthand[(int) iv2.shorthand] - '0';
@@ -165,12 +182,39 @@ determine_triad(note *n, chord *results)
 		}
 
 	}
-
-	if (result.suffix != INVALID) 
+	else if (i1 == 3 && iv1.prefix == MINOR)
 	{
-		result.base = n[0];
-		results[i++] = result;
-
+		if (i2 == 7)
+		{
+			if (iv2.prefix == MINOR)
+				result.suffix = MINOR_SEVENTH;
+			else if (iv2.prefix == MAJOR)
+				result.suffix = MINOR_MAJOR_SEVENTH;
+		}
+		if (i2 == 6 && iv2.prefix == MAJOR)
+			result.suffix = MINOR_SIXTH;
 	}
-
+	else if (i1 == 3 && iv1.prefix == MAJOR)
+	{
+		if (i2 == 7)
+		{
+			if (iv2.prefix == MINOR)
+				result.suffix = DOMINANT_SEVENTH;
+			else if (iv2.prefix == MAJOR)
+				result.suffix = MAJOR_SEVENTH;
+		}
+		if (i2 == 6 && iv2.prefix == MAJOR)
+			result.suffix = MAJOR_SIXTH;
+	}
+	else if (i1 == 5 && iv1.prefix == MAJOR)
+	{
+		if (i2 == 7)
+		{
+			if (iv2.prefix == MINOR)
+				result.suffix = MINOR_SEVENTH;
+			else if (iv2.prefix == MAJOR)
+				result.suffix = MAJOR_SEVENTH;
+		}
+	}
+	return result;
 }
