@@ -550,10 +550,7 @@ test_triad()
 		tri[1] = NOTE(result[i][1]);
 		tri[2] = NOTE(result[i][2]);
 		triad(NOTE(result[i][0]), NOTE("C"), res);
-		assert(equals(res[0], tri[0]));
-		assert(equals(res[1], tri[1]));
-		assert(equals(res[2], tri[2]));
-		
+		assert(equal_notes(res, tri, 3));
 	}
 	end_test();
 }
@@ -582,10 +579,7 @@ test_major_triad()
 		tri[1] = NOTE(result[i][1]);
 		tri[2] = NOTE(result[i][2]);
 		major_triad(NOTE(result[i][0]), res);
-		assert(equals(res[0], tri[0]));
-		assert(equals(res[1], tri[1]));
-		assert(equals(res[2], tri[2]));
-		
+		assert(equal_notes(res, tri, 3));
 	}
 	end_test();
 }
@@ -614,10 +608,7 @@ test_minor_triad()
 		tri[1] = NOTE(result[i][1]);
 		tri[2] = NOTE(result[i][2]);
 		minor_triad(NOTE(result[i][0]), res);
-		assert(equals(res[0], tri[0]));
-		assert(equals(res[1], tri[1]));
-		assert(equals(res[2], tri[2]));
-		
+		assert(equal_notes(res, tri, 3));
 	}
 	end_test();
 }
@@ -647,10 +638,7 @@ test_diminished_triad()
 		tri[1] = NOTE(result[i][1]);
 		tri[2] = NOTE(result[i][2]);
 		diminished_triad(NOTE(result[i][0]), res);
-		assert(equals(res[0], tri[0]));
-		assert(equals(res[1], tri[1]));
-		assert(equals(res[2], tri[2]));
-		
+		assert(equal_notes(res, tri, 3));
 	}
 	end_test();
 }
@@ -679,10 +667,7 @@ test_I()
 		tri[1] = NOTE(result[i][1]);
 		tri[2] = NOTE(result[i][2]);
 		I(NOTE(result[i][0]), res);
-		assert(equals(res[0], tri[0]));
-		assert(equals(res[1], tri[1]));
-		assert(equals(res[2], tri[2]));
-		
+		assert(equal_notes(res, tri, 3));
 	}
 	end_test();
 }
@@ -711,10 +696,7 @@ test_II()
 		tri[1] = NOTE(result[i][1]);
 		tri[2] = NOTE(result[i][2]);
 		II(minor_seventh(NOTE(result[i][0])), res);
-		assert(equals(res[0], tri[0]));
-		assert(equals(res[1], tri[1]));
-		assert(equals(res[2], tri[2]));
-		
+		assert(equal_notes(res, tri, 3));
 	}
 	end_test();
 }
@@ -743,10 +725,7 @@ test_III()
 		tri[1] = NOTE(result[i][1]);
 		tri[2] = NOTE(result[i][2]);
 		III(minor_sixth(NOTE(result[i][0])), res);
-		assert(equals(res[0], tri[0]));
-		assert(equals(res[1], tri[1]));
-		assert(equals(res[2], tri[2]));
-		
+		assert(equal_notes(res, tri, 3));
 	}
 	end_test();
 }
@@ -775,10 +754,7 @@ test_IV()
 		tri[1] = NOTE(result[i][1]);
 		tri[2] = NOTE(result[i][2]);
 		IV(perfect_fifth(NOTE(result[i][0])), res);
-		assert(equals(res[0], tri[0]));
-		assert(equals(res[1], tri[1]));
-		assert(equals(res[2], tri[2]));
-		
+		assert(equal_notes(res, tri, 3));
 	}
 	end_test();
 }
@@ -806,10 +782,7 @@ test_V()
 		tri[1] = NOTE(result[i][1]);
 		tri[2] = NOTE(result[i][2]);
 		V(perfect_fourth(NOTE(result[i][0])), res);
-		assert(equals(res[0], tri[0]));
-		assert(equals(res[1], tri[1]));
-		assert(equals(res[2], tri[2]));
-		
+		assert(equal_notes(res, tri, 3));
 	}
 	end_test();
 }
@@ -837,10 +810,7 @@ test_VI()
 		tri[1] = NOTE(result[i][1]);
 		tri[2] = NOTE(result[i][2]);
 		VI(minor_third(NOTE(result[i][0])), res);
-		assert(equals(res[0], tri[0]));
-		assert(equals(res[1], tri[1]));
-		assert(equals(res[2], tri[2]));
-		
+		assert(equal_notes(res, tri, 3));
 	}
 	end_test();
 }
@@ -868,10 +838,7 @@ test_VII()
 		tri[1] = NOTE(result[i][1]);
 		tri[2] = NOTE(result[i][2]);
 		VII(minor_second(NOTE(result[i][0])), res);
-		assert(equals(res[0], tri[0]));
-		assert(equals(res[1], tri[1]));
-		assert(equals(res[2], tri[2]));
-		
+		assert(equal_notes(res, tri, 3));
 	}
 	end_test();
 }
@@ -898,10 +865,7 @@ test_augmented_triad()
 		tri[1] = NOTE(result[i][1]);
 		tri[2] = NOTE(result[i][2]);
 		augmented_triad(NOTE(result[i][0]), res);
-		assert(equals(res[0], tri[0]));
-		assert(equals(res[1], tri[1]));
-		assert(equals(res[2], tri[2]));
-		
+		assert(equal_notes(res, tri, 3));
 	}
 	end_test();
 }
@@ -931,11 +895,7 @@ test_seventh_chord()
 		sev[2] = NOTE(result[i][2]);
 		sev[3] = NOTE(result[i][3]);
 		seventh_chord(NOTE(result[i][0]), NOTE("C"), res);
-		assert(equals(res[0], sev[0]));
-		assert(equals(res[1], sev[1]));
-		assert(equals(res[2], sev[2]));
-		assert(equals(res[3], sev[3]));
-		
+		assert(equal_notes(res, sev, 4));
 	}
 	end_test();
 }
@@ -965,11 +925,7 @@ test_major_seventh_chord()
 		sev[2] = NOTE(result[i][2]);
 		sev[3] = NOTE(result[i][3]);
 		major_seventh_chord(NOTE(result[i][0]), res);
-		assert(equals(res[0], sev[0]));
-		assert(equals(res[1], sev[1]));
-		assert(equals(res[2], sev[2]));
-		assert(equals(res[3], sev[3]));
-		
+		assert(equal_notes(res, sev, 4));
 	}
 	end_test();
 }
@@ -999,11 +955,7 @@ test_minor_seventh_chord()
 		sev[2] = NOTE(result[i][2]);
 		sev[3] = NOTE(result[i][3]);
 		minor_seventh_chord(NOTE(result[i][0]), res);
-		assert(equals(res[0], sev[0]));
-		assert(equals(res[1], sev[1]));
-		assert(equals(res[2], sev[2]));
-		assert(equals(res[3], sev[3]));
-		
+		assert(equal_notes(res, sev, 4));
 	}
 	end_test();
 }
@@ -1033,11 +985,7 @@ test_dominanth_seventh_chord()
 		sev[2] = NOTE(result[i][2]);
 		sev[3] = NOTE(result[i][3]);
 		dominanth_seventh_chord(NOTE(result[i][0]), res);
-		assert(equals(res[0], sev[0]));
-		assert(equals(res[1], sev[1]));
-		assert(equals(res[2], sev[2]));
-		assert(equals(res[3], sev[3]));
-		
+		assert(equal_notes(res, sev, 4));
 	}
 	end_test();
 }
@@ -1067,11 +1015,7 @@ test_half_diminished_seventh_chord()
 		sev[2] = NOTE(result[i][2]);
 		sev[3] = NOTE(result[i][3]);
 		half_diminished_seventh_chord(NOTE(result[i][0]), res);
-		assert(equals(res[0], sev[0]));
-		assert(equals(res[1], sev[1]));
-		assert(equals(res[2], sev[2]));
-		assert(equals(res[3], sev[3]));
-		
+		assert(equal_notes(res, sev, 4));
 	}
 	end_test();
 }
@@ -1101,11 +1045,7 @@ test_diminished_seventh_chord()
 		sev[2] = NOTE(result[i][2]);
 		sev[3] = NOTE(result[i][3]);
 		diminished_seventh_chord(NOTE(result[i][0]), res);
-		assert(equals(res[0], sev[0]));
-		assert(equals(res[1], sev[1]));
-		assert(equals(res[2], sev[2]));
-		assert(equals(res[3], sev[3]));
-		
+		assert(equal_notes(res, sev, 4));
 	}
 	end_test();
 }
@@ -1135,11 +1075,7 @@ test_minor_major_seventh_chord()
 		sev[2] = NOTE(result[i][2]);
 		sev[3] = NOTE(result[i][3]);
 		minor_major_seventh_chord(NOTE(result[i][0]), res);
-		assert(equals(res[0], sev[0]));
-		assert(equals(res[1], sev[1]));
-		assert(equals(res[2], sev[2]));
-		assert(equals(res[3], sev[3]));
-		
+		assert(equal_notes(res, sev, 4));
 	}
 	end_test();
 }
@@ -1169,11 +1105,7 @@ test_II7()
 		sev[2] = NOTE(result[i][2]);
 		sev[3] = NOTE(result[i][3]);
 		II7(minor_seventh(NOTE(result[i][0])), res);
-		assert(equals(res[0], sev[0]));
-		assert(equals(res[1], sev[1]));
-		assert(equals(res[2], sev[2]));
-		assert(equals(res[3], sev[3]));
-		
+		assert(equal_notes(res, sev, 4));
 	}
 	end_test();
 }
@@ -1203,11 +1135,7 @@ test_V7()
 		sev[2] = NOTE(result[i][2]);
 		sev[3] = NOTE(result[i][3]);
 		V7(perfect_fourth(NOTE(result[i][0])), res);
-		assert(equals(res[0], sev[0]));
-		assert(equals(res[1], sev[1]));
-		assert(equals(res[2], sev[2]));
-		assert(equals(res[3], sev[3]));
-		
+		assert(equal_notes(res, sev, 4));
 	}
 	end_test();
 }
@@ -1237,11 +1165,7 @@ test_VII7()
 		sev[2] = NOTE(result[i][2]);
 		sev[3] = NOTE(result[i][3]);
 		VII7(minor_second(NOTE(result[i][0])), res);
-		assert(equals(res[0], sev[0]));
-		assert(equals(res[1], sev[1]));
-		assert(equals(res[2], sev[2]));
-		assert(equals(res[3], sev[3]));
-		
+		assert(equal_notes(res, sev, 4));
 	}
 	end_test();
 }
@@ -1320,7 +1244,6 @@ test_determine_triad()
 		notes[2] = NOTE(cases[i][2]);
 
 		chord_to_string(determine_triad(notes), res, 0);
-		printf("%s %s\n", res, answers[i]);
 		assert(strcmp(res, answers[i]) == 0);
 	}
 	end_test();

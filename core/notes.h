@@ -28,13 +28,15 @@ typedef struct note {
 	short accidentals;
 } note;
 
+#define NOTE(str) (str_to_note(str))
+#define equals(n1, n2) (n1.basename == n2.basename && n1.accidentals == n2.accidentals)
 
 int note_to_int(note);
 note int_to_note(int);
 note str_to_note(char *);
 void note_to_str(note, char *);
 void sort_notes(note *, int);
-int equals(note, note);
+inline int equal_notes(note *, note *, int);
 int note_index(note, note*, int);
 
 int is_enharmonic(note, note);
@@ -51,4 +53,4 @@ extern int note_values[];
 extern char fifths[];
 extern char *naive_note_list[];
 
-#define NOTE(str) (str_to_note(str))
+

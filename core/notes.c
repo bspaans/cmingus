@@ -227,14 +227,6 @@ partition(note *a, int l, int r)
 
 }
 
-
-int
-equals(note n1, note n2)
-{
-	return (n1.basename == n2.basename && n1.accidentals == n2.accidentals);
-}
-
-
 int
 note_index (note n, note *notes, int size)
 {
@@ -243,4 +235,11 @@ note_index (note n, note *notes, int size)
 		if (equals(n, notes[i]))
 			return i;
 	return -1;
+}
+
+inline int
+equal_notes(note *n1, note *n2, int compare)
+{
+	while(compare-- > 1 && equals(n1[compare], n2[compare]));
+	return compare == 0;
 }
