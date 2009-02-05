@@ -81,6 +81,7 @@ void test_V7(void);
 void test_VII7(void);
 void test_chord_suffix_to_string(void);
 void test_chord_to_string(void);
+void test_determine_triad(void);
 
 void start_test(char *);
 void end_test(void);
@@ -151,6 +152,7 @@ main()
 	test_VII7();
 	test_chord_suffix_to_string();
 	test_chord_to_string();
+	test_determine_triad();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
 	printf("==========================================================\n");
@@ -1264,11 +1266,52 @@ test_chord_to_string()
 	chord c;
 	char result[30];
 	c.base = NOTE("C#");
-	c.chord_suffix = AUGMENTED_TRIAD;
+	c.suffix = AUGMENTED_TRIAD;
 	start_test("chord_to_string");
 	chord_to_string(c, result, 0);
 	assert(strcmp(result, "C# augmented triad") == 0);
 	chord_to_string(c, result, 1);
 	assert(strcmp(result, "C#aug") == 0);
 	end_test();
+}
+
+
+void
+test_determine_triad()
+{
+	char *cases[6][3] = {
+		{"C", "E", "G"},
+		{"A", "C", "E"},
+		{"D", "E", "A"},
+		{"B", "D", "F"},
+		{"F", "A", "C#"},
+		{"Eb", "G", "Bbb"},
+		};
+	char *answers[] = {
+		"C major triad",
+		"A minor triad",
+		"D suspended second triad",
+		"B diminished triad",
+		"F augmented triad",
+		"Eb dominant flat five"
+		};
+
+	chord result[10];
+	int i;
+	note notes[3];
+	char res[20];
+
+	start_test("determine_triad");
+	for (i = 0; i < 6; i++) 
+	{
+		notes[0] = NOTE(cases[i][0]);
+		notes[1] = NOTE(cases[i][1]);
+		notes[2] = NOTE(cases[i][2]);
+
+		determine_triad(notes, result);
+		chord_to_string(result[0], res, 0);
+		assert(strcmp(res, answers[i]) == 0);
+	}
+	end_test();
+
 }

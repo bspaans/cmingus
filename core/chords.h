@@ -82,17 +82,25 @@ void minor_major_seventh_chord(note, note*);
 #define VII7(n, res) subtonic7(n, res)
 #define vii7(n, res) subtonic7(n, res)
 
+enum chord_suffix {
+
+	INVALID,
+
+	/* triads */
+	MINOR_TRIAD, MAJOR_TRIAD, DIMINISHED_TRIAD, AUGMENTED_TRIAD,
+
+	SUS2, SUS4,
+	DOMINANT_FLAT_FIVE,
+};
+
+
 typedef struct chord {
 	note base;
-	char chord_suffix;
+	enum chord_suffix suffix;
 } chord;
 
-enum chord_suffix {
-	/* triads */
-	MINOR_TRIAD, MAJOR_TRIAD, DIMINISHED_TRIAD, AUGMENTED_TRIAD
-};
 
 
 void chord_suffix_to_string(enum chord_suffix, char *result, int);
 void chord_to_string(chord, char *, int);
-
+void determine_triad(note*, chord*);

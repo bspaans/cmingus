@@ -30,17 +30,32 @@
 #include <string.h>
 
 char *chord_suffix_meaning[] = {
+		"invalid",
+
 		"minor triad",
 		"major triad",
 		"diminished triad",
-		"augmented triad"
+		"augmented triad",
+
+		"suspended second triad",
+		"suspended fourth triad",
+
+		"dominant flat five",
+
 	};
 
 char *chord_suffix_shorthand[] = {
+		"ERR",
+		
 		"m",
 		"M",
 		"dim",
-		"aug"
+		"aug",
+		
+		"sus2",
+		"sus4",
+
+		"7b5",
 	};
 
 void
@@ -99,7 +114,63 @@ chord_to_string(chord c, char *result, int shorthand)
 		result[i++] = ' ';
 		result[i] = '\0';
 	}
-	chord_suffix_to_string(c.chord_suffix, result + i, shorthand);
-	
+	chord_suffix_to_string(c.suffix, result + i, shorthand);
+}
+
+void
+determine_triad(note *n, chord *results)
+{
+	interval iv1 = determine_interval(n[0], n[1]);
+	interval iv2 = determine_interval(n[0], n[2]);
+	int i = 0;
+	chord result;
+
+	result.base = NOTE("N");
+	result.suffix = INVALID;
+	results[i] = result;
+
+	int i1 = interval_names_shorthand[(int) iv1.shorthand] - '0';
+	int i2 = interval_names_shorthand[(int) iv2.shorthand] - '0';
+	if (i2 == 5) 
+	{
+		if (iv2.prefix == MAJOR) {
+			switch(i1) {
+				case(2):
+					result.suffix = SUS2;
+					break;
+				case(3):
+					if (iv1.prefix == MINOR)
+						result.suffix = MINOR_TRIAD;
+					else if (iv1.prefix == MAJOR)
+						result.suffix = MAJOR_TRIAD;
+					break;
+				case(4):
+					result.suffix = SUS4;
+					break;
+			}
+		}
+		else if (iv2.prefix == MINOR) {
+			if (i1 == 3) {
+				if (iv1.prefix == MINOR)
+					result.suffix = DIMINISHED_TRIAD;
+				else if (iv1.prefix == MAJOR)
+					result.suffix = DOMINANT_FLAT_FIVE;
+			}
+
+		}
+		else if (iv2.prefix == AUGMENTED) {
+			if (iv1.prefix == MAJOR)
+				result.suffix = AUGMENTED_TRIAD;
+
+		}
+
+	}
+
+	if (result.suffix != INVALID) 
+	{
+		result.base = n[0];
+		results[i++] = result;
+
+	}
 
 }
