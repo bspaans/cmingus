@@ -27,7 +27,21 @@
 #include "diatonic.h"
 #include "intervals.h"
 #include "chords.h"
+#include <string.h>
 
+char *chord_suffix_meaning[] = {
+		"minor triad",
+		"major triad",
+		"diminished triad",
+		"augmented triad"
+	};
+
+char *chord_suffix_shorthand[] = {
+		"m",
+		"M",
+		"dim",
+		"aug"
+	};
 
 void
 triad(note on_note, note key, note *result)
@@ -65,4 +79,13 @@ minor_major_seventh_chord(note on_note, note *result)
 	minor_triad(on_note, result);
 	result[3] = major_seventh(on_note);
 
+}
+
+void
+chord_suffix_to_string(enum chord_suffix suffix, char *result, int shorthand)
+{
+	if (!shorthand)
+		strcpy(result, chord_suffix_meaning[suffix]);
+	else
+		strcpy(result, chord_suffix_shorthand[suffix]);
 }

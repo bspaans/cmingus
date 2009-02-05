@@ -92,3 +92,7 @@ enum chord_suffix {
 	/* triads */
 	MINOR_TRIAD, MAJOR_TRIAD, DIMINISHED_TRIAD, AUGMENTED_TRIAD
 };
+
+
+void chord_suffix_to_string(enum chord_suffix, char *result, int);
+

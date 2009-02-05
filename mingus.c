@@ -79,6 +79,7 @@ void test_VII(void);
 void test_II7(void);
 void test_V7(void);
 void test_VII7(void);
+void test_chord_suffix_to_string(void);
 
 void start_test(char *);
 void end_test(void);
@@ -147,6 +148,7 @@ main()
 	test_II7();
 	test_V7();
 	test_VII7();
+	test_chord_suffix_to_string();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
 	printf("==========================================================\n");
@@ -1240,3 +1242,16 @@ test_VII7()
 	end_test();
 }
 
+
+void 
+test_chord_suffix_to_string()
+{
+	char result[30];
+	start_test("chord_suffix_to_string");
+	chord_suffix_to_string(MINOR_TRIAD, result, 0);
+	assert(strcmp(result, "minor triad") == 0);
+	chord_suffix_to_string(MINOR_TRIAD, result, 1);
+	assert(strcmp(result, "m") == 0);
+	end_test();
+
+}
