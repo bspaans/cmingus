@@ -212,14 +212,11 @@ partition(note *a, int l, int r)
 
 }
 
-int
+inline int
 note_index (note n, note *notes, int size)
 {
-	int i;
-	for (i = 0; i < size; i++)
-		if (equals(n, notes[i]))
-			return i;
-	return -1;
+	while ( size-- > 1 && !equals(n, notes[size]));
+	return ( size == 0 ) ? -1: size;
 }
 
 inline int

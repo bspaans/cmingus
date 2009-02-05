@@ -39,9 +39,8 @@ note str_to_note(char *);
 void note_to_str(note, char *);
 void sort_notes(note *, int);
 inline int equal_notes(note *, note *, int);
-int note_index(note, note*, int);
+inline int note_index(note, note*, int);
 
-int is_enharmonic(note, note);
 int is_valid_note_str(char *);
 int fifths_index(char);
 int get_accidentals_value(char *);
