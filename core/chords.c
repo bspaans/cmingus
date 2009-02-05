@@ -89,3 +89,17 @@ chord_suffix_to_string(enum chord_suffix suffix, char *result, int shorthand)
 	else
 		strcpy(result, chord_suffix_shorthand[suffix]);
 }
+
+void
+chord_to_string(chord c, char *result, int shorthand)
+{
+	note_to_str(c.base, result);
+	int i = strlen(result);
+	if (!shorthand) {
+		result[i++] = ' ';
+		result[i] = '\0';
+	}
+	chord_suffix_to_string(c.chord_suffix, result + i, shorthand);
+	
+
+}

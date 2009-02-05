@@ -83,9 +83,8 @@ void minor_major_seventh_chord(note, note*);
 #define vii7(n, res) subtonic7(n, res)
 
 typedef struct chord {
-	char basename;
+	note base;
 	char chord_suffix;
-	short accidentals;
 } chord;
 
 enum chord_suffix {
@@ -95,4 +94,5 @@ enum chord_suffix {
 
 
 void chord_suffix_to_string(enum chord_suffix, char *result, int);
+void chord_to_string(chord, char *, int);
 
