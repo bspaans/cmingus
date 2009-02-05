@@ -30,6 +30,7 @@
 #include "core/diatonic.h"
 #include "core/intervals.h"
 #include "core/chords.h"
+#include "core/progressions.h"
 
 /* 	core/notes.c	 	*/
 void test_get_accidentals_value(void);

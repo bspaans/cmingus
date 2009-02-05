@@ -29,3 +29,6 @@ typedef struct progression {
 	short accidentals;
 
 } progression;
+
+chord
+progression_to_chord(progression);

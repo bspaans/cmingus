@@ -181,14 +181,13 @@ sort_notes(note *a, int size)
 void
 quick_sort(note *a, int l, int r)
 {
-	int j;
+	if (l >= r)
+		return;
 
-	if (l < r)
-	{
-		j = partition(a, l, r);
-		quick_sort(a, l, j - 1);
-		quick_sort(a, j + 1, r);
-	}
+	int j;
+	j = partition(a, l, r);
+	quick_sort(a, l, j - 1);
+	quick_sort(a, j + 1, r);
 }
 
 
