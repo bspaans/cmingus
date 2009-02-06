@@ -2,16 +2,55 @@
                                     CMINGUS
 ================================================================================
 
-  cmingus is a low priority implementation of the Python library mingus in C.
-  mingus homepage: http://mingus.googlecode.com/
+  cmingus is a low priority implementation of the Python music library mingus 
+  in C and C++. 
 
-  * Why?
+================================================================================
+                                     WHY?
+================================================================================
 
-  For speed, cross compilation, compatibility and the usual shiggles.
-  (And to go back to C - maybe I'll progress to C99!).
+  * For speed
 
-  My C style is apparently ancient, but I'll try to improve it as I go along. 
-  Comments are welcome (via github or mail: bartspaans@gmail.com).
+    Simple structs and macros greatly reduce the amount of work the cpu has 
+    to do. Add this to the natural advantage of compiling to machine code
+    and you have got yourself a tiny, super fast music (theory) library.
+    I'll upload some benchmarks to my site later, showing speed-ups of at 
+    least 5000%. These speed differences will only get bigger once we get to the 
+    more complicated functionality (recognising complex chords and 
+    harmonic functions) which builds on the simpler stuff (recognizing intervals).
+    Thus it will be better suited for analytical and real-time applications
+    (as part of a pipeline, for instance).
+
+  * Cross Compilation
+
+    Distributing Python code and letting the users/packagers figure out the 
+    dependencies is not the most friendly thing to do, especially not for
+    Windows users. For Python there is `freeze` to turn your applications into
+    windows executables, but it would mean heaving to spend time with `freeze`
+    when you want everything to just work on every platform. The automake tools
+    can deal with that much better.
+
+  * Compatibility
+
+    Most programs using mingus involve the FluidSynth bindings in some way.
+    It would be great if we could use the API directly and also incorporate
+    other programs/libraries without having to write or adjust the Python 
+    bindings. This is actually still a work in progress, since the basic of 
+    mingus.core has just been laid out and mingus.containers is about to 
+    be written. All the goodies will hopefully follow after that.
+ 
+  * Fun
+
+    Since the python implementation of mingus.core and mingus.containers is 
+    pretty solid at this point, I started this experiment to see if the base 
+    could easily be transfered to other languages and how much it would benefit
+    from that. I also wanted some more experience with C and C++.
+
+    The result so far is a lot less Pythonic (obviously), but also 
+    very much like the original version. The biggest difference is that notes, 
+    intervals and chords aren't strings anymore, but structs which can be
+    converted to and from strings. Apart from that; the API is very similar to 
+    the original and also doesn't defer much in line count.
 
 ================================================================================
                                   RESOURCES
@@ -26,8 +65,10 @@
                                     GOALS
 ================================================================================
 
- * Cross platform (testing with gcc and mingw) *DONE*
- * Implement notes (DONE), diatonic (DONE), intervals (90% DONE) and chords (40% DONE)
+ * Test-driven (currently >40 tests)
+ * Cross platform (compiling with gcc and mingw)
+ * Implement from mingus.core: notes, diatonic, intervals (90% DONE) and 
+   chords (40% DONE)
  * Implement remaining base features of mingus.core (OPTIONAL)
  * Implement containers (probably in c++).
  * Link fluidsynth and play a note.
@@ -39,6 +80,11 @@
   Installing is done using ./configure and make. See INSTALL for more information. 
 
     $ ./configure CFLAGS="-O3" && make
+
+  This will build the mingus program and libminguscore library. The mingus
+  executable will test all the known functions when run. It aborts when it 
+  encounters a false test-case, but this normally shouldn't happen since
+  everything in the repository should build and work properly.
 
 ================================================================================
                                    LICENSE
