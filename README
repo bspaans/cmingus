@@ -35,7 +35,7 @@
     Most programs using mingus involve the FluidSynth bindings in some way.
     It would be great if we could use the API directly and also incorporate
     other programs/libraries without having to write or adjust the Python 
-    bindings. This is actually still a work in progress, since the basic of 
+    bindings. This is actually still a work in progress, since the base of 
     mingus.core has just been laid out and mingus.containers is about to 
     be written. All the goodies will hopefully follow after that.
  
@@ -73,6 +73,21 @@
  * Implement remaining base features of mingus.core (OPTIONAL)
  * Implement containers (probably in c++).
  * Link fluidsynth and play a note.
+
+================================================================================
+                                   FEATURES
+================================================================================
+
+  * Structures for notes, intervals, chords and progressions.
+  * Augment and diminish notes and convert them to and from integers.
+  * Get the diatonic scale in every conceivable key.
+  * Create intervals absolutely or diatonically.
+  * Create chords absolutely or diatonically (currently supported: triads and 
+    sevenths)
+  * Recognize intervals between notes and producing theoretically sound names 
+    for them.
+  * Recognize all the different triads; naming them in the traditional 
+    convention or in a 'jazzy' shorthand.
 
 ================================================================================
                                  INSTALLATION
