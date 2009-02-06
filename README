@@ -78,13 +78,13 @@
                                    FEATURES
 ================================================================================
 
-  * Structures for notes, intervals, chords and progressions.
+  * Native structures for notes, intervals, chords and progressions.
   * Augment and diminish notes and convert them to and from integers.
   * Get the diatonic scale in every conceivable key.
   * Create intervals absolutely or diatonically.
-  * Create chords absolutely or diatonically (currently supported: triads and 
-    sevenths)
-  * Recognize intervals between notes and producing theoretically sound names 
+  * Create chords absolutely, diatonically or by harmonic function (currently 
+    supported: triads and sevenths)
+  * Recognize intervals between notes and produces theoretically sound names 
     for them.
   * Recognize all the different triads; naming them in the traditional 
     convention or in a 'jazzy' shorthand.
