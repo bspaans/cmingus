@@ -66,13 +66,13 @@
                                     GOALS
 ================================================================================
 
- * Test-driven (currently >40 tests)
- * Cross platform (compiling with gcc and mingw)
- * Implement from mingus.core: notes, diatonic, intervals (90% DONE) and 
-   chords (40% DONE)
- * Implement remaining base features of mingus.core (OPTIONAL)
- * Implement containers (probably in c++).
- * Link fluidsynth and play a note.
+  * Test-driven (currently >40 tests)
+  * Cross platform (compiling with gcc and mingw)
+  * Implement from mingus.core: notes, diatonic, intervals (90% DONE) and 
+    chords (40% DONE)
+  * Implement remaining base features of mingus.core (OPTIONAL)
+  * Implement containers (probably in c++).
+  * Link fluidsynth and play a note.
 
 ================================================================================
                                    FEATURES
@@ -93,7 +93,8 @@
                                  INSTALLATION
 ================================================================================
 
-  Installing is done using ./configure and make. See INSTALL for more information. 
+  Installing is done using ./configure and make. See INSTALL for more 
+  information. 
 
     $ ./configure CFLAGS="-O3" && make
 
