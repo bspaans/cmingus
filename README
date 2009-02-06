@@ -15,11 +15,11 @@
     to do. Add this to the natural advantage of compiling to machine code
     and you have got yourself a tiny, super fast music (theory) library.
     I'll upload some benchmarks to my site later, showing speed-ups of at 
-    least 5000%. These speed differences will only get bigger once we get to the 
-    more complicated functionality (recognising complex chords and 
-    harmonic functions) which builds on the simpler stuff (recognizing intervals).
-    Thus it will be better suited for analytical and real-time applications
-    (as part of a pipeline, for instance).
+    least 5000%. These speed differences will only get bigger once we get to 
+    the more complicated functionality (recognising complex chords and 
+    harmonic functions) which build on the simpler stuff (recognizing 
+    intervals). Thus it will be better suited for analytical and real-time 
+    applications (as part of a pipeline, for instance).
 
   * Cross Compilation
 
@@ -49,8 +49,9 @@
     The result so far is a lot less Pythonic (obviously), but also 
     very much like the original version. The biggest difference is that notes, 
     intervals and chords aren't strings anymore, but structs which can be
-    converted to and from strings. Apart from that; the API is very similar to 
-    the original and also doesn't defer much in line count.
+    converted to and from strings instead. Apart from that; the API is very 
+    similar to the original and also -rather suprisingly- doesn't defer much in 
+    line count.
 
 ================================================================================
                                   RESOURCES
