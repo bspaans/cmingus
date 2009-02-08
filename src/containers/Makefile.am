@@ -2,5 +2,5 @@
 #libminguscore_a_SOURCES = Note.c
 
 bin_PROGRAMS = minguscontainers
-minguscontainers_SOURCES = Note.c
+minguscontainers_SOURCES = Note.cpp
 LDADD = ../core/libminguscore.a

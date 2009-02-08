@@ -7,6 +7,7 @@ AC_CONFIG_FILES([
  Makefile
  src/Makefile
  src/core/Makefile
+ src/containers/Makefile
 ])
 AC_PROG_RANLIB
 AC_OUTPUT

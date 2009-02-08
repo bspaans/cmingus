@@ -8,7 +8,7 @@ using namespace std;
 
 Note::Note() {
 	octave = 4;
-	basename = NOTE("C");
+	basename = NOTE((char *)"C");
 }
 
 int main() {
