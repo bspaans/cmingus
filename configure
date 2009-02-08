@@ -3722,6 +3722,10 @@ else
 fi
 
 
+ac_config_headers="$ac_config_headers config.h"
+
+ac_config_files="$ac_config_files Makefile src/Makefile src/core/Makefile"
+
 if test -n "$ac_tool_prefix"; then
   # Extract the first word of "${ac_tool_prefix}ranlib", so it can be a program name with args.
 set dummy ${ac_tool_prefix}ranlib; ac_word=$2
@@ -3817,10 +3821,6 @@ esac
 else
   RANLIB="$ac_cv_prog_RANLIB"
 fi
-
-ac_config_headers="$ac_config_headers config.h"
-
-ac_config_files="$ac_config_files Makefile src/Makefile src/core/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure

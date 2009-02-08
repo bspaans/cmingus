@@ -50,7 +50,7 @@
     very much like the original version. The biggest difference is that notes, 
     intervals and chords aren't strings anymore, but structs which can be
     converted to and from strings instead. Apart from that; the API is very 
-    similar to the original and also -rather suprisingly- doesn't defer much in 
+    similar to the original and also -rather surprisingly- doesn't defer much in 
     line count.
 
 ================================================================================
