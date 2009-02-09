@@ -31,6 +31,9 @@ void end_test(void);
 
 /*	containers/Note.cpp	*/
 void test_Note_to_int(void);
+void test_Note_from_int(void);
+void test_Note_octave_up(void);
+void test_Note_octave_down(void);
 
 int testnr = 0;
 
@@ -47,6 +50,9 @@ main() {
 	printf("                          NOTE                            \n");
 	printf("==========================================================\n");
 	test_Note_to_int();
+	test_Note_from_int();
+	test_Note_octave_up();
+	test_Note_octave_down();
 	return 0;
 }
 
@@ -63,11 +69,48 @@ end_test()
 	cout << "OK\n";
 }
 
-void test_Note_to_int() 
+void 
+test_Note_to_int() 
 {
 	Note n;
 
 	start_test("Note::to_int");
 	assert(n.to_int() == 48);
+	end_test();
+}
+
+void
+test_Note_from_int()
+{
+	Note n, o;
+	o.from_int(60);
+
+	start_test("Note::from_int");
+	assert(o.octave == n.octave + 1);
+	assert(o.name.basename == n.name.basename);
+	end_test();
+}
+
+
+void 
+test_Note_octave_up() 
+{
+	Note n;
+	n.octave_up();
+
+	start_test("Note::octave_up");
+	assert(n.octave == 5);
+	assert(n.to_int() == 60);
+	end_test();
+}
+
+void 
+test_Note_octave_down() 
+{
+	Note n;
+	n.octave_down();
+
+	start_test("Note::octave_down");
+	assert(n.to_int() == 36);
 	end_test();
 }

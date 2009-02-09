@@ -95,7 +95,7 @@ main()
 	printf("==========================================================\n");
 	printf("                         CMINGUS                          \n");
 	printf("==========================================================\n");
-	printf("cmingus_core 0.1 - Unit Tests\n");
+	printf("cmingus_core 0.2 - Unit Tests\n");
 	printf("Copyright(C) 2009, Bart Spaans <bartspaans@gmail.com>\n");
 	printf("This program is free software and licensed under the GPLv3\n");
 	printf("Compiled on %s, %s\n", __TIME__, __DATE__);
@@ -157,7 +157,7 @@ main()
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
 	printf("==========================================================\n");
-	return 0;
+	return testnr;
 }
 
 
