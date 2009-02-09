@@ -11,6 +11,9 @@ class Synth {
 		void init(char *, char *);
 		void start(char *);
 		void load_soundfont(char *);
+		void play_Note(Note, int, int);
+		void set_instrument(int channel, int instr);
+		void set_instrument(int channel, int instr, int bank);
 
 	private:
 		/* Attributes */
