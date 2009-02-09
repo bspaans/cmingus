@@ -108,7 +108,7 @@
 
     $ ./configure CFLAGS="-O3" && make
 
-  This will build the mingus unit tests programs and libminguscore library. The 
+  This will build the mingus unit tests binaries and libraries. The 
   executables will test all the known functions when run. It aborts when 
   it encounters a false test-case, but this normally shouldn't happen since
   everything in the repository should build and work properly.

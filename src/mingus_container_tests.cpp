@@ -88,7 +88,6 @@ main(int argc, char **charv) {
 	test_Track_empty();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
-	printf("==========================================================\n");
 	return testnr;
 }
 

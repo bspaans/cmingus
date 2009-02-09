@@ -22,6 +22,11 @@ Synth::init()
 		fluid_settings_setnum(settings, (char *) "synth.gain", 0.1);
 		fluid_settings_setnum(settings, (char *) "synth.sample-rate", 44100);
 		fluid_settings_setint(settings, (char *) "synth.midi-channels", 16);
+		fluid_set_log_function(FLUID_PANIC, NULL, NULL);
+		fluid_set_log_function(FLUID_ERR, NULL, NULL);
+		fluid_set_log_function(FLUID_WARN, NULL, NULL);
+		fluid_set_log_function(FLUID_INFO, NULL, NULL);
+		fluid_set_log_function(FLUID_DBG, NULL, NULL);
 	}
 }
 
@@ -92,10 +97,7 @@ Synth::play_NoteContainer(NoteContainer n, int channel, int velocity)
 {
 	std::vector<Note>::iterator iter = n.notes.begin();
 	while ( iter < n.notes.end() )
-	{
-		play_Note(*iter, channel, velocity);
-		iter++;
-	}
+		play_Note(*iter++, channel, velocity);
 }
 
 
@@ -104,10 +106,7 @@ Synth::stop_NoteContainer(NoteContainer n, int channel)
 {
 	std::vector<Note>::iterator iter = n.notes.begin();
 	while ( iter < n.notes.end() )
-	{
-		stop_Note(*iter, channel);
-		iter++;
-	}
+		stop_Note(*iter++, channel);
 }
 
 
