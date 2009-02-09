@@ -81,6 +81,37 @@ Synth::play_Note(Note n, int channel, int velocity)
 
 
 void
+Synth::stop_Note(Note n, int channel)
+{
+	fluid_synth_noteoff(synth, channel, n.to_int() + 12);
+}
+
+
+void
+Synth::play_NoteContainer(NoteContainer n, int channel, int velocity)
+{
+	std::vector<Note>::iterator iter = n.notes.begin();
+	while ( iter < n.notes.end() )
+	{
+		play_Note(*iter, channel, velocity);
+		iter++;
+	}
+}
+
+
+void
+Synth::stop_NoteContainer(NoteContainer n, int channel)
+{
+	std::vector<Note>::iterator iter = n.notes.begin();
+	while ( iter < n.notes.end() )
+	{
+		stop_Note(*iter, channel);
+		iter++;
+	}
+}
+
+
+void
 Synth::set_instrument(int channel, int instr)
 {
 	set_instrument(channel, instr, 0);

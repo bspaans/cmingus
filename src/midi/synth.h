@@ -12,6 +12,9 @@ class Synth {
 		void start(char *);
 		void load_soundfont(char *);
 		void play_Note(Note, int, int);
+		void stop_Note(Note, int);
+		void play_NoteContainer(NoteContainer, int, int);
+		void stop_NoteContainer(NoteContainer, int);
 		void set_instrument(int channel, int instr);
 		void set_instrument(int channel, int instr, int bank);
 
