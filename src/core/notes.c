@@ -156,7 +156,7 @@ fifths_index(char notename)
 
 
 note
-augment(note n)
+augment_note(note n)
 {
 	n.accidentals += 1;
 	return n;
@@ -164,7 +164,7 @@ augment(note n)
 
 
 note
-diminish(note n)
+diminish_note(note n)
 {
 	n.accidentals -= 1;
 	return n;

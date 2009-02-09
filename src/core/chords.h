@@ -27,8 +27,6 @@ void triad(note, note, note*);
 void augmented_triad(note, note*);
 void triads(note, note**);
 void seventh_chord(note, note, note*);
-void diminished_seventh_chord(note, note*);
-void minor_major_seventh_chord(note, note*);
 
 
 #define major_triad(n, res) (triad(n, n, res))
@@ -107,6 +105,8 @@ typedef struct chord {
 
 
 
+void diminished_seventh_chord(note, note*);
+void minor_major_seventh_chord(note, note*);
 void chord_suffix_to_string(enum chord_suffix, char *result, int);
 void chord_to_string(chord, char *, int);
 chord determine_triad(note*);

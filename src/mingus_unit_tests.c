@@ -213,7 +213,7 @@ test_augment()
 	{
 		result[0] = '\0';
 		n = str_to_note(cases[i]);
-		note_to_str(augment(str_to_note(cases[i])), result);
+		note_to_str(augment_note(str_to_note(cases[i])), result);
 		assert(strcmp(answers[i], result) == 0);
 	}
 	end_test();
@@ -231,7 +231,7 @@ test_diminish()
 	for (i = 0; i < 5; i++) 
 	{
 		result[0] = '\0';
-		note_to_str(diminish(str_to_note(cases[i])), result);
+		note_to_str(diminish_note(str_to_note(cases[i])), result);
 		assert( strcmp(result, answers[i]) == 0);
 	}
 	end_test();

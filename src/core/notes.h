@@ -45,8 +45,8 @@ int is_valid_note_str(char *);
 int fifths_index(char);
 int get_accidentals_value(char *);
 
-note augment(note);
-note diminish(note);
+note augment_note(note);
+note diminish_note(note);
 
 extern char note_names[];
 extern int note_values[];

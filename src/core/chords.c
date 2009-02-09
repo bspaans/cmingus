@@ -88,7 +88,7 @@ void
 augmented_triad(note on_note, note *result)
 {
 	major_triad(on_note, result);
-	result[2] = augment(result[2]);
+	result[2] = augment_note(result[2]);
 }
 
 void 
@@ -102,7 +102,7 @@ void
 diminished_seventh_chord(note on_note, note *result)
 {
 	diminished_triad(on_note, result);
-	result[3] = diminish(minor_seventh(on_note));
+	result[3] = diminish_note(minor_seventh(on_note));
 }
 
 

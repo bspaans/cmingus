@@ -40,12 +40,12 @@
 #define major_sixth(n) (sixth(n, n))
 #define major_seventh(n) (seventh(n, n))
 
-#define minor_second(n) (diminish(second(n, n)))
-#define minor_third(n) (diminish(third(n, n)))
-#define minor_fourth(n) (diminish(fourth(n, n)))
-#define minor_fifth(n) (diminish(fifth(n, n)))
-#define minor_sixth(n) (diminish(sixth(n, n)))
-#define minor_seventh(n) (diminish(seventh(n, n)))
+#define minor_second(n) (diminish_note(second(n, n)))
+#define minor_third(n) (diminish_note(third(n, n)))
+#define minor_fourth(n) (diminish_note(fourth(n, n)))
+#define minor_fifth(n) (diminish_note(fifth(n, n)))
+#define minor_sixth(n) (diminish_note(sixth(n, n)))
+#define minor_seventh(n) (diminish_note(seventh(n, n)))
 
 
 extern char * interval_names[];
