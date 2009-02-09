@@ -57,5 +57,5 @@ int Note::to_int()
 	tmp.basename = name.basename;
 	tmp.accidentals = 0;
 	int result = note_to_int(tmp);
-	return result * octave + name.accidentals;
+	return 12 * octave + result + name.accidentals;
 }

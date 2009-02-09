@@ -23,15 +23,51 @@
 */
 
 #include <iostream>
+#include <assert.h>
 #include "containers/Note.cpp"
 
+void start_test(const char *);
+void end_test(void);
 
-int main() {
-	char res[20];
-	Note n;
-	n.augment();
-	note_to_str(n.name, res);
-	cout << n.octave << '\n';
-	cout << res << '\n';
+/*	containers/Note.cpp	*/
+void test_Note_to_int(void);
+
+int testnr = 0;
+
+int 
+main() {
+	printf("==========================================================\n");
+	printf("                         CMINGUS                          \n");
+	printf("==========================================================\n");
+	printf("cmingus_containers 0.1 - Unit Tests\n");
+	printf("Copyright(C) 2009, Bart Spaans <bartspaans@gmail.com>\n");
+	printf("This program is free software and licensed under the GPLv3\n");
+	printf("Compiled on %s, %s\n", __TIME__, __DATE__);
+	printf("==========================================================\n");
+	printf("                          NOTE                            \n");
+	printf("==========================================================\n");
+	test_Note_to_int();
 	return 0;
+}
+
+void 
+start_test(const char* testname)
+{
+	cout << testnr << ". Testing " << testname << "...";
+	testnr++;
+}
+
+void 
+end_test()
+{
+	cout << "OK\n";
+}
+
+void test_Note_to_int() 
+{
+	Note n;
+
+	start_test("Note::to_int");
+	assert(n.to_int() == 48);
+	end_test();
 }
