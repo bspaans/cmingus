@@ -22,8 +22,11 @@
 
 */
 
+// Including cpp files directly..
+// don't know how to fix yet.
 #include "containers/Note.cpp"
 #include "containers/NoteContainer.cpp"
+#include "containers/Bar.cpp"
 #include <iostream>
 #include <assert.h>
 #include <stdlib.h>
@@ -42,6 +45,9 @@ void test_Note_octave_down(void);
 void test_NoteContainer_empty(void);
 void test_NoteContainer_add_note(void);
 void test_NoteContainer_add_notes(void);
+
+/*	containers/Bar.cpp	*/
+void test_Bar_empty(void);
 
 int testnr = 0;
 
@@ -69,6 +75,10 @@ main(int argc, char **charv) {
 	test_NoteContainer_empty();
 	test_NoteContainer_add_note();
 	test_NoteContainer_add_notes();
+	printf("==========================================================\n");
+	printf("                           BAR                            \n");
+	printf("==========================================================\n");
+	test_Bar_empty();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
 	printf("==========================================================\n");
@@ -182,5 +192,16 @@ test_NoteContainer_add_notes()
 
 	assert(n.notes[0].name.basename == 'E');
 	assert(n.notes[1].name.basename == 'F');
+	end_test();
+}
+
+
+void
+test_Bar_empty()
+{
+	Bar b;
+	b.empty();
+	start_test("Bar::empty");
+	assert(b.bar.size() == 0);
 	end_test();
 }
