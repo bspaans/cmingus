@@ -51,7 +51,7 @@ am_mingus_containers_OBJECTS = mingus_container_tests.$(OBJEXT)
 mingus_containers_OBJECTS = $(am_mingus_containers_OBJECTS)
 mingus_containers_DEPENDENCIES = core/libminguscore.a \
 	containers/libminguscontainers.a
-am_mingus_core_OBJECTS = mingus_unit_tests.$(OBJEXT)
+am_mingus_core_OBJECTS = mingus_core_tests.$(OBJEXT)
 mingus_core_OBJECTS = $(am_mingus_core_OBJECTS)
 mingus_core_DEPENDENCIES = core/libminguscore.a
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -160,7 +160,7 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-mingus_core_SOURCES = mingus_unit_tests.c
+mingus_core_SOURCES = mingus_core_tests.c
 mingus_containers_SOURCES = mingus_container_tests.cpp
 SUBDIRS = core containers
 mingus_core_LDADD = core/libminguscore.a 
@@ -235,7 +235,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mingus_container_tests.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mingus_unit_tests.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mingus_core_tests.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
