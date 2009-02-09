@@ -34,12 +34,28 @@ void Note::diminish()
 	name = diminish_note(name);
 }
 
-int main() {
-	char res[20];
-	Note n;
-	n.augment();
-	note_to_str(n.name, res);
-	cout << n.octave << '\n';
-	cout << res << '\n';
-	return 0;
+void Note::octave_up()
+{
+	octave++;
+}
+
+void Note::octave_down()
+{
+	octave--;
+	octave = (octave < 0) ? 0 : octave;
+}
+
+void Note::from_int(int i)
+{
+	name = int_to_note(i % 12);
+	octave = i / 12;
+}
+
+int Note::to_int() 
+{
+	note tmp;
+	tmp.basename = name.basename;
+	tmp.accidentals = 0;
+	int result = note_to_int(tmp);
+	return result * octave + name.accidentals;
 }

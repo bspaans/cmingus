@@ -1,4 +1,6 @@
-bin_PROGRAMS = mingus
-mingus_SOURCES = mingus_unit_tests.c
+bin_PROGRAMS = mingus_core mingus_containers
+mingus_core_SOURCES = mingus_unit_tests.c
+mingus_containers_SOURCES = mingus_container_tests.cpp
 SUBDIRS = core containers
-LDADD = core/libminguscore.a
+mingus_core_LDADD = core/libminguscore.a 
+mingus_containers_LDADD = core/libminguscore.a containers/libminguscontainers.a
