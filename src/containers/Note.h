@@ -6,6 +6,8 @@ class Note
 		Note();
 		Note(note);
 		Note(note, int);
+		Note(char *);
+		Note(char *, int);
 
 		/* attributes */
 		note name;
@@ -20,8 +22,6 @@ class Note
 		int to_int();
 
 		/* not implemented yet */
-		Note(char *);
-		Note(char *, int);
 		void set_note(note);
 		void set_note(note, int);
 		void set_note(char *);

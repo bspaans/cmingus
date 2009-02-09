@@ -39,6 +39,8 @@ void test_Note_octave_down(void);
 
 /*	containers/NoteContainer.cpp	*/
 void test_NoteContainer_empty(void);
+void test_NoteContainer_add_note(void);
+void test_NoteContainer_add_notes(void);
 
 int testnr = 0;
 
@@ -62,6 +64,8 @@ main() {
 	printf("                      NOTECONTAINER                       \n");
 	printf("==========================================================\n");
 	test_NoteContainer_empty();
+	test_NoteContainer_add_note();
+	test_NoteContainer_add_notes();
 	return 0;
 }
 
@@ -113,6 +117,7 @@ test_Note_octave_up()
 	end_test();
 }
 
+
 void 
 test_Note_octave_down() 
 {
@@ -124,6 +129,7 @@ test_Note_octave_down()
 	end_test();
 }
 
+
 void
 test_NoteContainer_empty()
 {
@@ -132,5 +138,43 @@ test_NoteContainer_empty()
 	n.empty();
 	start_test("NoteContainer::empty");
 	assert(n.notes.size() == 0);
+	end_test();
+}
+
+
+void 
+test_NoteContainer_add_note()
+{
+	NoteContainer n;
+
+	n.add_note((char *)"C");
+	n.add_note((char *)"E", 7);
+	n.add_note((char *)"G", 6);
+
+	
+	start_test("NoteContainer::add_note");
+	assert(n.notes[0].name.basename == 'C');
+	assert(n.notes[1].name.basename == 'E');
+	assert(n.notes[2].name.basename == 'G');
+	assert(n.notes[0].octave == 4);
+	assert(n.notes[1].octave == 7);
+	assert(n.notes[2].octave == 6);
+	end_test();
+}
+
+
+void 
+test_NoteContainer_add_notes()
+{
+	NoteContainer n;
+	vector<Note> vn;
+	vn.push_back(Note((char *) "E"));
+	vn.push_back(Note((char *) "F"));
+	n.add_notes(vn);
+	
+	start_test("NoteContainer::add_notes");
+
+	assert(n.notes[0].name.basename == 'E');
+	assert(n.notes[1].name.basename == 'F');
 	end_test();
 }

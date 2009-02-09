@@ -17,10 +17,23 @@ Note::Note(note n)
 }
 
 
-Note::Note(note n, int octave) 
+Note::Note(note n, int o) 
 {
-	octave = octave;
+	octave = o;
 	name = n;
+}
+
+Note::Note(char *n)
+{
+	name = NOTE(n);
+	octave = 4;
+}
+
+
+Note::Note(char *n, int o)
+{
+	name = NOTE(n);
+	octave = o;
 }
 
 
