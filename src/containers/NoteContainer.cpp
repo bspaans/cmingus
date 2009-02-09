@@ -49,7 +49,7 @@ NoteContainer::add_notes(std::vector<Note> n)
 {
 	std::vector<Note>::iterator iter1 = n.begin();
 	while (iter1 != n.end()) {
-		notes.push_back( *iter1 );
+		add_note( *iter1 );
 		iter1++;
 	}
 }

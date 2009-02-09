@@ -92,8 +92,8 @@ int testnr = 0;
 int 
 main() 
 {
-	printf("==========================================================\n");
-	printf("                         CMINGUS                          \n");
+	printf("==========================================================\n\n");
+	printf("                       CMINGUS.CORE                       \n\n");
 	printf("==========================================================\n");
 	printf("cmingus_core 0.2 - Unit Tests\n");
 	printf("Copyright(C) 2009, Bart Spaans <bartspaans@gmail.com>\n");
@@ -156,7 +156,7 @@ main()
 	test_determine_triad();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
-	printf("==========================================================\n");
+	printf("==========================================================\n\n");
 	return testnr;
 }
 

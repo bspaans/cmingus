@@ -26,6 +26,7 @@
 #include "containers/NoteContainer.cpp"
 #include <iostream>
 #include <assert.h>
+#include <stdlib.h>
 using namespace std;
 
 void start_test(const char *);
@@ -45,9 +46,11 @@ void test_NoteContainer_add_notes(void);
 int testnr = 0;
 
 int 
-main() {
-	printf("==========================================================\n");
-	printf("                         CMINGUS                          \n");
+main(int argc, char **charv) {
+	if (argc == 2)
+		testnr = atoi(charv[1]);
+	printf("==========================================================\n\n");
+	printf("                    CMINGUS.CONTAINERS                    \n\n");
 	printf("==========================================================\n");
 	printf("cmingus_containers 0.1 - Unit Tests\n");
 	printf("Copyright(C) 2009, Bart Spaans <bartspaans@gmail.com>\n");
@@ -66,7 +69,10 @@ main() {
 	test_NoteContainer_empty();
 	test_NoteContainer_add_note();
 	test_NoteContainer_add_notes();
-	return 0;
+	printf("==========================================================\n");
+	printf("  Succesfully completed %d tests.\n", testnr);
+	printf("==========================================================\n");
+	return testnr;
 }
 
 void 
