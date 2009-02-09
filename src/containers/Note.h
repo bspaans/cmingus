@@ -7,6 +7,7 @@ class Note
 		Note(note, int);
 		Note(char *);
 		Note(char *, int);
+		bool operator==(Note);
 
 		/* attributes */
 		note name;

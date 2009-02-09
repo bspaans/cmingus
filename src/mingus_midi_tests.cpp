@@ -119,9 +119,9 @@ void
 test_FluidSynth_play_NoteContainer()
 {
 	NoteContainer n;
-	n.add_note("A");
-	n.add_note("C");
-	n.add_note("F");
+	n.add_note((char *)"A");
+	n.add_note((char *)"C");
+	n.add_note((char *)"F");
 	start_test("play_NoteContainer");
 	synth.play_NoteContainer(n, 1, 100);
 	delay(1000);

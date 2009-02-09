@@ -16,8 +16,6 @@ class NoteContainer
 		void add_note(char *, int);
 		void add_notes(std::vector<Note>);
 		void empty(void);
-
-		/* not implemented yet */
 		void augment(void);
 		void diminish(void);
 };

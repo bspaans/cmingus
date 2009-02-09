@@ -38,12 +38,16 @@ void test_Note_to_int(void);
 void test_Note_from_int(void);
 void test_Note_octave_up(void);
 void test_Note_octave_down(void);
+void test_Note_augment(void);
+void test_Note_diminish(void);
 
 
 /*	containers/NoteContainer.cpp	*/
 void test_NoteContainer_empty(void);
 void test_NoteContainer_add_note(void);
 void test_NoteContainer_add_notes(void);
+void test_NoteContainer_augment(void);
+void test_NoteContainer_diminish(void);
 
 
 /*	containers/Bar.cpp	*/
@@ -72,12 +76,16 @@ main(int argc, char **charv) {
 	test_Note_from_int();
 	test_Note_octave_up();
 	test_Note_octave_down();
+	test_Note_augment();
+	test_Note_diminish();
 	printf("==========================================================\n");
 	printf("                      NOTECONTAINER                       \n");
 	printf("==========================================================\n");
 	test_NoteContainer_empty();
 	test_NoteContainer_add_note();
 	test_NoteContainer_add_notes();
+	test_NoteContainer_augment();
+	test_NoteContainer_diminish();
 	printf("==========================================================\n");
 	printf("                           BAR                            \n");
 	printf("==========================================================\n");
@@ -152,6 +160,30 @@ test_Note_octave_down()
 }
 
 
+void 
+test_Note_augment() 
+{
+	Note n;
+	n.augment();
+
+	start_test("Note::augment");
+	assert(n.to_int() == 49);
+	end_test();
+}
+
+
+void 
+test_Note_diminish() 
+{
+	Note n;
+	n.diminish();
+
+	start_test("Note::diminish");
+	assert(n.to_int() == 47);
+	end_test();
+}
+
+
 void
 test_NoteContainer_empty()
 {
@@ -179,12 +211,9 @@ test_NoteContainer_add_note()
 
 	
 	start_test("NoteContainer::add_note");
-	assert(n.notes[0].name.basename == 'C');
-	assert(n.notes[1].name.basename == 'E');
-	assert(n.notes[2].name.basename == 'G');
-	assert(n.notes[0].octave == 4);
-	assert(n.notes[1].octave == 7);
-	assert(n.notes[2].octave == 6);
+	assert(n.notes[0] == Note((char *)"C", 4));
+	assert(n.notes[1] == Note((char *) "E", 7));
+	assert(n.notes[2] == Note((char *) "G", 6));
 	end_test();
 }
 
@@ -200,8 +229,36 @@ test_NoteContainer_add_notes()
 	
 	start_test("NoteContainer::add_notes");
 
-	assert(n.notes[0].name.basename == 'E');
-	assert(n.notes[1].name.basename == 'F');
+	assert(n.notes[0] == Note((char *)"E"));
+	assert(n.notes[1] == Note((char *) "F"));
+	end_test();
+}
+
+
+void
+test_NoteContainer_augment()
+{
+	NoteContainer n;
+	n.add_note((char *)"C");
+	n.add_note((char *)"E");
+	n.augment();
+	start_test("NoteContainer::augment");
+	assert(n.notes[0] == Note((char *)"C#"));
+	assert(n.notes[1] == Note((char *)"E#"));
+	end_test();
+}
+
+
+void
+test_NoteContainer_diminish()
+{
+	NoteContainer n;
+	n.add_note((char *)"C");
+	n.add_note((char *)"E");
+	n.diminish();
+	start_test("NoteContainer::diminish");
+	assert(n.notes[0] == Note("Cb"));
+	assert(n.notes[1] == Note("Eb"));
 	end_test();
 }
 

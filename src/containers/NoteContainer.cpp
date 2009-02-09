@@ -53,8 +53,27 @@ NoteContainer::add_notes(std::vector<Note> n)
 	}
 }
 
+
 void
 NoteContainer::empty() 
 {
 	notes.clear();
+}
+
+
+void
+NoteContainer::augment()
+{
+	std::vector<Note>::iterator iter1 = notes.begin();
+	while (iter1 != notes.end()) 
+		(*iter1++).augment();
+}
+
+
+void
+NoteContainer::diminish()
+{
+	std::vector<Note>::iterator iter1 = notes.begin();
+	while (iter1 != notes.end()) 
+		(*iter1++).diminish();
 }

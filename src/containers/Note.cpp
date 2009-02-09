@@ -79,3 +79,12 @@ Note::to_int()
 	tmp.accidentals = 0;
 	return 12 * octave + note_to_int(tmp) + name.accidentals;
 }
+
+
+bool
+Note::operator==(Note other)
+{
+	return other.name.basename == name.basename &&
+		other.name.accidentals == name.accidentals &&
+		other.octave == octave;
+}
