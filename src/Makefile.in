@@ -58,7 +58,7 @@ mingus_core_DEPENDENCIES = core/libminguscore.a
 am_mingus_midi_OBJECTS = mingus_midi_tests.$(OBJEXT)
 mingus_midi_OBJECTS = $(am_mingus_midi_OBJECTS)
 mingus_midi_DEPENDENCIES = containers/libminguscontainers.a \
-	core/libminguscore.a
+	core/libminguscore.a midi/libmingusmidi.a
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -96,6 +96,7 @@ AWK = @AWK@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
+CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
 CXX = @CXX@
 CXXDEPMODE = @CXXDEPMODE@
@@ -106,7 +107,9 @@ DEPDIR = @DEPDIR@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
+EGREP = @EGREP@
 EXEEXT = @EXEEXT@
+GREP = @GREP@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
@@ -173,7 +176,7 @@ mingus_midi_SOURCES = mingus_midi_tests.cpp
 SUBDIRS = core containers midi
 mingus_core_LDADD = core/libminguscore.a 
 mingus_containers_LDADD = containers/libminguscontainers.a core/libminguscore.a
-mingus_midi_LDADD = containers/libminguscontainers.a core/libminguscore.a
+mingus_midi_LDADD = containers/libminguscontainers.a core/libminguscore.a midi/libmingusmidi.a
 all: all-recursive
 
 .SUFFIXES:

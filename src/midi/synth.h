@@ -1,6 +1,17 @@
 class Synth {
 
-	private:
+	public:
+		/* Constructors and Deconstructors */
 		Synth();
-		void fluid_init(void);
+		~Synth();
+
+		/* Methods */
+		void init(void);
+
+	private:
+		/* Attributes */
+		fluid_settings_t *settings;
+		fluid_synth_t *synth;
+		bool initialized;
+
 };
