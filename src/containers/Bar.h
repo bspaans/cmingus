@@ -9,6 +9,7 @@ class Bar
 		note key;
 		float current_beat;
 		float length;
+		// meter ; needs meter and value module
 
 		std::vector<BarEntry> bar;
 

@@ -27,6 +27,7 @@
 #include "containers/Note.cpp"
 #include "containers/NoteContainer.cpp"
 #include "containers/Bar.cpp"
+#include "containers/Track.cpp"
 #include <iostream>
 #include <assert.h>
 #include <stdlib.h>
@@ -34,6 +35,8 @@ using namespace std;
 
 void start_test(const char *);
 void end_test(void);
+int testnr = 0;
+
 
 /*	containers/Note.cpp	*/
 void test_Note_to_int(void);
@@ -41,15 +44,20 @@ void test_Note_from_int(void);
 void test_Note_octave_up(void);
 void test_Note_octave_down(void);
 
+
 /*	containers/NoteContainer.cpp	*/
 void test_NoteContainer_empty(void);
 void test_NoteContainer_add_note(void);
 void test_NoteContainer_add_notes(void);
 
+
 /*	containers/Bar.cpp	*/
 void test_Bar_empty(void);
 
-int testnr = 0;
+
+/*	containers/Track.cpp	*/
+void test_Track_empty(void);
+
 
 int 
 main(int argc, char **charv) {
@@ -79,6 +87,10 @@ main(int argc, char **charv) {
 	printf("                           BAR                            \n");
 	printf("==========================================================\n");
 	test_Bar_empty();
+	printf("==========================================================\n");
+	printf("                          TRACK                           \n");
+	printf("==========================================================\n");
+	test_Track_empty();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
 	printf("==========================================================\n");
@@ -204,4 +216,16 @@ test_Bar_empty()
 	start_test("Bar::empty");
 	assert(b.bar.size() == 0);
 	end_test();
+}
+
+
+void
+test_Track_empty()
+{
+	Track t;
+	t.empty();
+	start_test("Track::empty");
+	assert(t.bars.size() == 0);
+	end_test();
+
 }
