@@ -11,6 +11,7 @@ NoteContainer::NoteContainer(std::vector<Note> n)
 void
 NoteContainer::add_note(Note n)
 {
+	// check if note is already listed.
 	notes.push_back(n);
 }
 
@@ -18,28 +19,28 @@ NoteContainer::add_note(Note n)
 void
 NoteContainer::add_note(note n)
 {
-	notes.push_back(Note(n));
+	add_note(Note(n));
 }
 
 
 void
 NoteContainer::add_note(note n, int octave)
 {
-	notes.push_back(Note(n, octave));
+	add_note(Note(n, octave));
 }
 
 
 void
 NoteContainer::add_note(char *n)
 {
-	notes.push_back(Note(n));
+	add_note(Note(n));
 }
 
 
 void
 NoteContainer::add_note(char *n, int octave)
 {
-	notes.push_back(Note(n, octave));
+	add_note(Note(n, octave));
 }
 
 
