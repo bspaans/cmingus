@@ -156,7 +156,6 @@ main()
 	test_determine_triad();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
-	printf("==========================================================\n\n");
 	return testnr;
 }
 

@@ -157,6 +157,10 @@ void
 test_NoteContainer_empty()
 {
 	NoteContainer n;
+	vector<Note> vn;
+	vn.push_back(Note((char *) "E"));
+	vn.push_back(Note((char *) "F"));
+	n.add_notes(vn);
 
 	n.empty();
 	start_test("NoteContainer::empty");
