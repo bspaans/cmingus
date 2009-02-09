@@ -1,7 +1,4 @@
-extern "C" { 
-	#include "../core/notes.h" 
-};
-#include "Note.h"
+#include "containers.h"
 
 Note::Note() 
 {

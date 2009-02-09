@@ -1,5 +1,4 @@
-#include "BarEntry.h"
-#include "Bar.h"
+#include "containers.h"
 
 Bar::Bar()
 {

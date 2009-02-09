@@ -1,5 +1,4 @@
-#include <vector>
-#include "NoteContainer.h"
+#include "containers.h"
 
 NoteContainer::NoteContainer() { }
 NoteContainer::NoteContainer(std::vector<Note> n) 

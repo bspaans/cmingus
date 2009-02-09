@@ -48,7 +48,9 @@ AR = ar
 ARFLAGS = cru
 libminguscontainers_a_AR = $(AR) $(ARFLAGS)
 libminguscontainers_a_LIBADD =
-am_libminguscontainers_a_OBJECTS = Note.$(OBJEXT)
+am_libminguscontainers_a_OBJECTS = Note.$(OBJEXT) \
+	NoteContainer.$(OBJEXT) Bar.$(OBJEXT) BarEntry.$(OBJEXT) \
+	Track.$(OBJEXT)
 libminguscontainers_a_OBJECTS = $(am_libminguscontainers_a_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -146,7 +148,7 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 noinst_LIBRARIES = libminguscontainers.a
-libminguscontainers_a_SOURCES = Note.cpp
+libminguscontainers_a_SOURCES = Note.cpp NoteContainer.cpp Bar.cpp BarEntry.cpp Track.cpp
 LDADD = ../core/libminguscore.a
 all: all-am
 
@@ -195,7 +197,11 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Bar.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BarEntry.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Note.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/NoteContainer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Track.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
