@@ -47,7 +47,7 @@ LIBRARIES = $(noinst_LIBRARIES)
 AR = ar
 ARFLAGS = cru
 libminguscontainers_a_AR = $(AR) $(ARFLAGS)
-libminguscontainers_a_LIBADD =
+libminguscontainers_a_DEPENDENCIES = ../core/libminguscore.a
 am_libminguscontainers_a_OBJECTS = Note.$(OBJEXT) \
 	NoteContainer.$(OBJEXT) Bar.$(OBJEXT) BarEntry.$(OBJEXT) \
 	Track.$(OBJEXT)
@@ -149,7 +149,7 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 noinst_LIBRARIES = libminguscontainers.a
 libminguscontainers_a_SOURCES = Note.cpp NoteContainer.cpp Bar.cpp BarEntry.cpp Track.cpp
-LDADD = ../core/libminguscore.a
+libminguscontainers_a_LIBADD = ../core/libminguscore.a
 all: all-am
 
 .SUFFIXES:

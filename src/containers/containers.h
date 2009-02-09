@@ -1,7 +1,7 @@
-#include <vector>
 extern "C" { 
 	#include "../core/notes.h" 
 };
+#include <vector>
 #include "Note.h"
 #include "NoteContainer.h"
 #include "BarEntry.h"

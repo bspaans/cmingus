@@ -49,8 +49,8 @@ binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_mingus_containers_OBJECTS = mingus_container_tests.$(OBJEXT)
 mingus_containers_OBJECTS = $(am_mingus_containers_OBJECTS)
-mingus_containers_DEPENDENCIES = core/libminguscore.a \
-	containers/libminguscontainers.a
+mingus_containers_DEPENDENCIES = containers/libminguscontainers.a \
+	core/libminguscore.a
 am_mingus_core_OBJECTS = mingus_core_tests.$(OBJEXT)
 mingus_core_OBJECTS = $(am_mingus_core_OBJECTS)
 mingus_core_DEPENDENCIES = core/libminguscore.a
@@ -164,7 +164,7 @@ mingus_core_SOURCES = mingus_core_tests.c
 mingus_containers_SOURCES = mingus_container_tests.cpp
 SUBDIRS = core containers
 mingus_core_LDADD = core/libminguscore.a 
-mingus_containers_LDADD = core/libminguscore.a containers/libminguscontainers.a
+mingus_containers_LDADD = containers/libminguscontainers.a core/libminguscore.a
 all: all-recursive
 
 .SUFFIXES:

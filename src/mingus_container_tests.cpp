@@ -21,16 +21,11 @@
 ================================================================================
 
 */
-
-// Including cpp files directly..
-// don't know how to fix yet.
-#include "containers/Note.cpp"
-#include "containers/NoteContainer.cpp"
-#include "containers/Bar.cpp"
-#include "containers/Track.cpp"
+#include "containers/containers.h"
 #include <iostream>
 #include <assert.h>
 #include <stdlib.h>
+
 using namespace std;
 
 void start_test(const char *);
