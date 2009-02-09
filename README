@@ -35,10 +35,8 @@
     Most programs using mingus involve the FluidSynth bindings in some way.
     It would be great if we could use the API directly and also incorporate
     other programs/libraries without having to write or adjust the Python 
-    bindings. This is actually still a work in progress, since the base of 
-    mingus.core has just been laid out and mingus.containers is about to 
-    be written. All the goodies will hopefully follow after that.
- 
+    bindings. 
+
   * Fun
 
     Since the python implementation of mingus.core and mingus.containers is 
@@ -69,16 +67,19 @@
   * Test-driven (currently >40 tests)
   * Cross platform (compiling with gcc and mingw)
   * Implement from mingus.core: notes, diatonic, intervals (90% DONE) and 
-    chords (40% DONE)
+    chords (40% DONE), meter (0% DONE), value (0% DONE)
   * Implement remaining base features of mingus.core (OPTIONAL)
-  * Implement containers (probably in c++).
-  * Link fluidsynth and play a note.
+  * Implement from mingus.containers (in c++): Note (70% DONE), NoteContainer
+    (40% DONE), Bar (10% DONE), Track (5% DONE)
+  * Link fluidsynth (DONE) and play a note (NOT DONE).
 
 ================================================================================
 				    FEATURES
 ================================================================================
 
-  * Native structures for notes, intervals, chords and progressions.
+  mingus.core (in C):
+
+  * Structures for notes, intervals, chords and progressions.
   * Augment and diminish notes and convert them to and from integers.
   * Get the diatonic scale in every conceivable key.
   * Create intervals absolutely or diatonically.
@@ -88,6 +89,10 @@
     for them.
   * Recognize all the different triads; naming them in the traditional 
     convention or in a 'jazzy' shorthand.
+
+  mingus.containers (in C++):
+
+  * Datastructures for storing Notes, Chords, Bars and Tracks.
 
 ================================================================================
 				  INSTALLATION
