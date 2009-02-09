@@ -52,5 +52,3 @@ extern char note_names[];
 extern int note_values[];
 extern char fifths[];
 extern char *naive_note_list[];
-
-

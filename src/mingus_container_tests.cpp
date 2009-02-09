@@ -22,9 +22,11 @@
 
 */
 
+#include "containers/Note.cpp"
+#include "containers/NoteContainer.cpp"
 #include <iostream>
 #include <assert.h>
-#include "containers/Note.cpp"
+using namespace std;
 
 void start_test(const char *);
 void end_test(void);
@@ -34,6 +36,9 @@ void test_Note_to_int(void);
 void test_Note_from_int(void);
 void test_Note_octave_up(void);
 void test_Note_octave_down(void);
+
+/*	containers/NoteContainer.cpp	*/
+void test_NoteContainer_empty(void);
 
 int testnr = 0;
 
@@ -53,6 +58,10 @@ main() {
 	test_Note_from_int();
 	test_Note_octave_up();
 	test_Note_octave_down();
+	printf("==========================================================\n");
+	printf("                      NOTECONTAINER                       \n");
+	printf("==========================================================\n");
+	test_NoteContainer_empty();
 	return 0;
 }
 
@@ -112,5 +121,16 @@ test_Note_octave_down()
 
 	start_test("Note::octave_down");
 	assert(n.to_int() == 36);
+	end_test();
+}
+
+void
+test_NoteContainer_empty()
+{
+	NoteContainer n;
+
+	n.empty();
+	start_test("NoteContainer::empty");
+	assert(n.notes.size() == 0);
 	end_test();
 }
