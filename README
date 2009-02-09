@@ -33,9 +33,10 @@
   * Compatibility
 
     Most programs using mingus involve the FluidSynth bindings in some way.
-    It would be great if we could use the API directly and also incorporate
+    When using C and C++ we can use the API directly and also incorporate
     other programs/libraries without having to write or adjust the Python 
-    bindings. 
+    bindings. Most audio software is written in C/C++ so this should be 
+    a time saver.
 
   * Fun
 
@@ -44,7 +45,7 @@
     could easily be transfered to other languages and how much it would benefit
     from that. I also wanted some more experience with C and C++.
 
-    The result so far is a lot less Pythonic (obviously), but also 
+    The result so far is a lot less Pythonic in the core (obviously), but also 
     very much like the original version. The biggest difference is that notes, 
     intervals and chords aren't strings anymore, but structs which can be
     converted to and from strings instead. Apart from that; the API is very 
@@ -71,7 +72,7 @@
   * Implement remaining base features of mingus.core (OPTIONAL)
   * Implement from mingus.containers (in c++): Note (70% DONE), NoteContainer
     (40% DONE), Bar (10% DONE), Track (5% DONE)
-  * Link fluidsynth (DONE) and play a note (NOT DONE).
+  * Link fluidsynth and play a note (DONE).
 
 ================================================================================
 				    FEATURES
@@ -93,6 +94,10 @@
   mingus.containers (in C++):
 
   * Datastructures for storing Notes, Chords, Bars and Tracks.
+
+  mingus.midi (in C++):
+
+  * Link FluidSynth and play a Note.
 
 ================================================================================
 				  INSTALLATION
