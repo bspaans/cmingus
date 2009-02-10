@@ -1320,7 +1320,7 @@ test_is_asymmetrical_meter()
 	start_test("is_asymmetrical_meter");
 	for (i = 0; i < 4; i++) {
 		assert(is_asymmetrical_meter(right[i]));
-		assert(!is_asymetrical_meter(wrong[i]));
+		assert(!is_asymmetrical_meter(wrong[i]));
 	}
 	end_test();
 }

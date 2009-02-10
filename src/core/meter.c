@@ -21,31 +21,3 @@ valid_beat_duration(int duration)
 	}
 	return 1;
 }
-
-
-int
-is_valid_meter(meter m)
-{
-	return m[0] >= 0 && valid_beat_duration(m[1]);
-}
-
-
-int
-is_compound_meter(meter m)
-{
-	return is_valid_meter(m) && m[0] % 3 == 0;
-}
-
-
-int
-is_simple_meter(meter m)
-{
-	return is_valid_meter(m);
-}
-
-
-int 
-is_asymmetrical_meter(meter m)
-{
-	return is_valid_meter(m) && m[0] % 2 == 1;
-}
