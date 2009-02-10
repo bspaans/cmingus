@@ -104,7 +104,8 @@
 ================================================================================
 
   Installing is done using ./configure and make. See INSTALL for more 
-  information. 
+  information. You'll need the fluidsynth library (ie. libfluidsynth) to 
+  compile.
 
     $ ./configure CFLAGS="-O3" && make
 

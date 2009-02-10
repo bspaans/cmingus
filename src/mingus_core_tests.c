@@ -31,6 +31,7 @@
 #include "core/intervals.h"
 #include "core/chords.h"
 #include "core/progressions.h"
+#include "core/meter.h"
 
 /* 	core/notes.c	 	*/
 void test_get_accidentals_value(void);
@@ -83,6 +84,13 @@ void test_VII7(void);
 void test_chord_suffix_to_string(void);
 void test_chord_to_string(void);
 void test_determine_triad(void);
+
+/*	core/meter.h	*/
+void test_valid_beat_duration(void);
+void test_is_valid_meter(void);
+void test_is_compound_meter(void);
+void test_is_asymmetrical_meter(void);
+
 
 void start_test(char *);
 void end_test(void);
@@ -154,6 +162,13 @@ main()
 	test_chord_suffix_to_string();
 	test_chord_to_string();
 	test_determine_triad();
+	printf("==========================================================\n");
+	printf("                           METER                          \n");
+	printf("==========================================================\n");
+	test_valid_beat_duration();
+	test_is_valid_meter();
+	test_is_compound_meter();
+	test_is_asymmetrical_meter();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
 	return testnr;
@@ -1248,4 +1263,64 @@ test_determine_triad()
 	}
 	end_test();
 
+}
+
+
+void
+test_valid_beat_duration()
+{
+	int right[] = { 1, 2, 4,  8, 16, 32, 64, 128, 256 };
+	int wrong[] = { 0, 3, -3, 5, 7, 14, 15, 18, 212 };
+	int i;
+	start_test("valid_beat_duration");
+	for (i = 0; i < 9; i++) {
+		assert(valid_beat_duration(right[i]));
+		assert(!valid_beat_duration(wrong[i]));
+	}
+	end_test();
+}
+
+
+void
+test_is_valid_meter()
+{
+	meter right[] = { {1, 2}, {4,  8}, {16, 32}, {64, 128} };
+	meter wrong[] = { {0, 3}, {-3, 5}, {7, 14}, {15, 18} };
+	int i;
+	start_test("is_valid_meter");
+	for (i = 0; i < 4; i++) {
+		assert(is_valid_meter(right[i]));
+		assert(!is_valid_meter(wrong[i]));
+	}
+	end_test();
+}
+
+
+void
+test_is_compound_meter()
+{
+	meter right[] = { {3, 2}, {6,  8}, {9, 32}, {12, 128} };
+	meter wrong[] = { {4, 3}, {5, 4}, {8, 4}, {13, 8} };
+	int i;
+	start_test("is_compound_meter");
+	for (i = 0; i < 4; i++) {
+		assert(is_compound_meter(right[i]));
+		assert(!is_compound_meter(wrong[i]));
+	}
+	end_test();
+}
+
+
+void
+test_is_asymmetrical_meter()
+{
+	meter right[] = { {3, 2}, {7,  8}, {9, 32}, {13, 128} };
+	meter wrong[] = { {4, 3}, {6, 4}, {8, 4}, {14, 8} };
+	int i;
+	start_test("is_asymmetrical_meter");
+	for (i = 0; i < 4; i++) {
+		assert(is_asymmetrical_meter(right[i]));
+		assert(!is_asymetrical_meter(wrong[i]));
+	}
+	end_test();
 }
