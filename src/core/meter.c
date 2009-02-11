@@ -9,8 +9,6 @@ valid_beat_duration(int duration)
 	int r;
 	if (duration <= 0)
 		return 0;
-	else if (duration == 1)
-		return 1;
 
 	r = duration;
 	while (r != 1)

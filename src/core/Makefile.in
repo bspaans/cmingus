@@ -49,7 +49,8 @@ ARFLAGS = cru
 libminguscore_a_AR = $(AR) $(ARFLAGS)
 libminguscore_a_LIBADD =
 am_libminguscore_a_OBJECTS = notes.$(OBJEXT) diatonic.$(OBJEXT) \
-	chords.$(OBJEXT) intervals.$(OBJEXT) meter.$(OBJEXT)
+	chords.$(OBJEXT) intervals.$(OBJEXT) meter.$(OBJEXT) \
+	value.$(OBJEXT)
 libminguscore_a_OBJECTS = $(am_libminguscore_a_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -149,7 +150,7 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 noinst_LIBRARIES = libminguscore.a
-libminguscore_a_SOURCES = notes.c diatonic.c chords.c intervals.c meter.c
+libminguscore_a_SOURCES = notes.c diatonic.c chords.c intervals.c meter.c value.c
 all: all-am
 
 .SUFFIXES:
@@ -202,6 +203,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/intervals.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/meter.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/notes.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/value.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \

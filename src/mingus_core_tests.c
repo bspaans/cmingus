@@ -32,6 +32,7 @@
 #include "core/chords.h"
 #include "core/progressions.h"
 #include "core/meter.h"
+#include "core/value.h"
 
 /* 	core/notes.c	 	*/
 void test_get_accidentals_value(void);
@@ -91,6 +92,10 @@ void test_is_valid_meter(void);
 void test_is_compound_meter(void);
 void test_is_asymmetrical_meter(void);
 
+
+/*	core/value.h	*/
+void test_add_values(void);
+void test_subtract_values(void);
 
 void start_test(char *);
 void end_test(void);
@@ -169,6 +174,11 @@ main()
 	test_is_valid_meter();
 	test_is_compound_meter();
 	test_is_asymmetrical_meter();
+	printf("==========================================================\n");
+	printf("                           VALUE                          \n");
+	printf("==========================================================\n");
+	test_add_values();
+	test_subtract_values();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
 	return testnr;
@@ -1322,5 +1332,27 @@ test_is_asymmetrical_meter()
 		assert(is_asymmetrical_meter(right[i]));
 		assert(!is_asymmetrical_meter(wrong[i]));
 	}
+	end_test();
+}
+
+
+void
+test_add_values()
+{
+	start_test("add_values");
+	assert(add_values(8,8) == 4);
+	assert(add_values(4,4) == 2);
+	assert(add_values(2,2) == 1);
+	end_test();
+}
+
+
+void
+test_subtract_values()
+{
+	start_test("subtract_values");
+	assert(subtract_values(8, 16) == 16);
+	assert(subtract_values(4, 8) == 8);
+	assert(subtract_values(2, 4) == 4);
 	end_test();
 }
