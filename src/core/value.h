@@ -22,15 +22,15 @@
 
 typedef float value;
 typedef int ratio[2];
-typedef struct parsed_value {
+typedef struct pv {
 	value base;
 	int dots;
-	ratio tuple_ratio;
+	ratio tuplet_ratio;
 } parsed_value;
 
 value dotted_value(value, int);
 value tuplet(value, ratio);
-parsed_value determine(value);
+parsed_value determine_value(value);
 
 extern ratio r_triplet;
 extern ratio r_quintuplet;

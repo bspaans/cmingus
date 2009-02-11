@@ -100,6 +100,7 @@ void test_triplet(void);
 void test_quintuplet(void);
 void test_septuplet(void);
 void test_dotted_value(void);
+void test_determine_value(void);
 
 void start_test(char *);
 void end_test(void);
@@ -187,6 +188,7 @@ main()
 	test_quintuplet();
 	test_septuplet();
 	test_dotted_value();
+	test_determine_value();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
 	return testnr;
@@ -1408,9 +1410,38 @@ void
 test_dotted_value()
 {
 	start_test("dotted_value");
-	printf("%lf\n", dotted_value(8, 1));
 	assert(dotted_value(8, 0) == (float) (8.0));
 	assert(dotted_value(8, 1) == (float) (8.0 / 1.5));
 	assert(dotted_value(8, 2) == (float) (8.0 / 1.75));
+	end_test();
+}
+
+
+
+void
+test_determine_value()
+{
+	parsed_value res;
+	start_test("determine_value");
+	res = determine_value(12);
+	assert(res.base == 8);
+	assert(res.dots == 0);
+	assert(res.tuplet_ratio[0] == 3);
+	assert(res.tuplet_ratio[1] == 2);
+	res = determine_value(7.9);
+	assert(res.base == 8);
+	assert(res.dots == 0);
+	assert(res.tuplet_ratio[0] == 1);
+	assert(res.tuplet_ratio[1] == 1);
+	res = determine_value(dotted_value(EIGHT_NOTE, 3));
+	assert(res.base == 8);
+	assert(res.dots == 3);
+	assert(res.tuplet_ratio[0] == 1);
+	assert(res.tuplet_ratio[1] == 1);
+	res = determine_value(dotted_value(BREVE, 2));
+	assert(res.base == BREVE);
+	assert(res.dots == 2);
+	assert(res.tuplet_ratio[0] == 1);
+	assert(res.tuplet_ratio[1] == 1);
 	end_test();
 }
