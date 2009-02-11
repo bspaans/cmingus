@@ -7,9 +7,6 @@ ratio r_septuplet4 = {7, 4};
 ratio r_septuplet8 = {7, 8};
 
 value base_values[]      = {   0.25, 0.5, 1, 2, 4,8,16,32,64,128};
-value base_quintuplets[] = { 0.3125, 0.625, 1.25, 2.5, 5, 10, 20, 40, 80, 160};
-value base_triplets[] = { 0.375, 0.75, 1.5, 3,6, 12, 24, 48, 96,192};
-value base_septuplets[] = { 0.4375, 0.875, 1.75, 3.5, 7, 14,28,56,112,224};
 
 value
 tuplet(value v, ratio r)

@@ -67,8 +67,8 @@
 
   * Test-driven (currently >40 tests)
   * Cross platform (compiling with gcc and mingw)
-  * Implement from mingus.core: notes, diatonic, intervals (90% DONE) and 
-    chords (40% DONE), meter (0% DONE), value (0% DONE)
+  * Implement from mingus.core: notes, diatonic, intervals (90% DONE), meter 
+    value, chords (40% DONE) and progressions (0% DONE)
   * Implement remaining base features of mingus.core (OPTIONAL)
   * Implement from mingus.containers (in c++): Note (70% DONE), NoteContainer
     (40% DONE), Bar (10% DONE), Track (5% DONE)

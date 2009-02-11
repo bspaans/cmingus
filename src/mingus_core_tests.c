@@ -26,13 +26,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
-#include "core/notes.h"
-#include "core/diatonic.h"
-#include "core/intervals.h"
-#include "core/chords.h"
-#include "core/progressions.h"
-#include "core/meter.h"
-#include "core/value.h"
+#include "core/core.h"
 
 /* 	core/notes.c	 	*/
 void test_get_accidentals_value(void);

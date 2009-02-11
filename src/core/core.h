@@ -1,0 +1,7 @@
+#include "core/notes.h"
+#include "core/diatonic.h"
+#include "core/intervals.h"
+#include "core/chords.h"
+#include "core/progressions.h"
+#include "core/meter.h"
+#include "core/value.h"
