@@ -19,6 +19,7 @@
 #define SIXTY_FOURTH_NOTE 64
 #define HUNDRED_TWENTY_EIGHT_NOTE 128
 
+
 typedef float value;
 typedef int ratio[2];
 typedef struct parsed_value {
@@ -27,14 +28,19 @@ typedef struct parsed_value {
 	ratio tuple_ratio;
 } parsed_value;
 
-value dots(value, int);
+value dotted_value(value, int);
+value tuplet(value, ratio);
 parsed_value determine(value);
+
+extern ratio r_triplet;
+extern ratio r_quintuplet;
+extern ratio r_septuplet4;
+extern ratio r_septuplet8;
 
 #define add_values(value1, value2) (1 / (1.0 / value1 + 1.0 / value2))
 #define subtract_values(value1, value2) (1 / (1.0 / value1 - 1.0 / value2))
-#define tuplet(v, ratio) (rat[0] * v / rat[1])
-#define triplet(v) (tuplet(v, {3, 2}))
-#define quintuplet(v) (tuplet(v, {5, 4}))
-#define septuplet(v, in_sevenths) ((in_sevenths) ? \
-		(tuplet(v, {7,8})) \
-		: tuplet(v, {7, 4})
+#define triplet(v) (tuplet(v, r_triplet))
+#define quintuplet(v) (tuplet(v, r_quintuplet))
+#define septuplet(v, in_fourths) ((in_fourths) ? \
+		(tuplet(v, r_septuplet4)) \
+		: tuplet(v,r_septuplet8))

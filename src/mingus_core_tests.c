@@ -96,6 +96,10 @@ void test_is_asymmetrical_meter(void);
 /*	core/value.h	*/
 void test_add_values(void);
 void test_subtract_values(void);
+void test_triplet(void);
+void test_quintuplet(void);
+void test_septuplet(void);
+void test_dotted_value(void);
 
 void start_test(char *);
 void end_test(void);
@@ -179,6 +183,10 @@ main()
 	printf("==========================================================\n");
 	test_add_values();
 	test_subtract_values();
+	test_triplet();
+	test_quintuplet();
+	test_septuplet();
+	test_dotted_value();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
 	return testnr;
@@ -1354,5 +1362,54 @@ test_subtract_values()
 	assert(subtract_values(8, 16) == 16);
 	assert(subtract_values(4, 8) == 8);
 	assert(subtract_values(2, 4) == 4);
+	end_test();
+}
+
+
+void
+test_triplet()
+{
+	start_test("triplet");
+	assert(triplet(1) == 1.5);
+	assert(triplet(2) == 3);
+	assert(triplet(4) == 6);
+	assert(triplet(8) == 12);
+	assert(triplet(16) == 24);
+	end_test();
+}
+
+
+void
+test_quintuplet()
+{
+	start_test("quintuplet");
+	assert(quintuplet(1) == 1.25);
+	assert(quintuplet(2) == 2.5);
+	assert(quintuplet(4) == 5);
+	assert(quintuplet(8) == 10);
+	assert(quintuplet(16) == 20);
+	assert(quintuplet(32) == 40);
+	assert(quintuplet(64) == 80);
+	end_test();
+}
+
+
+void
+test_septuplet()
+{
+	start_test("septuplet");
+	assert(septuplet(8, 1) == 14);
+	assert(septuplet(8, 0) == 7);
+	end_test();
+}
+
+
+void
+test_dotted_value()
+{
+	start_test("dotted_value");
+	assert(dotted_value(8, 0) == (float) (8.0));
+	assert(dotted_value(8, 1) == (float) (8.0 / 1.5));
+	assert(dotted_value(8, 2) == (float) (8.0 / 1.75));
 	end_test();
 }
