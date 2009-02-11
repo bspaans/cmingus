@@ -425,7 +425,7 @@ test_second()
 	start_test("second");
 	for (i = 0; i < 5; i ++)
 	{
-		note_to_str(second(NOTE(notes[i]), NOTE("C")), result);
+		note_to_str(interval_second(NOTE(notes[i]), NOTE("C")), result);
 		assert(strcmp(result, answers[i]) == 0);
 	}
 	end_test();
@@ -446,7 +446,7 @@ test_third()
 	start_test("third");
 	for (i = 0; i < 5; i ++)
 	{
-		note_to_str(third(NOTE(notes[i]), NOTE("C")), result);
+		note_to_str(interval_third(NOTE(notes[i]), NOTE("C")), result);
 		assert(strcmp(result, answers[i]) == 0);
 	}
 	end_test();
@@ -467,7 +467,7 @@ test_fifth()
 	start_test("fifth");
 	for (i = 0; i < 6; i ++)
 	{
-		note_to_str(fifth(NOTE(notes[i]), NOTE("C")), result);
+		note_to_str(interval_fifth(NOTE(notes[i]), NOTE("C")), result);
 		assert(strcmp(result, answers[i]) == 0);
 	}
 	end_test();
@@ -488,7 +488,7 @@ test_major_second()
 	start_test("major_second");
 	for (i = 0; i < 5; i ++)
 	{
-		note_to_str(major_second(NOTE(notes[i])), result);
+		note_to_str(interval_major_second(NOTE(notes[i])), result);
 		assert(strcmp(result, answers[i]) == 0);
 	}
 	end_test();
@@ -509,7 +509,7 @@ test_perfect_fourth()
 	start_test("perfect_fourth");
 	for (i = 0; i < 7; i ++)
 	{
-		note_to_str(perfect_fourth(NOTE(notes[i])), result);
+		note_to_str(interval_perfect_fourth(NOTE(notes[i])), result);
 		assert(strcmp(result, answers[i]) == 0);
 	}
 	end_test();
@@ -530,7 +530,7 @@ test_minor_sixth()
 	start_test("minor_sixth");
 	for (i = 0; i < 5; i ++)
 	{
-		note_to_str(minor_sixth(NOTE(notes[i])), result);
+		note_to_str(interval_minor_sixth(NOTE(notes[i])), result);
 		assert(strcmp(result, answers[i]) == 0);
 	}
 	end_test();
@@ -549,7 +549,7 @@ test_minor_seventh()
 	start_test("minor_seventh");
 	for (i = 0; i < 5; i ++)
 	{
-		note_to_str(minor_seventh(NOTE(notes[i])), result);
+		note_to_str(interval_minor_seventh(NOTE(notes[i])), result);
 		assert(strcmp(result, answers[i]) == 0);
 	}
 	end_test();
@@ -724,7 +724,7 @@ test_II()
 		tri[0] = NOTE(result[i][0]);
 		tri[1] = NOTE(result[i][1]);
 		tri[2] = NOTE(result[i][2]);
-		II(minor_seventh(NOTE(result[i][0])), res);
+		II(interval_minor_seventh(NOTE(result[i][0])), res);
 		assert(equal_notes(res, tri, 3));
 	}
 	end_test();
@@ -753,7 +753,7 @@ test_III()
 		tri[0] = NOTE(result[i][0]);
 		tri[1] = NOTE(result[i][1]);
 		tri[2] = NOTE(result[i][2]);
-		III(minor_sixth(NOTE(result[i][0])), res);
+		III(interval_minor_sixth(NOTE(result[i][0])), res);
 		assert(equal_notes(res, tri, 3));
 	}
 	end_test();
@@ -782,7 +782,7 @@ test_IV()
 		tri[0] = NOTE(result[i][0]);
 		tri[1] = NOTE(result[i][1]);
 		tri[2] = NOTE(result[i][2]);
-		IV(perfect_fifth(NOTE(result[i][0])), res);
+		IV(interval_perfect_fifth(NOTE(result[i][0])), res);
 		assert(equal_notes(res, tri, 3));
 	}
 	end_test();
@@ -810,7 +810,7 @@ test_V()
 		tri[0] = NOTE(result[i][0]);
 		tri[1] = NOTE(result[i][1]);
 		tri[2] = NOTE(result[i][2]);
-		V(perfect_fourth(NOTE(result[i][0])), res);
+		V(interval_perfect_fourth(NOTE(result[i][0])), res);
 		assert(equal_notes(res, tri, 3));
 	}
 	end_test();
@@ -838,7 +838,7 @@ test_VI()
 		tri[0] = NOTE(result[i][0]);
 		tri[1] = NOTE(result[i][1]);
 		tri[2] = NOTE(result[i][2]);
-		VI(minor_third(NOTE(result[i][0])), res);
+		VI(interval_minor_third(NOTE(result[i][0])), res);
 		assert(equal_notes(res, tri, 3));
 	}
 	end_test();
@@ -866,7 +866,7 @@ test_VII()
 		tri[0] = NOTE(result[i][0]);
 		tri[1] = NOTE(result[i][1]);
 		tri[2] = NOTE(result[i][2]);
-		VII(minor_second(NOTE(result[i][0])), res);
+		VII(interval_minor_second(NOTE(result[i][0])), res);
 		assert(equal_notes(res, tri, 3));
 	}
 	end_test();
@@ -1133,7 +1133,7 @@ test_II7()
 		sev[1] = NOTE(result[i][1]);
 		sev[2] = NOTE(result[i][2]);
 		sev[3] = NOTE(result[i][3]);
-		II7(minor_seventh(NOTE(result[i][0])), res);
+		II7(interval_minor_seventh(NOTE(result[i][0])), res);
 		assert(equal_notes(res, sev, 4));
 	}
 	end_test();
@@ -1163,7 +1163,7 @@ test_V7()
 		sev[1] = NOTE(result[i][1]);
 		sev[2] = NOTE(result[i][2]);
 		sev[3] = NOTE(result[i][3]);
-		V7(perfect_fourth(NOTE(result[i][0])), res);
+		V7(interval_perfect_fourth(NOTE(result[i][0])), res);
 		assert(equal_notes(res, sev, 4));
 	}
 	end_test();
@@ -1193,7 +1193,7 @@ test_VII7()
 		sev[1] = NOTE(result[i][1]);
 		sev[2] = NOTE(result[i][2]);
 		sev[3] = NOTE(result[i][3]);
-		VII7(minor_second(NOTE(result[i][0])), res);
+		VII7(interval_minor_second(NOTE(result[i][0])), res);
 		assert(equal_notes(res, sev, 4));
 	}
 	end_test();

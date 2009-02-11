@@ -1,5 +1,5 @@
 extern "C" { 
-	#include "../core/notes.h" 
+	#include "../core/core.h" 
 };
 #include <vector>
 #include "Note.h"

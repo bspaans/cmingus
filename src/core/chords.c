@@ -80,8 +80,8 @@ void
 triad(note on_note, note key, note *result)
 {
 	result[0] = on_note;
-	result[1] = third(on_note, key);
-	result[2] = fifth(on_note, key);
+	result[1] = interval_third(on_note, key);
+	result[2] = interval_fifth(on_note, key);
 }
 
 void 
@@ -95,14 +95,14 @@ void
 seventh_chord(note on_note, note key, note *result)
 {
 	triad(on_note, key, result);
-	result[3] = seventh(on_note, key);
+	result[3] = interval_seventh(on_note, key);
 }
 
 void
 diminished_seventh_chord(note on_note, note *result)
 {
 	diminished_triad(on_note, result);
-	result[3] = diminish_note(minor_seventh(on_note));
+	result[3] = diminish_note(interval_minor_seventh(on_note));
 }
 
 
@@ -110,7 +110,7 @@ void
 minor_major_seventh_chord(note on_note, note *result)
 {
 	minor_triad(on_note, result);
-	result[3] = major_seventh(on_note);
+	result[3] = interval_major_seventh(on_note);
 
 }
 
