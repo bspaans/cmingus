@@ -52,6 +52,8 @@ void test_NoteContainer_diminish(void);
 
 /*	containers/Bar.cpp	*/
 void test_Bar_empty(void);
+void test_Bar_set_meter(void);
+void test_Bar_place_notes(void);
 
 
 /*	containers/Track.cpp	*/
@@ -90,6 +92,8 @@ main(int argc, char **charv) {
 	printf("                           BAR                            \n");
 	printf("==========================================================\n");
 	test_Bar_empty();
+	test_Bar_set_meter();
+	test_Bar_place_notes();
 	printf("==========================================================\n");
 	printf("                          TRACK                           \n");
 	printf("==========================================================\n");
@@ -270,6 +274,35 @@ test_Bar_empty()
 	b.empty();
 	start_test("Bar::empty");
 	assert(b.bar.size() == 0);
+	end_test();
+}
+
+
+void
+test_Bar_set_meter()
+{
+	Bar b(NOTE((char *)"C"), cut_time);
+	meter res;
+
+	start_test("Bar::set_meter");
+	b.get_meter(res);
+	assert(res[0] == 2);
+	assert(res[1] == 2);
+	end_test();
+}
+
+
+void
+test_Bar_place_notes()
+{
+	Bar b;
+
+	start_test("Bar::place_notes");
+	assert(b.place_notes(NoteContainer(), 4));
+	assert(b.place_notes(NoteContainer(), 4));
+	assert(b.place_notes(NoteContainer(), 4));
+	assert(b.place_notes(NoteContainer(), 4));
+	assert(!b.place_notes(NoteContainer(), 4));
 	end_test();
 }
 

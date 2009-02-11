@@ -1,7 +1,7 @@
 #include "meter.h"
 
-meter common_time = {4, 4};
-meter cut_time = {2, 2};
+int common_time[2] = {4, 4};
+int cut_time[2] = {2, 2};
 	
 int 
 valid_beat_duration(int duration)
