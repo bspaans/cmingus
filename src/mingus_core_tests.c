@@ -1408,6 +1408,7 @@ void
 test_dotted_value()
 {
 	start_test("dotted_value");
+	printf("%lf\n", dotted_value(8, 1));
 	assert(dotted_value(8, 0) == (float) (8.0));
 	assert(dotted_value(8, 1) == (float) (8.0 / 1.5));
 	assert(dotted_value(8, 2) == (float) (8.0 / 1.75));

@@ -16,13 +16,8 @@ tuplet(value v, ratio r)
 value 
 dotted_value(value v, int nr_of_dots)
 {
-	value d = 0.0;
-	while (nr_of_dots >= 0)
-	{
-		d += 1.0 / (pow(2, nr_of_dots));
-		nr_of_dots--;
-	}
-	return v / d;
+	// We need the (nr_of_dots + 1) element in the geometric series with common ratio 0.5
+	return 0.5 * v / (1.0 - (float) pow(0.5, nr_of_dots + 1));
 }
 
 
