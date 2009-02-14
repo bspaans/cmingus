@@ -37,17 +37,6 @@ void test_FluidSynth_init(void);
 void test_FluidSynth_play_Note(void);
 void test_FluidSynth_play_NoteContainer(void);
 
-#include <time.h>
-#define MILLISEC 1000
-
-void delay(clock_t lMillisec)
-{
-	clock_t finish;
-	finish = clock() + ((double) (lMillisec / MILLISEC) * CLOCKS_PER_SEC);
-	while (finish > clock())
-		;
-}
-
 
 int 
 main(int argc, char **charv) {
@@ -108,7 +97,7 @@ test_FluidSynth_play_Note()
 	synth.play_Note(n, 1, 100);
 	synth.play_Note(n2, 2, 100);
 	synth.play_Note(n, 0, 100);
-	delay(1000);
+	synth.sleep(250);
 	synth.stop_Note(n, 1);
 	synth.stop_Note(n2, 2);
 	synth.stop_Note(n, 0);
@@ -124,7 +113,7 @@ test_FluidSynth_play_NoteContainer()
 	n.add_note((char *)"F");
 	start_test("play_NoteContainer");
 	synth.play_NoteContainer(n, 1, 100);
-	delay(1000);
+	synth.sleep(250);
 	synth.stop_NoteContainer(n, 1);
 	end_test();
 }

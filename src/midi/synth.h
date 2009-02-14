@@ -11,6 +11,7 @@ class Synth {
 		void init(char *, char *);
 		void start(char *);
 		void load_soundfont(char *);
+		void sleep(int milliseconds);
 		void play_Note(Note, int, int);
 		void stop_Note(Note, int);
 		void play_NoteContainer(NoteContainer, int, int);

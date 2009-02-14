@@ -1,6 +1,13 @@
 #include "midi.h"
 #include <string.h>
 
+#include "../../config.h"
+#if !HAVE_WINDOWS_H
+#include <unistd.h>
+#else
+#include <windows.h>
+#endif
+
 Synth::Synth()
 {
 	driver = (char *) "";
@@ -77,6 +84,16 @@ Synth::load_soundfont(char *filename)
 	fluid_synth_program_reset(synth);
 }
 
+
+void
+Synth::sleep(int milliseconds)
+{
+#if !HAVE_WINDOWS_H
+	usleep(milliseconds * 1000);
+#else
+	Sleep(milliseconds);
+#endif 
+}
 
 void
 Synth::play_Note(Note n, int channel, int velocity)
