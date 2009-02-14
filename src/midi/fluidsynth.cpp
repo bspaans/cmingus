@@ -1,5 +1,6 @@
 #include "midi.h"
 #include <string.h>
+#include <iostream>
 
 #include "../../config.h"
 #if !HAVE_WINDOWS_H
@@ -95,22 +96,23 @@ Synth::sleep(int milliseconds)
 #endif 
 }
 
+
 void
-Synth::play_Note(Note n, int channel, int velocity)
+Synth::play_Note(Note n, int channel = 1, int velocity = 100)
 {
 	fluid_synth_noteon(synth, channel, n.to_int() + 12, velocity);
 }
 
 
 void
-Synth::stop_Note(Note n, int channel)
+Synth::stop_Note(Note n, int channel = 1)
 {
 	fluid_synth_noteoff(synth, channel, n.to_int() + 12);
 }
 
 
 void
-Synth::play_NoteContainer(NoteContainer n, int channel, int velocity)
+Synth::play_NoteContainer(NoteContainer n, int channel = 1, int velocity = 100)
 {
 	std::vector<Note>::iterator iter = n.notes.begin();
 	while ( iter < n.notes.end() )
@@ -126,6 +128,23 @@ Synth::stop_NoteContainer(NoteContainer n, int channel)
 		stop_Note(*iter++, channel);
 }
 
+
+float
+Synth::play_Bar(Bar b, int channel = 1, float bpm = 120)
+{
+	float qn_length = 60000.0 / bpm;
+	std::vector<BarEntry>::iterator iter = b.bar.begin();
+
+	while ( iter < b.bar.end() )
+	{
+		play_NoteContainer( (*iter).notes, channel );
+		sleep ( (int) qn_length * 4.0 / (*iter).value);
+		stop_NoteContainer( (*iter).notes, channel );
+		*iter++;
+	}
+
+	return bpm;
+}
 
 void
 Synth::set_instrument(int channel, int instr)
