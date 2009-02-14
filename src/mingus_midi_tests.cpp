@@ -37,6 +37,7 @@ void test_FluidSynth_init(void);
 void test_FluidSynth_play_Note(void);
 void test_FluidSynth_play_NoteContainer(void);
 void test_FluidSynth_play_Bar(void);
+void test_FluidSynth_play_Track(void);
 
 
 int 
@@ -57,6 +58,7 @@ main(int argc, char **charv) {
 	test_FluidSynth_play_Note();
 	test_FluidSynth_play_NoteContainer();
 	test_FluidSynth_play_Bar();
+	test_FluidSynth_play_Track();
 	printf("==========================================================\n");
 	printf("  Succesfully completed %d tests.\n", testnr);
 	printf("==========================================================\n");
@@ -134,5 +136,25 @@ test_FluidSynth_play_Bar()
 	b.place_notes(n, 2);
 	start_test("play_Bar");
 	synth.play_Bar(b, 1, 120);
+	end_test();
+}
+
+
+void
+test_FluidSynth_play_Track()
+{
+	Track t;
+	Bar b;
+	NoteContainer n;
+	n.add_note((char *)"A");
+	n.add_note((char *)"C");
+	n.add_note((char *)"E");
+	b.place_notes(n, 8);
+	b.place_notes(n, 4);
+	b.place_notes(n, add_values(2, 8));
+	t.add_bar(&b);
+	t.add_bar(&b);
+	start_test("play_Track");
+	synth.play_Track(t, 1, 120);
 	end_test();
 }

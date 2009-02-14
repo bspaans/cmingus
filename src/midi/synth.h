@@ -17,6 +17,7 @@ class Synth {
 		void play_NoteContainer(NoteContainer, int, int);
 		void stop_NoteContainer(NoteContainer, int);
 		float play_Bar(Bar, int, float);
+		void play_Track(Track, int, float);
 		void set_instrument(int channel, int instr);
 		void set_instrument(int channel, int instr, int bank);
 

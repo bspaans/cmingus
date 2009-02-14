@@ -146,6 +146,18 @@ Synth::play_Bar(Bar b, int channel = 1, float bpm = 120)
 	return bpm;
 }
 
+
+void
+Synth::play_Track(Track t, int channel = 1, float bpm = 120)
+{
+	std::vector<Bar *>::iterator iter = t.bars.begin();
+	while ( iter < t.bars.end()) 
+	{
+		bpm = play_Bar( (**iter), channel, bpm );
+		*iter++;
+	}
+}
+
 void
 Synth::set_instrument(int channel, int instr)
 {
