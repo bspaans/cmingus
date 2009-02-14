@@ -12,6 +12,7 @@ AC_CONFIG_FILES([
  src/core/Makefile
  src/containers/Makefile
  src/midi/Makefile
+ programs/Makefile
 ])
 AC_PROG_RANLIB
 AC_OUTPUT
