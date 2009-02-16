@@ -60,6 +60,10 @@ CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 CXXLD = $(CXX)
 CXXLINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
 	-o $@
+COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+CCLD = $(CC)
+LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 SOURCES = $(libminguscontainers_a_SOURCES)
 DIST_SOURCES = $(libminguscontainers_a_SOURCES)
 ETAGS = etags
@@ -151,7 +155,7 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 noinst_LIBRARIES = libminguscontainers.a
-libminguscontainers_a_SOURCES = Note.cpp NoteContainer.cpp Bar.cpp BarEntry.cpp Track.cpp
+libminguscontainers_a_SOURCES = Note.cpp NoteContainer.cpp Bar.cpp BarEntry.cpp Track.cpp Note.h NoteContainer.h Bar.h BarEntry.h Track.h containers.h
 libminguscontainers_a_LIBADD = ../core/libminguscore.a
 all: all-am
 
