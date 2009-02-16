@@ -12,4 +12,4 @@ lib_LTLIBRARIES = libmingus.la
 libmingus_la_SOURCES = 
 libmingus_la_LIBADD = midi/libmingusmidi.la
 
-include_HEADERS = core/notes.h core/diatonic.h core/chords.h core/intervals.h core/meter.h core/value.h core/core.h core/progressions.h containers/Note.h containers/NoteContainer.h containers/Bar.h containers/BarEntry.h containers/Track.h containers/containers.h midi/midi.h midi/synth.h
+nobase_include_HEADERS = core/notes.h core/diatonic.h core/chords.h core/intervals.h core/meter.h core/value.h core/core.h core/progressions.h containers/Note.h containers/NoteContainer.h containers/Bar.h containers/BarEntry.h containers/Track.h containers/containers.h midi/midi.h midi/synth.h
