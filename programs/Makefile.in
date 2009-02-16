@@ -51,13 +51,13 @@ binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_interval_OBJECTS = interval.$(OBJEXT)
 interval_OBJECTS = $(am_interval_OBJECTS)
-interval_DEPENDENCIES = ../src/core/libminguscore.a
+interval_DEPENDENCIES = ../src/core/libminguscore.la
 am_note_OBJECTS = note.$(OBJEXT)
 note_OBJECTS = $(am_note_OBJECTS)
-note_DEPENDENCIES = ../src/core/libminguscore.a
+note_DEPENDENCIES = ../src/core/libminguscore.la
 am_triad_OBJECTS = triad.$(OBJEXT)
 triad_OBJECTS = $(am_triad_OBJECTS)
-triad_DEPENDENCIES = ../src/core/libminguscore.a
+triad_DEPENDENCIES = ../src/core/libminguscore.la
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -184,11 +184,11 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 interval_SOURCES = interval.c
-interval_LDADD = ../src/core/libminguscore.a
+interval_LDADD = ../src/core/libminguscore.la
 triad_SOURCES = triad.c
-triad_LDADD = ../src/core/libminguscore.a
+triad_LDADD = ../src/core/libminguscore.la
 note_SOURCES = note.c
-note_LDADD = ../src/core/libminguscore.a
+note_LDADD = ../src/core/libminguscore.la
 all: all-am
 
 .SUFFIXES:
