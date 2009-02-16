@@ -4,6 +4,10 @@ mingus_containers_SOURCES = mingus_container_tests.cpp
 mingus_midi_SOURCES = mingus_midi_tests.cpp
 
 SUBDIRS = core containers midi
-mingus_core_LDADD = core/libminguscore.a 
-mingus_containers_LDADD = containers/libminguscontainers.a core/libminguscore.a
-mingus_midi_LDADD = containers/libminguscontainers.a core/libminguscore.a midi/libmingusmidi.a
+mingus_core_LDADD = core/libminguscore.la 
+mingus_containers_LDADD = containers/libminguscontainers.la core/libminguscore.la
+mingus_midi_LDADD = containers/libminguscontainers.la core/libminguscore.la midi/libmingusmidi.la
+
+lib_LTLIBRARIES = libmingus.la
+libmingus_la_SOURCES = 
+libmingus_la_LIBADD = midi/libmingusmidi.la

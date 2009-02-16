@@ -1,4 +1,7 @@
 *.o
+*.la
+*.a
+*.lo
 cmingus-0.1/
 autom4te.cache/
 config.*
