@@ -1263,7 +1263,7 @@ test_determine_triad()
 
 	int i;
 	note notes[3];
-	char res[20];
+	char res[40];
 
 	start_test("determine_triad");
 	for (i = 0; i < 12; i++) 
